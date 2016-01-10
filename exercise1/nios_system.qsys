@@ -42,7 +42,7 @@
       }
       datum baseAddress
       {
-         value = "4144";
+         value = "8240";
          type = "String";
       }
    }
@@ -115,19 +115,6 @@
          type = "int";
       }
    }
-   element LEDs.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4112";
-         type = "String";
-      }
-   }
    element keys.s1
    {
       datum _lockedAddress
@@ -138,6 +125,19 @@
       datum baseAddress
       {
          value = "4096";
+         type = "String";
+      }
+   }
+   element LEDs.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4112";
          type = "String";
       }
    }
@@ -154,19 +154,6 @@
          type = "String";
       }
    }
-   element onchip_memory2_0.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "0";
-         type = "String";
-      }
-   }
    element switches.s1
    {
       datum _lockedAddress
@@ -177,6 +164,19 @@
       datum baseAddress
       {
          value = "4128";
+         type = "String";
+      }
+   }
+   element onchip_memory2_0.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "0";
          type = "String";
       }
    }
@@ -211,7 +211,7 @@
  <parameter name="projectName" value="exercise1.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1452450443178" />
+ <parameter name="timeStamp" value="1452464388509" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -350,7 +350,7 @@
   <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_processor.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='sdram.s1' start='0x1000000' end='0x1800000' /></address-map>]]></parameter>
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='keys.s1' start='0x1000' end='0x1010' /><slave name='LEDs.s1' start='0x1010' end='0x1020' /><slave name='switches.s1' start='0x1020' end='0x1030' /><slave name='character_lcd_0.avalon_lcd_slave' start='0x1030' end='0x1032' /><slave name='nios2_processor.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2038' end='0x2040' /><slave name='sdram.s1' start='0x1000000' end='0x1800000' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='keys.s1' start='0x1000' end='0x1010' /><slave name='LEDs.s1' start='0x1010' end='0x1020' /><slave name='switches.s1' start='0x1020' end='0x1030' /><slave name='nios2_processor.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='character_lcd_0.avalon_lcd_slave' start='0x2030' end='0x2032' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x2038' end='0x2040' /><slave name='sdram.s1' start='0x1000000' end='0x1800000' /></address-map>]]></parameter>
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="deviceFamilyName" value="Cyclone II" />
   <parameter name="internalIrqMaskSystemInfo" value="32" />
@@ -695,7 +695,7 @@
    start="nios2_processor.data_master"
    end="character_lcd_0.avalon_lcd_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x1030" />
+  <parameter name="baseAddress" value="0x2030" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -719,6 +719,11 @@
    start="nios2_processor.jtag_debug_module_reset"
    end="keys.reset" />
  <connection kind="clock" version="13.0" start="clocks.sys_clk" end="keys.clk" />
+ <connection
+   kind="reset"
+   version="13.0"
+   start="clk_0.clk_reset"
+   end="character_lcd_0.clock_reset_reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>
