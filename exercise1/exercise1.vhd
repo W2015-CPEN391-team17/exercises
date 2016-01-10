@@ -6,7 +6,7 @@ USE ieee.std_logic_arith.all;
 
 USE ieee.std_logic_unsigned.all; 
 
-ENTITY lights IS
+ENTITY exercise1 IS
 
    PORT (
       SW : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -21,9 +21,9 @@ ENTITY lights IS
       DRAM_UDQM, DRAM_LDQM : BUFFER STD_LOGIC;
 		LCD_DATA : inout STD_LOGIC_VECTOR(7 downto 0);
 		LCD_ON, LCD_BLON, LCD_EN, LCD_RS, LCD_RW : out STD_LOGIC);
-   END lights;
+   END exercise1;
 
-ARCHITECTURE structure OF lights IS
+ARCHITECTURE structure OF exercise1 IS
 
    COMPONENT nios_system PORT (
       clk_clk : IN STD_LOGIC;
