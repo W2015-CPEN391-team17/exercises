@@ -19,8 +19,8 @@
 
 #define KEY0_MASK 0x01
 #define KEY1_MASK 0x02
-#define KEY2_MASK 0x03
-#define KEY3_MASK 0x04
+#define KEY2_MASK 0x04
+#define KEY3_MASK 0x08
 
 #define KEY_STRING "KEY "
 #define KEY_STRING_EMPTY "     "
@@ -62,6 +62,7 @@ int main()
 
 	  if (button_held_down != button_previously_held_down) {
 		  if (button_held_down) {
+			  printf("%u",key_number);
 			  sprintf(key_number_string, "%u", key_number);
 			  alt_up_character_lcd_set_cursor_pos(char_lcd_dev,0,0);
 			  alt_up_character_lcd_string(char_lcd_dev, KEY_STRING);
