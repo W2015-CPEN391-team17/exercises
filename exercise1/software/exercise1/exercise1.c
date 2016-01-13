@@ -66,7 +66,7 @@ int main()
 			  sprintf(key_number_string, "%u", key_number);
 			  alt_up_character_lcd_set_cursor_pos(char_lcd_dev,0,0);
 			  alt_up_character_lcd_string(char_lcd_dev, KEY_STRING);
-			  alt_up_character_lcd_string(char_lcd_dev, key_number);
+			  alt_up_character_lcd_string(char_lcd_dev, key_number_string);
 		  } else {
 			  alt_up_character_lcd_set_cursor_pos(char_lcd_dev,0,0);
 			  alt_up_character_lcd_string(char_lcd_dev, KEY_STRING_EMPTY);
