@@ -28,10 +28,6 @@
 int main()
 {
   printf("Exercise 1.1 - Press all four keys simultaneously to reset\n");
-  unsigned int button_held_down = 0;
-  unsigned int button_previously_held_down = 1;
-  unsigned int key_number = 0;
-  char key_number_string[LCD_LINE_LENGTH] = "";
 
   alt_up_character_lcd_dev * char_lcd_dev;
 
@@ -45,35 +41,21 @@ int main()
   alt_up_character_lcd_init(char_lcd_dev);
 
   while (1) {
-	  if (*KEYS_ACTIVE_HIGH && !button_previously_held_down) {
-		  button_held_down = 1;
+	  if (*KEYS_ACTIVE_HIGH) {
 		  if (KEY0_MASK & *KEYS_ACTIVE_HIGH) {
-			  key_number = 0;
+			  alt_up_character_lcd_set_cursor_pos(char_lcd_dev,0,0);
+			  alt_up_character_lcd_string(char_lcd_dev, "KEY0");
 		  } else if (KEY1_MASK & *KEYS_ACTIVE_HIGH) {
-			  key_number = 1;
+			  alt_up_character_lcd_set_cursor_pos(char_lcd_dev,0,0);
+			  alt_up_character_lcd_string(char_lcd_dev, "KEY1");
 		  } else if (KEY2_MASK & *KEYS_ACTIVE_HIGH) {
-			  key_number = 2;
+			  alt_up_character_lcd_set_cursor_pos(char_lcd_dev,0,0);
+			  alt_up_character_lcd_string(char_lcd_dev, "KEY2");
 		  } else if (KEY3_MASK & *KEYS_ACTIVE_HIGH) {
-			  key_number = 3;
-		  }
-	  } else {
-		  button_held_down = 0;
-	  }
-
-	  if (button_held_down != button_previously_held_down) {
-		  if (button_held_down) {
-			  printf("%u",key_number);
-			  sprintf(key_number_string, "%u", key_number);
 			  alt_up_character_lcd_set_cursor_pos(char_lcd_dev,0,0);
-			  alt_up_character_lcd_string(char_lcd_dev, KEY_STRING);
-			  alt_up_character_lcd_string(char_lcd_dev, key_number_string);
-		  } else {
-			  alt_up_character_lcd_set_cursor_pos(char_lcd_dev,0,0);
-			  alt_up_character_lcd_string(char_lcd_dev, KEY_STRING_EMPTY);
+			  alt_up_character_lcd_string(char_lcd_dev, "KEY3");
 		  }
 	  }
-
-	  button_previously_held_down = button_held_down;
   }
 
   return 0;
