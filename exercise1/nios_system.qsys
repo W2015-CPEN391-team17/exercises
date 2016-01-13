@@ -115,6 +115,19 @@
          type = "int";
       }
    }
+   element switches.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "4128";
+         type = "String";
+      }
+   }
    element keys.s1
    {
       datum _lockedAddress
@@ -125,6 +138,19 @@
       datum baseAddress
       {
          value = "4096";
+         type = "String";
+      }
+   }
+   element onchip_memory2_0.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "0";
          type = "String";
       }
    }
@@ -151,32 +177,6 @@
       datum baseAddress
       {
          value = "16777216";
-         type = "String";
-      }
-   }
-   element switches.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "4128";
-         type = "String";
-      }
-   }
-   element onchip_memory2_0.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "0";
          type = "String";
       }
    }
@@ -211,7 +211,7 @@
  <parameter name="projectName" value="exercise1.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1452464388509" />
+ <parameter name="timeStamp" value="1452556337796" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -703,7 +703,6 @@
    version="13.0"
    start="nios2_processor.jtag_debug_module_reset"
    end="character_lcd_0.clock_reset_reset" />
- <connection kind="reset" version="13.0" start="clk_0.clk_reset" end="keys.reset" />
  <connection
    kind="avalon"
    version="13.0"
@@ -724,6 +723,7 @@
    version="13.0"
    start="clk_0.clk_reset"
    end="character_lcd_0.clock_reset_reset" />
+ <connection kind="reset" version="13.0" start="clk_0.clk_reset" end="keys.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>
