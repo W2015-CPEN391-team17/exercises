@@ -3,12 +3,14 @@ db/
 incremental_db/
 nios_system/synthesis/
 .qsys_edit/
+*.cproject
 *.rpt
 *.done
 *.smsg
 *.pof
 *.sof
 *.qsf
+*.qws
 *.summary
 *.jdi
 *.pin
