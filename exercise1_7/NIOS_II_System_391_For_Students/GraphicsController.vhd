@@ -607,10 +607,6 @@ Begin
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		elsif(CurrentState = ReadPixel) then
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- This state is responsible for drawing a pixel to an X,Y coordinate on the screen
--- Your program/NIOS should have written the colour pallette number to the "Colour" register 
--- and the coords to the x1 and y1 register before writing to the command register with a "Draw pixel" command)
-
 --
 -- The Sram on the DE2 is asynchronous and not Dual Port which makes it a real pain to drive for this application.
 -- To combat this we have to take all signals to "inactive" state before starting a read (after a possible previous write)
