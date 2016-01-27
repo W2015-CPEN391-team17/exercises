@@ -9,7 +9,6 @@ nios_system/synthesis/
 *.smsg
 *.pof
 *.sof
-*.qsf
 *.qws
 *.summary
 *.jdi
