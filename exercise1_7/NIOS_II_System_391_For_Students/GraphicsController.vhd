@@ -1,7 +1,6 @@
 LIBRARY ieee; 
 USE ieee.Std_Logic_1164.all;
-use ieee.Std_Logic_arith.all; 
-use ieee.Std_Logic_signed.all;  
+use ieee.numeric_std.all;
    
 entity GraphicsController is  
 	Port (  
@@ -70,6 +69,8 @@ architecture bhvr of GraphicsController is
    			X2_Select_H,
 				Y1_Select_H, 
 				Y2_Select_H,
+				X1_Increment_H,
+				Y1_Increment_H,
 				Command_Select_H,
 				Colour_Select_H,
 				BackGroundColour_Select_H: Std_Logic; 	
@@ -261,8 +262,8 @@ Begin
 -- X1 Process
 -- This process stores the 16 value from NIOS into the X1 register
 --
--- You could add extra functionality to this process if you like, e.g. increment x1 when a signal from state machine says so
--- this might be useful when drawing a horizontal line for example, where you increment x1 until it equals x2
+-- Can also increment x1 when a signal from state machine says so
+-- eg when drawing a horizontal line for example, where you increment x1 until it equals x2
 ------------------------------------------------------------------------------------------------------------------------------
 	process(Clk, Reset_L)
 	Begin
@@ -276,6 +277,8 @@ Begin
 				if(LDS_L = '0') then
 					X1(7 downto 0) <= DataInFromCPU(7 downto 0);
 				end if ;
+			elsif(X1_Increment_H = '1') then
+				X1 <= std_logic_vector(unsigned(X1) + 1);
 			end if;
 		end if;
 	end process;
@@ -501,6 +504,9 @@ Begin
 		Sig_ColourPalletteData			<= X"00000000" ;		-- default 00RRGGBB value to the colour pallette
 		Sig_ColourPallette_WE_H			<= '0'; 					-- default is NO write to the colour pallette
 		
+		X1_Increment_H						<= '0';
+		Y1_Increment_H						<= '0';
+		
 		-------------------------------------------------------------------------------------
 		-- IMPORTANT we have to define what the default NEXT state will be. In this case we the state machine
 		-- will return to the IDLE state unless we override this with a different one
@@ -681,10 +687,26 @@ Begin
 		elsif(CurrentState = DrawHline) then
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 			-- TODO in your project
-			if(OKToDraw_L = '0') then
-				--TODO
-				NextState <= IDLE;
+			if(OKToDraw_L = '0' and not (X1 = X2 and X1_Increment_H = '0')) then
+				
+				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
+				Sig_RW_Out <= '0';
+				
+				if(X1(0) = '0')	then		-- if the address/pixel is an even numbered one
+					Sig_UDS_Out_L 	<= '0';	-- enable write to upper half of Sram data bus to access 1 pixel at that location
+				else
+					Sig_LDS_Out_L 	<= '0';	-- else write to lower half of Sram data bus to get the other pixel at that address
+				end if;
+				
+				if(X1 = X2) then
+				   X1_Increment_H <= '0';
+					NextState <= IDLE;
+				else
+					X1_Increment_H <= '1';
+					NextState <= DrawHline;
+				end if;
 			else
+				X1_Increment_H <= '0';
 				NextState <= DrawHline;
 			end if;
 
