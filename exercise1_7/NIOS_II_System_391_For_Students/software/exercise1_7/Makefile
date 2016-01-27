@@ -142,7 +142,12 @@ ACDS_VERSION := 13.0sp1
 ELF := exercise1_7.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := exercise1_7.c
+C_SRCS += exercise1_7.c
+C_SRCS += bresenhams_line_drawing_algorithm.c
+C_SRCS += fill.c
+C_SRCS += fonts.c
+C_SRCS += out_graphics_char_font1.c
+C_SRCS += out_graphics_char_font2.c
 CXX_SRCS :=
 ASM_SRCS :=
 
