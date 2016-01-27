@@ -122,7 +122,7 @@ Begin
 		end if ;		
 	
 -- decoder for the 3rd 6850 chip (Bluetooth)- 4 internal registers at addresses 0x8400_0220 and 0x8400_0222
--- Status Register (read only) and Command Register (write only) are at location 0x8400_220
+-- Status Register (read only) and Command Register (write only) are at location 0x8400_0220
 -- Transmit Data Register (write only) and Received Data Register (read only) are at location 0x8400_0222
 -- Each byte wide register is connected to the lower half of the 16 bit data bus coming from the bridge
 -- i.e. data bus on D7-D0. The signal ByteSelect_L will be '0' when data is being transferred over the bridge data lines D7-D0 
