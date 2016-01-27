@@ -9,7 +9,6 @@ Instructions for pulling and compiling, with exercise1 as an example:
 - generate in qsys
 - add nios_system/synthesis/nios_system.qip to the project in quartus
 - change the device from cyclone iv to the right cyclone ii version
-- import pin assignments
 - set exercise1 as top-level entity
 - compile in quartus
 - program your DE2 with the sof file
