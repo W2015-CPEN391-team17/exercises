@@ -15,10 +15,17 @@
  */
 
 #include <stdio.h>
+#include "exercise1_7.h"
+
 
 int main()
 {
   printf("Exercise 1.7\n");
+
+  WriteAPixel(300, 300, 1);
+  HLine(100, 100, 100, 2);
+  HLine(100, 101, 100, 3);
+  HLine(100, 102, 100, 4);
 
   return 0;
 }

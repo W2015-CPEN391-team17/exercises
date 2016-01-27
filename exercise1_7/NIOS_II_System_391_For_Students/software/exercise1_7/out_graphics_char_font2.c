@@ -8,7 +8,7 @@
 ** no scroll, scale x,y= 1,1
 **
 ******************************************************************************************************************************/
-void OutGraphicsCharFont2a(int x, int y, int colour, int backgroundcolour, int c, int Erase)
+/*void OutGraphicsCharFont2a(int x, int y, int colour, int backgroundcolour, int c, int Erase)
 {
 	register int 	row,
 					column,
@@ -46,4 +46,4 @@ void OutGraphicsCharFont2a(int x, int y, int colour, int backgroundcolour, int c
 			}
 		}
 	}
-}
+}*/

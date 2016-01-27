@@ -13,6 +13,8 @@
 //
 // See the ColourPalette.h header file
 
+#include "colour_pallette.h"
+
 #ifndef COLOURS_H_
 #define COLOURS_H_
 

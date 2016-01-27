@@ -9,8 +9,6 @@
 //
 // Constants for each pallette number using the name for the colour can be found in the header file "Colours.h"
 
-#include "General.h"
-
 //
 // this data represent the RGB values of all pallettes. It is set up in hardware in a ROM file in Quartus
 // but the software (C) version of the data is also given below and can be used as a reference to the original data in graphics chip ROM

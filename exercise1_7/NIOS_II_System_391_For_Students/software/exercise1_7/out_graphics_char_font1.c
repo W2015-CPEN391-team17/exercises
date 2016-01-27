@@ -8,7 +8,7 @@
 **
 *************************************************************************************************/
 
-void OutGraphicsCharFont1(int x, int y, int fontcolour, int backgroundcolour, int c, int Erase)
+/*void OutGraphicsCharFont1(int x, int y, int fontcolour, int backgroundcolour, int c, int Erase)
 {
 // using register variables (as opposed to stack based ones) may make execution faster
 // depends on compiler and CPU
@@ -51,4 +51,4 @@ void OutGraphicsCharFont1(int x, int y, int fontcolour, int backgroundcolour, in
 			}
 		}
 	}
-}
+}*/
