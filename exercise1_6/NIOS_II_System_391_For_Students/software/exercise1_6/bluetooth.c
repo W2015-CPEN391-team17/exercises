@@ -7,9 +7,9 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define DONGLENAME "TEAM17DONGLE"
-#define NAMELEN 12
-#define DONGLEPASS "1717"
+#define DONGLENAME "TEAM17BLUETOOTH"
+#define NAMELEN 15
+#define DONGLEPASS "9999"
 #define PASSLEN 4
 
 #define BT_CONTROL (*(volatile unsigned char *)(0x84000220))
@@ -48,60 +48,60 @@ char putchar_btport(char c)
 	return c;
 }
 
-char getchar_btport(void)
-{
-	//poll Rx bit in 6850 status register. Wait for it to become '1'
-	//read received character from 6850 register
-	while(1)
-	{
-		if (BT_STATUS & BT_STATUS_RX_MASK)
-		{
-			break;
-		}
-	}
-	return BT_RXDATA;
-}
-
 // Sends the given string to the bluetooth dongle through the serial port.
 void send_string(char string[], int length)
 {
 	int i;
 	for (i = 0; i < length; i++)
 	{
+		usleep(100000); //100ms wait
 		putchar_btport(string[i]);
 	}
+}
+
+// Enters command mode, with proper delays
+void command_start()
+{
+	usleep(1000000); // 1s wait
+	send_string("$$$", 3);
+	usleep(1000000);
+}
+
+// Exits command mode, with proper delays
+void command_end()
+{
+	usleep(1000000); // 1s wait
+	send_string("---\r\n", 5);
+	usleep(1000000);
 }
 
 // Resets the bluetooth dongle to default settings.
 void reset_dongle()
 {
-	usleep(1000000);
-	send_string("$$$", 3);
-	usleep(1000000);
+	command_start();
 	send_string("SF,", 3);
 	send_string("1\r\n", 3);
+	command_end();
 }
 
 // Sets the bluetooth dongle's name to the given string.
 void set_dongle_name(char name[], int length)
 {
-	usleep(1000000);
-	send_string("$$$", 3);
-	usleep(1000000);
+	command_start();
 	send_string("SN,", 3);
 	send_string(name, length);
 	send_string("\r\n", 2);
+	command_end();
 }
 
 // Sets the bluetooth dongle's password to the given string.
 void set_dongle_pass(char pass[], int length)
 {
-	usleep(1000000);
-	send_string("$$$", 3);
-	usleep(1000000);
+	command_start();
 	send_string("SP,", 3);
 	send_string(pass, length);
 	send_string("\r\n", 2);
+	command_end();
 }
 
 int main()
@@ -112,15 +112,12 @@ int main()
 	const int passLen = PASSLEN;
 
 	printf("Begin programming Bluetooth dongle...\n");
-	usleep(100000); //100ms wait
 	init_btport();
 
 	printf("Setting name to '%s'.\n", dongleName);
-	usleep(100000); //100ms wait
 	set_dongle_name(dongleName, nameLen);
 
 	printf("Setting password to '%s'.\n", donglePass);
-	usleep(100000); //100ms wait
 	set_dongle_pass(donglePass, passLen);
 
 
