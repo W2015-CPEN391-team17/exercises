@@ -687,7 +687,7 @@ Begin
 		elsif(CurrentState = DrawHline) then
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 			-- TODO in your project
-			if(OKToDraw_L = '0' and not (X1 = X2 and X1_Increment_H = '0')) then
+			if(OKToDraw_L = '0') then
 				
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
 				Sig_RW_Out <= '0';
