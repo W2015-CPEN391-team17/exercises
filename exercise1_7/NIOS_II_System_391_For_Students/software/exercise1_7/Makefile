@@ -145,6 +145,7 @@ ELF := exercise1_7.elf
 C_SRCS += exercise1_7.c
 C_SRCS += fill.c
 C_SRCS += fonts.c
+C_SRCS += graphics.c
 CXX_SRCS :=
 ASM_SRCS :=
 
