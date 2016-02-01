@@ -13,7 +13,7 @@ int main()
   int i = 0;
   while(1) {
 	  for(i = 0; i < YRES; i++) {
-	    HLine(0, i, XRES, 6);
+	    WriteHLine(0, i, XRES, 6);
 	  }
 
 	  Line(0, 0, XRES-250, YRES-250, 2);

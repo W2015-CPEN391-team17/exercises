@@ -1,6 +1,6 @@
 /*
  * graphics.c
- * Functions for reading and writing to the Graphics Controller
+ * Functions for the Graphics Controller
  *
  *  Created on: Jan 31, 2016
  *      Author: nick
@@ -10,7 +10,7 @@
 #include "graphics.h"
 
 /*******************************************************************************************
-* This function writes a single pixel to the x,y coords specified using the specified colour
+* Writes a single pixel to the x,y coords specified using the specified colour
 * Note colour is a byte and represents a palette number (0-255) not a 24 bit RGB value
 ********************************************************************************************/
 void WriteAPixel(int x, int y, int Colour)
@@ -24,7 +24,7 @@ void WriteAPixel(int x, int y, int Colour)
 }
 
 /*********************************************************************************************
-* This function read a single pixel from the x,y coords specified and returns its colour
+* Read a single pixel from the x,y coords specified and returns its colour
 * Note returned colour is a byte and represents a palette number (0-255) not a 24 bit RGB value
 *********************************************************************************************/
 
@@ -40,11 +40,26 @@ int ReadAPixel(int x, int y)
 	return (int)(GraphicsColourReg) ;	// return the palette number (colour)
 }
 
+/*******************************************************************************************
+* Write a horizontal line (hardware-accelerated) starting at the x,y coords specified
+********************************************************************************************/
+void WriteHLine(int x1, int y1, int length, int Colour)
+{
+	WAIT_FOR_GRAPHICS;
+
+	int x2 = x1 + length;
+	//TODO error checking
+
+	GraphicsX1Reg = x1;
+	GraphicsY1Reg = y1;
+	GraphicsX2Reg = x2;
+	GraphicsColourReg = Colour;
+	GraphicsCommandReg = DrawHLine;
+}
 
 /**********************************************************************************
-** subroutine to program a hardware (graphics chip) palette number with an RGB value
-** e.g. ProgramPalette(RED, 0x00FF0000) ;
-**
+* subroutine to program a hardware (graphics chip) palette number with an RGB value
+* e.g. ProgramPalette(RED, 0x00FF0000) ;
 ************************************************************************************/
 
 void ProgramPalette(int PaletteNumber, int RGB)
@@ -57,7 +72,7 @@ void ProgramPalette(int PaletteNumber, int RGB)
 }
 
 /*********************************************************************************************
-This function draw a horizontal line, 1 pixel at a time starting at the x,y coords specified
+* Draw a horizontal line (1 pixel at a time) starting at the x,y coords specified
 *********************************************************************************************/
 
 void HLine(int x1, int y1, int length, int Colour)
@@ -69,7 +84,7 @@ void HLine(int x1, int y1, int length, int Colour)
 }
 
 /*********************************************************************************************
-This function draw a vertical line, 1 pixel at a time starting at the x,y coords specified
+* Draw a vertical line (1 pixel at a time) starting at the x,y coords specified
 *********************************************************************************************/
 
 void VLine(int x1, int y1, int length, int Colour)
@@ -81,7 +96,7 @@ void VLine(int x1, int y1, int length, int Colour)
 }
 
 /*******************************************************************************
-** Implementation of Bresenhams line drawing algorithm
+* Implementation of Bresenhams line drawing algorithm (1 pixel at a time)
 *******************************************************************************/
 
 int abs(int a)
