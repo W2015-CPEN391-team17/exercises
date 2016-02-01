@@ -16,5 +16,6 @@
 
 void WriteAPixel(int x, int y, int Colour);
 void HLine(int x1, int y1, int length, int Colour);
+void Line(int x1, int y1, int x2, int y2, int Colour);
 
 #endif /* EXERCISE1_7_H_ */

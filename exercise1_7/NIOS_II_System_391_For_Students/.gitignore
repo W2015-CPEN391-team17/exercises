@@ -17,3 +17,10 @@ nios_system/synthesis/
 *.cmp
 *.html
 *.sopcinfo
+
+# Software files
+*.o
+*.elf
+*.map
+libhal_bsp.a
+*.objdump
