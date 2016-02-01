@@ -13,6 +13,10 @@ int main()
   int i = 0;
   while(1) {
 	  for(i = 0; i < YRES; i++) {
+	    HLine(0, i, XRES, 8);
+	  }
+
+	  for(i = 0; i < YRES; i++) {
 	    WriteHLine(0, i, XRES, 6);
 	  }
 
@@ -24,8 +28,11 @@ int main()
 	  Line(0, 0, XRES, YRES, 2);
 
 	  for(i = 0; i < XRES; i++) {
-	    VLine(i, 0, YRES, 7);
-	    printf("hi\n");
+	    VLine(i, 0, YRES, 8);
+	  }
+
+	  for(i = 0; i < XRES; i++) {
+	    WriteVLine(i, 0, YRES, 7);
 	  }
   }
 

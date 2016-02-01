@@ -61,6 +61,8 @@
 #define	MAGENTA			7
 
 void WriteAPixel(int x, int y, int Colour);
+void WriteHLine(int x1, int y1, int length, int Colour);
+void WriteVLine(int x1, int y1, int length, int Colour);
 int ReadAPixel(int x, int y);
 void ProgramPalette(int PaletteNumber, int RGB);
 void HLine(int x1, int y1, int length, int Colour);

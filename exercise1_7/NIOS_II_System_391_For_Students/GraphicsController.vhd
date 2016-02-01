@@ -142,12 +142,12 @@ architecture bhvr of GraphicsController is
 	constant	PutPixel									: Std_Logic_Vector(15 downto 0) := X"000a";	-- command to Graphics chip from NIOS to draw a pixel
 	constant	GetPixel									: Std_Logic_Vector(15 downto 0) := X"000b";	-- command to Graphics chip from NIOS to read a pixel
 	constant ProgramPallette						: Std_Logic_Vector(15 downto 0) := X"0010";	-- command to Graphics chip from NIOS is program one of the pallettes with a new RGB value
+
 Begin
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Secondary CPU address decoder within chip
 -- This logic decodes the address coming out of the Bridge (via NIOS) and decides which internal graphics registers NIOS is accessing
--- 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	process(AddressIn, GraphicsCS_L, RW, AS_L, Idle_H)
@@ -262,7 +262,7 @@ Begin
 -- X1 Process
 -- This process stores the 16 value from NIOS into the X1 register
 --
--- Can also increment x1 when a signal from state machine says so
+-- Can also increment x1 (by 1) when a signal from state machine says so
 -- eg when drawing a horizontal line for example, where you increment x1 until it equals x2
 ------------------------------------------------------------------------------------------------------------------------------
 	process(Clk, Reset_L)
@@ -287,8 +287,8 @@ Begin
 -- Y1 Process
 -- This process stores the 16 value from NIOS into the Y1 register
 --
--- You could add extra functionality to this process if you like, e.g. increment y1 when a signal from state machine says so
--- this might be useful when drawing a vertical line for example, where you increment y1 until it equals y2
+-- Can also increment y1 (by 1024 to reach the next line) when a signal from state machine says so
+-- eg when drawing a horizontal line for example, where you increment y1 until it equals y2
 ------------------------------------------------------------------------------------------------------------------------------
 	process(Clk, Reset_L)
 	Begin	
@@ -302,6 +302,8 @@ Begin
 				if(LDS_L = '0') then
 					Y1(7 downto 0) <= DataInFromCPU(7 downto 0);
 				end if;
+			elsif(Y1_Increment_H = '1') then
+				Y1 <= std_logic_vector(unsigned(Y1) + 1024);
 			end if;
 		end if;
 	end process;
@@ -686,7 +688,7 @@ Begin
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		elsif(CurrentState = DrawHline) then
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-			-- TODO in your project
+			-- TODO not fully tested, probably ends one pixel early
 			if(OKToDraw_L = '0') then
 				
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
@@ -714,9 +716,30 @@ Begin
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		elsif(CurrentState = DrawVline) then
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
-			-- TODO in your project
-			NextState <= IDLE;
-			
+			-- TODO not fully tested, probably ends one pixel early
+			if(OKToDraw_L = '0') then
+
+				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
+				Sig_RW_Out <= '0';
+
+				if(X1(0) = '0')	then		-- if the address/pixel is an even numbered one
+					Sig_UDS_Out_L 	<= '0';	-- enable write to upper half of Sram data bus to access 1 pixel at that location
+				else
+					Sig_LDS_Out_L 	<= '0';	-- else write to lower half of Sram data bus to get the other pixel at that address
+				end if;
+
+				if(Y1 = std_logic_vector(unsigned(Y2) + (unsigned(Y2) - unsigned(Y1))*1024)) then
+				   Y1_Increment_H <= '0';
+					NextState <= IDLE;
+				else
+					Y1_Increment_H <= '1';
+					NextState <= DrawVline;
+				end if;
+			else
+				Y1_Increment_H <= '0';
+				NextState <= DrawVline;
+			end if;
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine) then
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
