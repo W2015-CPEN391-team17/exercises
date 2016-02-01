@@ -692,6 +692,7 @@ Begin
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
 				Sig_RW_Out <= '0';
 				
+				--TODO could potentially draw both pixels at once
 				if(X1(0) = '0')	then		-- if the address/pixel is an even numbered one
 					Sig_UDS_Out_L 	<= '0';	-- enable write to upper half of Sram data bus to access 1 pixel at that location
 				else
