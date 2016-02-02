@@ -6,17 +6,25 @@
 #include <stdio.h>
 #include "graphics.h"
 
-void strobe() {
+void speed_comparison() {
 	int i = 0;
 	int colour = 0;
 	while(1) {
 		colour = (colour + 1) % 8;
-		for(i = 0; i < YRES; i++) {
+		for(i = 0; i < XRES; i++) {
+			VLine(i, 0, YRES, 2);
+		}
+		colour = (colour + 1) % 8;
+		for(i = 0; i < YRES/3; i++) {
 			WriteHLine(0, i, XRES, colour);
 		}
 		colour = (colour + 1) % 8;
-		for(i = 0; i < XRES; i++) {
-			 WriteVLine(i, 0, YRES, colour);
+		for(i = YRES/3; i < 2*YRES/3; i++) {
+			WriteHLine(0, i, XRES, colour);
+		}
+		colour = (colour + 1) % 8;
+		for(i = 2*YRES/3; i < YRES; i++) {
+			WriteHLine(0, i, XRES, colour);
 		}
 	}
 }

@@ -263,7 +263,7 @@ Begin
 -- X1 Process
 -- This process stores the 16 value from NIOS into the X1 register
 --
--- Can also increment x1 (by 1) when a signal from state machine says so
+-- Can also increment x1 (by 2, for drawing horizontally more quickly) when a signal from state machine says so
 -- eg when drawing a horizontal line for example, where you increment x1 until it equals x2
 ------------------------------------------------------------------------------------------------------------------------------
 	process(Clk, Reset_L)
@@ -279,7 +279,7 @@ Begin
 					X1(7 downto 0) <= DataInFromCPU(7 downto 0);
 				end if ;
 			elsif(X1_Increment_H = '1') then
-				X1 <= std_logic_vector(unsigned(X1) + 1);
+				X1 <= std_logic_vector(unsigned(X1) + 2);
 			end if;
 		end if;
 	end process;
@@ -288,7 +288,7 @@ Begin
 -- Y1 Process
 -- This process stores the 16 value from NIOS into the Y1 register
 --
--- Can also increment y1 (by 1024 to reach the next line) when a signal from state machine says so
+-- Can also increment y1 when a signal from state machine says so
 -- eg when drawing a horizontal line for example, where you increment y1 until it equals y2
 ------------------------------------------------------------------------------------------------------------------------------
 	process(Clk, Reset_L)
@@ -693,12 +693,11 @@ Begin
 			if(OKToDraw_L = '0') then
 				
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
-				
-				--TODO could potentially draw both pixels at once
-				if(X1(0) = '0') then
-					Sig_UDS_Out_L 	<= '0';
-				else
-					Sig_LDS_Out_L 	<= '0';
+
+				-- can draw two pixels per cycle
+				Sig_UDS_Out_L <= '0'; -- left pixel in upper byte
+				if(unsigned(X1) + 1 /= unsigned(X2)) then
+				    Sig_LDS_Out_L <= '0'; -- right pixel in lower byte
 				end if;
 				
 				if(X1 = X2) then
