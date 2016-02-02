@@ -122,8 +122,8 @@ architecture bhvr of GraphicsController is
 	
 	constant Idle						 				: Std_Logic_Vector(7 downto 0) := X"00";		-- main waiting state
 	constant ProcessCommand			 				: Std_Logic_Vector(7 downto 0) := X"01";		-- State is figure out command
-	constant DrawHline			 	 				: Std_Logic_Vector(7 downto 0) := X"02";		-- State for drawing a Horizontal line
-	constant DrawVline			 	 				: Std_Logic_Vector(7 downto 0) := X"03";		-- State for drawing a Vertical line
+	constant DrawHline			 	 				: Std_Logic_Vector(7 downto 0) := X"02";		-- State for drawing first pixel(s) of a Horizontal line
+	constant DrawVline			 	 				: Std_Logic_Vector(7 downto 0) := X"03";		-- State for drawing first pixel of a Vertical line
 	constant DrawLine				 	 				: Std_Logic_Vector(7 downto 0) := X"04";		-- State for drawing any line
 	constant DrawPixel							 	: Std_Logic_Vector(7 downto 0) := X"05";		-- State for drawing a pixel
 	constant ReadPixel							 	: Std_Logic_Vector(7 downto 0) := X"06";		-- State for reading a pixel
@@ -133,6 +133,7 @@ architecture bhvr of GraphicsController is
 	constant PalletteReProgram						: Std_Logic_Vector(7 downto 0) := X"0A";		-- State for programming a pallette
 
 	-- add any extra states you need here for example to draw lines etc.
+
 -------------------------------------------------------------------------------------------------------------------------------------------------
 -- Commands that can be written to command register by NIOS to get graphics controller to draw a shape
 -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -459,7 +460,8 @@ Begin
 			Sram_CE_L				<= Sig_CE_L;					-- On rising edge of clock copy our calculated CE value to the Sram
 			
 			-- Graphics Busy and scroll signal updates
-			GraphicsBusy_H			<= Sig_Busy_H AND (NOT OKToDraw_L);		-- turn off Busy during display periods as we will not be drawing, let VGA controller have the Sram during display periods and Graphics during blanking periods
+			-- turn off Busy during display periods as we will not be drawing, let VGA controller have the Sram during display periods and Graphics during blanking periods
+			GraphicsBusy_H			<= Sig_Busy_H AND (NOT OKToDraw_L);		
 			VScrollValue 			<= B"00_0000_0000"; 							-- no scrolling implemented so output 0
 			HScrollValue			<= B"00_0000_0000"; 							-- no scrolling implemented so output 0
 			
@@ -506,8 +508,8 @@ Begin
 		Sig_ColourPalletteData			<= X"00000000" ;		-- default 00RRGGBB value to the colour pallette
 		Sig_ColourPallette_WE_H			<= '0'; 					-- default is NO write to the colour pallette
 		
-		X1_Increment_H						<= '0';
-		Y1_Increment_H						<= '0';
+		X1_Increment_H						<= '0'; -- assume not incrementing
+		Y1_Increment_H						<= '0'; -- assume not incrementing
 		
 		-------------------------------------------------------------------------------------
 		-- IMPORTANT we have to define what the default NEXT state will be. In this case we the state machine
@@ -688,58 +690,60 @@ Begin
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		elsif(CurrentState = DrawHline) then
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-			-- TODO not fully tested, probably ends one pixel early
 			if(OKToDraw_L = '0') then
 				
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
-				Sig_RW_Out <= '0';
 				
 				--TODO could potentially draw both pixels at once
-				if(X1(0) = '0')	then		-- if the address/pixel is an even numbered one
-					Sig_UDS_Out_L 	<= '0';	-- enable write to upper half of Sram data bus to access 1 pixel at that location
+				if(X1(0) = '0') then
+					Sig_UDS_Out_L 	<= '0';
 				else
-					Sig_LDS_Out_L 	<= '0';	-- else write to lower half of Sram data bus to get the other pixel at that address
+					Sig_LDS_Out_L 	<= '0';
 				end if;
 				
 				if(X1 = X2) then
+					Sig_RW_Out <= '1'; -- do not draw a line with only one pixel
 				   X1_Increment_H <= '0';
 					NextState <= IDLE;
 				else
+				   Sig_RW_Out <= '0';
 					X1_Increment_H <= '1';
 					NextState <= DrawHline;
 				end if;
 			else
+				Sig_RW_Out <= '0';
 				X1_Increment_H <= '0';
 				NextState <= DrawHline;
 			end if;
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		elsif(CurrentState = DrawVline) then
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
-			-- TODO not fully tested, probably ends one pixel early
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 			if(OKToDraw_L = '0') then
 
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
-				Sig_RW_Out <= '0';
 
-				if(X1(0) = '0')	then		-- if the address/pixel is an even numbered one
-					Sig_UDS_Out_L 	<= '0';	-- enable write to upper half of Sram data bus to access 1 pixel at that location
+				if(X1(0) = '0') then
+					Sig_UDS_Out_L 	<= '0';
 				else
-					Sig_LDS_Out_L 	<= '0';	-- else write to lower half of Sram data bus to get the other pixel at that address
+					Sig_LDS_Out_L 	<= '0';
 				end if;
 
 				if(Y1 = Y2) then
+					Sig_RW_Out <= '1'; -- do not draw a line with only one pixel
 				   Y1_Increment_H <= '0';
 					NextState <= IDLE;
 				else
+				   Sig_RW_Out <= '0';
 					Y1_Increment_H <= '1';
 					NextState <= DrawVline;
 				end if;
 			else
+				Sig_RW_Out <= '0';
 				Y1_Increment_H <= '0';
 				NextState <= DrawVline;
 			end if;
-
+			
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine) then
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
