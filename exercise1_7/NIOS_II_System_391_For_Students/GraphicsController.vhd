@@ -303,7 +303,7 @@ Begin
 					Y1(7 downto 0) <= DataInFromCPU(7 downto 0);
 				end if;
 			elsif(Y1_Increment_H = '1') then
-				Y1 <= std_logic_vector(unsigned(Y1) + 1024);
+				Y1 <= std_logic_vector(unsigned(Y1) + 1);
 			end if;
 		end if;
 	end process;
@@ -728,7 +728,7 @@ Begin
 					Sig_LDS_Out_L 	<= '0';	-- else write to lower half of Sram data bus to get the other pixel at that address
 				end if;
 
-				if(Y1 = std_logic_vector(unsigned(Y2) + (unsigned(Y2) - unsigned(Y1))*1024)) then
+				if(Y1 = Y2) then
 				   Y1_Increment_H <= '0';
 					NextState <= IDLE;
 				else
