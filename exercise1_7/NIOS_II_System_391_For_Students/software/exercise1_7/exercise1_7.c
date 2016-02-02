@@ -8,12 +8,15 @@
 
 void strobe() {
 	int i = 0;
+	int colour = 0;
 	while(1) {
+		colour = (colour + 1) % 8;
 		for(i = 0; i < YRES; i++) {
-			WriteHLine(0, i, XRES, 2);
+			WriteHLine(0, i, XRES, colour);
 		}
+		colour = (colour + 1) % 8;
 		for(i = 0; i < XRES; i++) {
-			 WriteVLine(i, 0, YRES, 5);
+			 WriteVLine(i, 0, YRES, colour);
 		}
 	}
 }
@@ -22,6 +25,8 @@ int main()
 {
   printf("Exercise 1.7 start\n");
 
+  // fill the left half of the screen in white
+  // and the right half of the screen in red
   int i = 0;
   for(i = 0; i < YRES; i++) {
 	  WriteHLine(0, i, XRES/2, 1);
@@ -30,10 +35,7 @@ int main()
 	  WriteVLine(i, 0, YRES, 2);
   }
 
-
-  //TODO test drawing h/v line with only one pixel (should not appear)
-  //TODO test drawing h/v line with two pixels (should appear)
-  //TODO handling h/v lines in wrong direction?
+  //compare one-pixel-at-a-time with hardware-accelerated lines
 
   HLine(100,100,100,3);
   HLine(100,101,100,3);
@@ -80,7 +82,6 @@ int main()
   WriteVLine(509,200,100,6);
 
   printf("Exercise 1.7 end\n");
-
 
   return 0;
 }

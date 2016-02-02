@@ -42,6 +42,7 @@ int ReadAPixel(int x, int y)
 
 /*******************************************************************************************
 * Write a horizontal line (hardware-accelerated) starting at the x,y coords specified
+* of the given length to the right
 ********************************************************************************************/
 void WriteHLine(int x1, int y1, int length, int Colour)
 {
@@ -59,6 +60,7 @@ void WriteHLine(int x1, int y1, int length, int Colour)
 
 /*******************************************************************************************
 * Write a vertical line (hardware-accelerated) starting at the x,y coords specified
+* of the given length downwards
 ********************************************************************************************/
 void WriteVLine(int x1, int y1, int length, int Colour)
 {
