@@ -133,6 +133,7 @@ architecture bhvr of GraphicsController is
 	constant PalletteReProgram						: Std_Logic_Vector(7 downto 0) := X"0A";		-- State for programming a pallette
 
 	-- add any extra states you need here for example to draw lines etc.
+	constant DrawLine1				 	 			: Std_Logic_Vector(7 downto 0) := X"10";
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 -- Commands that can be written to command register by NIOS to get graphics controller to draw a shape
@@ -173,10 +174,8 @@ architecture bhvr of GraphicsController is
 	signal s2_Load_H	: std_logic;
 
 	signal interchange			: std_logic_vector(15 downto 0);
-	signal interchange			: std_logic_vector(15 downto 0);
+	signal interchange_Data		: std_logic_vector(15 downto 0);
 	signal interchange_Load_H	: std_logic;
-	
-	TODO etc
 
 Begin
 
@@ -580,8 +579,8 @@ end process;
 	
 	process(CurrentState, CommandWritten_H, Command, X1, X2, Y1, Y2, Colour, OKToDraw_L, VSync_L,
 				BackGroundColour, AS_L, Sram_DataIn, CLK, Colour_Latch)
-		variable x2Minusx1 : std_logic_vector(15 downto 0);
-		variable y2Minusy1 : std_logic_vector(15 downto 0);
+		variable x2Minusx1 : signed(15 downto 0);
+		variable y2Minusy1 : signed(15 downto 0);
 	begin
 	
 	----------------------------------------------------------------------------------------------------------------------------------
@@ -871,11 +870,11 @@ end process;
 			x_Data <= x1;
 			y_Data <= y1;
 			
-			x2Minusx1 := x2 - x1;
-			y2Minusy1 := y2 - y1;
+			x2Minusx1 := signed(unsigned(x2) - unsigned(x1));
+			y2Minusy1 := signed(unsigned(y2) - unsigned(y1));
 			
-			dx_Data <= abs(signed(x2Minusx1)); -- no storage
-			dy_Data <= abs(signed(y2Minusy1)); -- no storage
+			dx_Data <= std_logic_vector(abs(x2Minusx1)); --TODO should dx_Data just be signed?
+			dy_Data <= std_logic_vector(abs(y2Minusy1));
 			
 			-- calculate s1 = sign(x2 - x1)
 			if(x2Minusx1 < 0) then
