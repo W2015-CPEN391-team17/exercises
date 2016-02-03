@@ -149,7 +149,7 @@ architecture bhvr of GraphicsController is
 -- Bresenham line algorithm signals
 ------------------------------------------------------------------------------
 
-	signal x				: std_logic_vector(15 downto 0);
+	signal x				: std_logic_vector(15 downto 0); -- 'x'
 	signal x_Data		: std_logic_vector(15 downto 0); -- carries data to be stored in 'x'
 	signal x_Load_H	: std_logic;							-- whether to update 'x'
 	
@@ -173,9 +173,13 @@ architecture bhvr of GraphicsController is
 	signal s2_Data		: std_logic_vector(15 downto 0);
 	signal s2_Load_H	: std_logic;
 
-	signal interchange			: std_logic_vector(15 downto 0);
-	signal interchange_Data		: std_logic_vector(15 downto 0);
+	signal interchange			: std_logic;
+	signal interchange_Data		: std_logic;
 	signal interchange_Load_H	: std_logic;
+	
+	signal error			: std_logic_vector(16 downto 0);
+	signal error_Data		: std_logic_vector(16 downto 0);
+	signal error_Load_H	: std_logic;
 
 Begin
 
@@ -517,7 +521,16 @@ begin
 		end if;
 	end if;
 end process;
-	
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(error_Load_H = '1') then
+			error <= error_Data;
+		end if;
+	end if;
+end process;
+
 ------------------------------------------------------------------------------------------------------------------------------
 -- Colour Latch Process (used for reading pixel)
 --
@@ -595,43 +608,46 @@ end process;
 		Sig_RW_Out 							<= '1';	-- assume reading
 		Sig_CE_L								<= '0';	-- assume activated
 		Sig_OE_L								<= '0';	-- assume reading (won't affect memory chip if writing since it will ignore it)
-		
+
 		ClearBusy_H 						<= '0';	-- default is do NOT Clear busy
 		SetBusy_H							<= '0';	-- default is do NOT Set busy
 		ClearCommandWritten_H			<= '0';	-- default is no command has been written by nios
 		Sig_Busy_H							<= '1';	-- default is device is busy
-	
+
 		Colour_Latch_Load_H				<= '0';					-- default is NOT to load colour latch
 		Colour_Latch_Data					<= X"0000";				-- default data to colour latch is 0
-			
+
 		Sig_ColourPalletteAddr			<= X"00";				-- default address to the colour pallette
 		Sig_ColourPalletteData			<= X"00000000" ;		-- default 00RRGGBB value to the colour pallette
 		Sig_ColourPallette_WE_H			<= '0'; 					-- default is NO write to the colour pallette
-		
+
 		X1_Increment_H						<= '0'; -- assume not incrementing
 		Y1_Increment_H						<= '0'; -- assume not incrementing
-		
+
 		x_Load_H								<= '0';
 		x_Data								<= X"0000";
-		
+
 		y_Load_H								<= '0';
 		y_Data								<= X"0000";
 
 		dx_Load_H							<= '0';
 		dx_Data								<= X"0000";
-		
+
 		dy_Load_H							<= '0';
 		dy_Data								<= X"0000";
 
 		s1_Load_H							<= '0';
 		s1_Data								<= X"0000";
-		
+
 		s2_Load_H							<= '0';
 		s2_Data								<= X"0000";
 
 		interchange_Load_H				<= '0';
-		interchange_Data					<= X"0000";
-		
+		interchange_Data					<= '0';
+
+		error_Load_H						<= '0';
+		error_Data							<= X"0000";
+
 		-------------------------------------------------------------------------------------
 		-- IMPORTANT we have to define what the default NEXT state will be. In this case we the state machine
 		-- will return to the IDLE state unless we override this with a different one
@@ -873,7 +889,7 @@ end process;
 			x2Minusx1 := signed(unsigned(x2) - unsigned(x1));
 			y2Minusy1 := signed(unsigned(y2) - unsigned(y1));
 			
-			dx_Data <= std_logic_vector(abs(x2Minusx1)); --TODO should dx_Data just be signed?
+			dx_Data <= std_logic_vector(abs(x2Minusx1));
 			dy_Data <= std_logic_vector(abs(y2Minusy1));
 			
 			-- calculate s1 = sign(x2 - x1)
@@ -894,7 +910,7 @@ end process;
 				s2_Data <= X"0001"; -- s1 = 1
 			end if;
 			
-			interchange_Data <= X"0000";
+			interchange_Data <= '0';
 			
 			x_Load_H <= '1';
 			y_Load_H <= '1';
@@ -904,14 +920,43 @@ end process;
 			s2_Load_H <= '1';
 			interchange_Load_H <= '1';
 			
-			NextState <= DrawLine1;
+			if ((x1 = x2) and (y1 = y2)) then
+				NextState <= IDLE; -- do not draw line of length 0
+			else
+				NextState <= DrawLine1;
+			end if;
 
 ------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine1) then
 ------------------------------------------------------------------------------
-			-- TODO in your project
-			NextState <= IDLE;
+			-- swap dx and dy depending on slope of line
+			-- initialize error term to compensate for non-zero intercept
+			-- (error term also depends on slope)
+			if(unsigned(dy) > unsigned(dx)) then
+				dx_Data <= dy;
+				dx_Load_H <= '1';
+				
+				dy_Data <= dx;
+				dy_Load_H <= '1';
+				
+				interchange <= '1';
+				interchange_Load_H <= '1';
+				
+				error_Data <= signed(unsigned(dx(14 downto 0) & '0') - unsigned(dy));
+				error_Load_H <= '1';
+			else
+				error_Data <= signed(unsigned(dy(14 downto 0) & '0') - unsigned(dx));
+				error_Load_H <= '1';
+			end if;
+			
+			NextState <= DrawLine2;
 
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawLine2) then
+------------------------------------------------------------------------------
+			-- TODO main loop (may need to split into more states?)
+			NextState <= IDLE; -- TODO choosing next state
 		end if ;
+		
 	end process;	
 end;
