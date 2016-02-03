@@ -134,6 +134,7 @@ architecture bhvr of GraphicsController is
 
 	-- add any extra states you need here for example to draw lines etc.
 	constant DrawLine1				 	 			: Std_Logic_Vector(7 downto 0) := X"10";
+	constant DrawLine2				 	 			: Std_Logic_Vector(7 downto 0) := X"11";
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 -- Commands that can be written to command register by NIOS to get graphics controller to draw a shape
@@ -157,12 +158,12 @@ architecture bhvr of GraphicsController is
 	signal y_Data		: std_logic_vector(15 downto 0);
 	signal y_Load_H	: std_logic;
 
-	signal dx			: std_logic_vector(15 downto 0);
-	signal dx_Data		: std_logic_vector(15 downto 0);
+	signal dx			: unsigned(15 downto 0);
+	signal dx_Data		: unsigned(15 downto 0);
 	signal dx_Load_H	: std_logic;
 	
-	signal dy			: std_logic_vector(15 downto 0);
-	signal dy_Data		: std_logic_vector(15 downto 0);
+	signal dy			: unsigned(15 downto 0);
+	signal dy_Data		: unsigned(15 downto 0);
 	signal dy_Load_H	: std_logic;
 	
 	signal s1			: std_logic_vector(15 downto 0);
@@ -177,8 +178,8 @@ architecture bhvr of GraphicsController is
 	signal interchange_Data		: std_logic;
 	signal interchange_Load_H	: std_logic;
 	
-	signal error			: std_logic_vector(16 downto 0);
-	signal error_Data		: std_logic_vector(16 downto 0);
+	signal error			: signed(15 downto 0);
+	signal error_Data		: signed(15 downto 0);
 	signal error_Load_H	: std_logic;
 
 Begin
@@ -886,11 +887,11 @@ end process;
 			x_Data <= x1;
 			y_Data <= y1;
 			
-			x2Minusx1 := signed(unsigned(x2) - unsigned(x1));
+			x2Minusx1 := signed(unsigned(x2) - unsigned(x1)); -- TODO may fail for large values?
 			y2Minusy1 := signed(unsigned(y2) - unsigned(y1));
-			
-			dx_Data <= std_logic_vector(abs(x2Minusx1));
-			dy_Data <= std_logic_vector(abs(y2Minusy1));
+
+			dx_Data <= unsigned(abs(x2Minusx1));
+			dy_Data <= unsigned(abs(y2Minusy1));
 			
 			-- calculate s1 = sign(x2 - x1)
 			if(x2Minusx1 < 0) then
@@ -932,7 +933,7 @@ end process;
 			-- swap dx and dy depending on slope of line
 			-- initialize error term to compensate for non-zero intercept
 			-- (error term also depends on slope)
-			if(unsigned(dy) > unsigned(dx)) then
+			if(dy > dx) then
 				dx_Data <= dy;
 				dx_Load_H <= '1';
 				
@@ -942,10 +943,10 @@ end process;
 				interchange <= '1';
 				interchange_Load_H <= '1';
 				
-				error_Data <= signed(unsigned(dx(14 downto 0) & '0') - unsigned(dy));
+				error_Data <= signed((dx(14 downto 0) & '0') - dy); -- TODO may fail for large values?
 				error_Load_H <= '1';
 			else
-				error_Data <= signed(unsigned(dy(14 downto 0) & '0') - unsigned(dx));
+				error_Data <= signed((dy(14 downto 0) & '0') - dx);
 				error_Load_H <= '1';
 			end if;
 			
@@ -954,7 +955,9 @@ end process;
 ------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine2) then
 ------------------------------------------------------------------------------
-			-- TODO main loop (may need to split into more states?)
+			-- TODO main loop
+			-- TODO need to initialize 'i' in prev state?
+			-- TODO probably need to split body of for loop into multiple states
 			NextState <= IDLE; -- TODO choosing next state
 		end if ;
 		
