@@ -144,6 +144,40 @@ architecture bhvr of GraphicsController is
 	constant	GetPixel									: Std_Logic_Vector(15 downto 0) := X"000b";	-- command to Graphics chip from NIOS to read a pixel
 	constant ProgramPallette						: Std_Logic_Vector(15 downto 0) := X"0010";	-- command to Graphics chip from NIOS is program one of the pallettes with a new RGB value
 
+------------------------------------------------------------------------------
+-- Bresenham line algorithm signals
+------------------------------------------------------------------------------
+
+	signal x				: std_logic_vector(15 downto 0);
+	signal x_Data		: std_logic_vector(15 downto 0); -- carries data to be stored in 'x'
+	signal x_Load_H	: std_logic;							-- whether to update 'x'
+	
+	signal y				: std_logic_vector(15 downto 0);
+	signal y_Data		: std_logic_vector(15 downto 0);
+	signal y_Load_H	: std_logic;
+
+	signal dx			: std_logic_vector(15 downto 0);
+	signal dx_Data		: std_logic_vector(15 downto 0);
+	signal dx_Load_H	: std_logic;
+	
+	signal dy			: std_logic_vector(15 downto 0);
+	signal dy_Data		: std_logic_vector(15 downto 0);
+	signal dy_Load_H	: std_logic;
+	
+	signal s1			: std_logic_vector(15 downto 0);
+	signal s1_Data		: std_logic_vector(15 downto 0);
+	signal s1_Load_H	: std_logic;
+	
+	signal s2			: std_logic_vector(15 downto 0);
+	signal s2_Data		: std_logic_vector(15 downto 0);
+	signal s2_Load_H	: std_logic;
+
+	signal interchange			: std_logic_vector(15 downto 0);
+	signal interchange			: std_logic_vector(15 downto 0);
+	signal interchange_Load_H	: std_logic;
+	
+	TODO etc
+
 Begin
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -418,6 +452,73 @@ Begin
 		end if; 
 	end process;	
 
+------------------------------------------------------------------------------
+-- Bresenham line algorithm register processes
+------------------------------------------------------------------------------
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(x_Load_H = '1') then
+			x <= x_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(y_Load_H = '1') then
+			y <= y_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(dx_Load_H = '1') then
+			dx <= dx_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(dy_Load_H = '1') then
+			dy <= dy_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(s1_Load_H = '1') then
+			s1 <= s1_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(s2_Load_H = '1') then
+			s2 <= s2_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(interchange_Load_H = '1') then
+			interchange <= interchange_Data;
+		end if;
+	end if;
+end process;
+	
 ------------------------------------------------------------------------------------------------------------------------------
 -- Colour Latch Process (used for reading pixel)
 --
@@ -479,14 +580,14 @@ Begin
 	
 	process(CurrentState, CommandWritten_H, Command, X1, X2, Y1, Y2, Colour, OKToDraw_L, VSync_L,
 				BackGroundColour, AS_L, Sram_DataIn, CLK, Colour_Latch)
+		variable x2Minusx1 : std_logic_vector(15 downto 0);
+		variable y2Minusy1 : std_logic_vector(15 downto 0);
 	begin
 	
 	----------------------------------------------------------------------------------------------------------------------------------
 	-- IMPORTANT
-	-- start with default values for EVERY signal (so we do not infer storage for signals inside this process_
+	-- start with default values for EVERY signal (so we do not infer storage for signals inside this process)
 	-- and override as necessary.
-	-- 
-	-- If you ad any new signals to the logic, you MUST supply a default value - it's VHDL remember
 	-----------------------------------------------------------------------------------------------------------------------------------
 		Sig_AddressOut 					<= B"00_0000_0000_0000_0000";			-- got to supply something so it might as well be address 0
 		Sig_DataOut 						<= Colour(7 downto 0) & Colour(7 downto 0);		-- default is to output the value of the colour registers to the Sram data bus
@@ -510,6 +611,27 @@ Begin
 		
 		X1_Increment_H						<= '0'; -- assume not incrementing
 		Y1_Increment_H						<= '0'; -- assume not incrementing
+		
+		x_Load_H								<= '0';
+		x_Data								<= X"0000";
+		
+		y_Load_H								<= '0';
+		y_Data								<= X"0000";
+
+		dx_Load_H							<= '0';
+		dx_Data								<= X"0000";
+		
+		dy_Load_H							<= '0';
+		dy_Data								<= X"0000";
+
+		s1_Load_H							<= '0';
+		s1_Data								<= X"0000";
+		
+		s2_Load_H							<= '0';
+		s2_Data								<= X"0000";
+
+		interchange_Load_H				<= '0';
+		interchange_Data					<= X"0000";
 		
 		-------------------------------------------------------------------------------------
 		-- IMPORTANT we have to define what the default NEXT state will be. In this case we the state machine
@@ -746,11 +868,6 @@ Begin
 ------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine) then
 ------------------------------------------------------------------------------
-			-- TODO x,y,dx,dy,s1,s2 (x_Data,y_Data,s1_Data,s2_Data have no storage?) are 16-bit std_logic_vector signals
-			-- TODO interchange, interchange_Data?
-			-- TODO x_Load_H,y_Load_H,dx_Load_H,dy_Load_H,s1_Load_H,s2_Load_H,interchange_Load_H?
-			-- TODO x2Minusx1,y2Minusy1 are 16-bit std_logic_vector variables
-			
 			x_Data <= x1;
 			y_Data <= y1;
 			
