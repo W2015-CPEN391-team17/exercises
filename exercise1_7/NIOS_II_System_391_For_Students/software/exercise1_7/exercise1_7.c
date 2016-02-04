@@ -41,18 +41,22 @@ void speed_comparison() {
 int main() {
 
   printf("Exercise 1.7 start\n");
-
+  int i;
+  //first fill the entire screen with black
+  for(i = 1; i <= YRES; i++) {
+	  WriteHLine(1, i, XRES, BLACK);
+  }
   // fill the left half of the screen in white
   // and the right half of the screen in red
-  int i = 0;
-  for(i = 0; i < YRES; i++) {
-	  WriteHLine(0, i, XRES/2, 1);
+  for(i = 1; i <= YRES; i++) {
+	  WriteHLine(1, i, XRES/2, WHITE);
   }
-  for(i = XRES/2; i < XRES; i++) {
-	  WriteVLine(i, 0, YRES, 2);
+  for(i = 1; i <= YRES; i++) {
+	  WriteHLine(XRES/2, i, XRES/2, RED);
   }
 
   //compare one-pixel-at-a-time with hardware-accelerated lines
+  //each pair of lines should have the same length
 
   HLine(100,100,100,3);
   HLine(100,101,100,3);
@@ -99,17 +103,17 @@ int main() {
   WriteVLine(509,200,100,6);
 
   // compare bresenham lines
-  // should see a purple line on top
-  // and a black line below it
+  // should see a black line on top
+  // and a purple line a few pixels below it
   // otherwise the hardware-accelerated line doesn't perfectly match
-  Line(250,350,450,450,0);
-  Line(249,349,449,449,0);
-  WriteLine(250,350,450,450,7);
-  WriteLine(249,349,449,449,7);
   Line(240,340,440,440,0);
   Line(239,339,439,439,0);
   WriteLine(240,340,440,440,0);
   WriteLine(239,339,439,439,0);
+  Line(250,350,450,450,0);
+  Line(249,349,449,449,0);
+  WriteLine(250,350,450,450,7);
+  WriteLine(249,349,449,449,7);
 
   printf("Exercise 1.7 end\n");
 
