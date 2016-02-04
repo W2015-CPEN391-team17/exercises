@@ -2,7 +2,6 @@
  * Exercise 1.7
  */
 
-
 #include <stdio.h>
 #include "graphics.h"
 
@@ -27,10 +26,20 @@ void speed_comparison() {
 			WriteHLine(0, i, XRES, colour);
 		}
 	}
+
+	colour = (colour + 1) % 8;
+	for(i = 0; i < YRES; i++) {
+		Line(0, i, XRES, YRES, colour);
+	}
+
+	colour = (colour + 1) % 8;
+	for(i = 0; i < YRES; i++) {
+		WriteLine(0, i, XRES, YRES, colour);
+	}
 }
 
-int main()
-{
+int main() {
+
   printf("Exercise 1.7 start\n");
 
   // fill the left half of the screen in white
@@ -88,6 +97,19 @@ int main()
   WriteVLine(507,200,100,6);
   WriteVLine(508,200,100,6);
   WriteVLine(509,200,100,6);
+
+  // compare bresenham lines
+  // should see a purple line on top
+  // and a black line below it
+  // otherwise the hardware-accelerated line doesn't perfectly match
+  Line(250,350,450,450,0);
+  Line(249,349,449,449,0);
+  WriteLine(250,350,450,450,7);
+  WriteLine(249,349,449,449,7);
+  Line(240,340,440,440,0);
+  Line(239,339,439,439,0);
+  WriteLine(240,340,440,440,0);
+  WriteLine(239,339,439,439,0);
 
   printf("Exercise 1.7 end\n");
 

@@ -63,11 +63,13 @@
 void WriteAPixel(int x, int y, int Colour);
 void WriteHLine(int x1, int y1, int length, int Colour);
 void WriteVLine(int x1, int y1, int length, int Colour);
+void WriteLine(int x1, int y1, int x2, int y2, int Colour);
 int ReadAPixel(int x, int y);
 void ProgramPalette(int PaletteNumber, int RGB);
+
+// draw lines one pixel at a time, use only for testing
 void HLine(int x1, int y1, int length, int Colour);
 void VLine(int x1, int y1, int length, int Colour);
-
 int abs(int a);
 int sign(int a);
 void Line(int x1, int y1, int x2, int y2, int Colour);
