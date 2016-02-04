@@ -607,7 +607,7 @@ end process;
 ----------------------------------------------------------------------------------------------------------------------	
 	
 	process(CurrentState, CommandWritten_H, Command, X1, X2, Y1, Y2, Colour, OKToDraw_L, VSync_L,
-				BackGroundColour, AS_L, Sram_DataIn, CLK, Colour_Latch)
+				BackGroundColour, AS_L, Sram_DataIn, CLK, Colour_Latch, x, y, dx, dy, s1, s2, interchange, error, i)
 		variable x2Minusx1 : signed(15 downto 0);
 		variable y2Minusy1 : signed(15 downto 0);
 	begin
