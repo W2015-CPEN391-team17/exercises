@@ -112,10 +112,10 @@ void line_comparison() {
 	  // and a purple line a few pixels below it
 	  // otherwise the hardware-accelerated line doesn't perfectly match
 
+	  WriteLine(240,340,440,440,7);
+	  WriteLine(239,339,439,439,7);
 	  Line(240,340,440,440,0);
 	  Line(239,339,439,439,0);
-	  WriteLine(240,340,440,440,0);
-	  WriteLine(239,339,439,439,0);
 
 	  Line(250,350,450,450,0);
 	  Line(249,349,449,449,0);
@@ -128,7 +128,7 @@ struct point {
 	int y;
 };
 
-void connect_points() {
+void connect_points(int colour) {
 	int number_of_points = 6;
 	struct point points[number_of_points];
 
@@ -156,19 +156,43 @@ void connect_points() {
 	for(i = 1; i < number_of_points; i++) {
 		point_a = points[i-1];
 		point_b = points[i];
-		WriteLine(point_a.x, point_a.y, point_b.x, point_b.y, BLACK);
+		WriteLine(point_a.x, point_a.y, point_b.x, point_b.y, colour);
 	}
 }
 
+void draw_bottom_part() {
+	int i;
+	for(i = 350; i <= YRES; i++) {
+		WriteHLine(1, i, XRES/4, BLACK);
+	}
+	for(i = 350; i <= YRES; i++) {
+		WriteHLine(XRES/4, i, 2*XRES/4, RED);
+	}
+	for(i = 350; i <= YRES; i++) {
+		WriteHLine(2*XRES/4, i, 3*XRES/4, BLUE);
+	}
+	for(i = 350; i <= YRES; i++) {
+		WriteHLine(3*XRES/4, i, XRES/4, LIME);
+	}
+}
+
+void draw_top_part(int colour) {
+	int i;
+	for(i = 1; i <= 349; i++) {
+		WriteHLine(1, i, XRES, BLACK);
+	}
+	connect_points();
+}
+
 int main() {
-  printf("Exercise 1.7 start\n");
+  printf("Demo start\n");
 
   black_screen();
-  white_red_screen();
-  line_comparison();
-  connect_points();
 
-  printf("Exercise 1.7 end\n");
+  draw_bottom_part();
+  draw_top_part();
+
+  // TODO the touchscreen part
 
   return 0;
 }
