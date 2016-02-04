@@ -179,7 +179,7 @@ void draw_bottom_part() {
 void draw_top_part(int colour) {
 	int i;
 	for(i = 1; i <= 349; i++) {
-		WriteHLine(1, i, XRES, BLACK);
+		WriteHLine(1, i, XRES, colour);
 	}
 	connect_points();
 }
@@ -190,7 +190,7 @@ int main() {
   black_screen();
 
   draw_bottom_part();
-  draw_top_part();
+  draw_top_part(BLACK);
 
   // TODO the touchscreen part
 
