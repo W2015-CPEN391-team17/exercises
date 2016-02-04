@@ -1026,13 +1026,21 @@ end process;
 		elsif(CurrentState = DrawLine4) then
 ------------------------------------------------------------------------------
 			-- check interchange value
-			--TODO
+			if(interchange = '1') then
+				y_Data <= y + s2;
+				y_Load_H <= '1';
+			else
+				x_Data <= x + s1;
+				x_Load_H <= '1';
+			end if;
 			
 			-- update error
-			--TODO
+			error_Data <= error + (dy(14 downto 0) & '0');
+			error_Load_H <= '1';
 			
 			-- increment counter
-			--TODO
+			i_Data <= i + 1;
+			i_Load_H <= '1';
 			
 			NextState <= DrawLine2;
 
