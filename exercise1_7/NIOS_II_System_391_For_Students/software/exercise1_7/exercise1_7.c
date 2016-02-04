@@ -161,6 +161,7 @@ void connect_points(int colour) {
 }
 
 void draw_bottom_part() {
+	WriteLine(1, 349, XRES, 349, WHITE);
 	int i;
 	for(i = 350; i <= YRES; i++) {
 		WriteHLine(1, i, XRES/4, BLACK);
@@ -178,7 +179,7 @@ void draw_bottom_part() {
 
 void draw_top_part(int colour) {
 	int i;
-	for(i = 1; i <= 349; i++) {
+	for(i = 1; i <= 348; i++) {
 		WriteHLine(1, i, XRES, colour);
 	}
 	connect_points(WHITE);
