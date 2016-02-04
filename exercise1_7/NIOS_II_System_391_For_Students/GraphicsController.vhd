@@ -152,28 +152,28 @@ architecture bhvr of GraphicsController is
 -- Bresenham line algorithm signals
 ------------------------------------------------------------------------------
 
-	signal x				: std_logic_vector(15 downto 0); -- 'x'
-	signal x_Data		: std_logic_vector(15 downto 0); -- carries data to be stored in 'x'
-	signal x_Load_H	: std_logic;							-- whether to update 'x'
+	signal x				: signed(15 downto 0);	-- 'x'
+	signal x_Data		: signed(15 downto 0);	-- carries data to be stored in 'x'
+	signal x_Load_H	: std_logic;				-- whether to update 'x'
 	
-	signal y				: std_logic_vector(15 downto 0);
-	signal y_Data		: std_logic_vector(15 downto 0);
+	signal y				: signed(15 downto 0);
+	signal y_Data		: signed(15 downto 0);
 	signal y_Load_H	: std_logic;
 
-	signal dx			: unsigned(15 downto 0);
-	signal dx_Data		: unsigned(15 downto 0);
+	signal dx			: signed(15 downto 0);
+	signal dx_Data		: signed(15 downto 0);
 	signal dx_Load_H	: std_logic;
 	
-	signal dy			: unsigned(15 downto 0);
-	signal dy_Data		: unsigned(15 downto 0);
+	signal dy			: signed(15 downto 0);
+	signal dy_Data		: signed(15 downto 0);
 	signal dy_Load_H	: std_logic;
 	
-	signal s1			: std_logic_vector(15 downto 0);
-	signal s1_Data		: std_logic_vector(15 downto 0);
+	signal s1			: signed(15 downto 0);
+	signal s1_Data		: signed(15 downto 0);
 	signal s1_Load_H	: std_logic;
 	
-	signal s2			: std_logic_vector(15 downto 0);
-	signal s2_Data		: std_logic_vector(15 downto 0);
+	signal s2			: signed(15 downto 0);
+	signal s2_Data		: signed(15 downto 0);
 	signal s2_Load_H	: std_logic;
 
 	signal interchange			: std_logic;
@@ -184,8 +184,8 @@ architecture bhvr of GraphicsController is
 	signal error_Data		: signed(15 downto 0);
 	signal error_Load_H	: std_logic;
 
-	signal i				: unsigned(15 downto 0);
-	signal i_Data		: unsigned(15 downto 0);
+	signal i				: signed(15 downto 0);
+	signal i_Data		: signed(15 downto 0);
 	signal i_Load_H	: std_logic;
 
 Begin
@@ -902,14 +902,14 @@ end process;
 ------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine) then
 ------------------------------------------------------------------------------
-			x_Data <= x1;
-			y_Data <= y1;
+			x_Data <= signed(x1);
+			y_Data <= signed(y1);
 			
 			x2Minusx1 := signed(unsigned(x2) - unsigned(x1));
 			y2Minusy1 := signed(unsigned(y2) - unsigned(y1));
 
-			dx_Data <= unsigned(abs(x2Minusx1));
-			dy_Data <= unsigned(abs(y2Minusy1));
+			dx_Data <= abs(x2Minusx1);
+			dy_Data <= abs(y2Minusy1);
 			
 			-- calculate s1 = sign(x2 - x1)
 			if(x2Minusx1 < 0) then
@@ -958,7 +958,7 @@ end process;
 				dy_Data <= dx;
 				dy_Load_H <= '1';
 				
-				interchange <= '1';
+				interchange_Data <= '1';
 				interchange_Load_H <= '1';
 				
 				error_Data <= signed((dx(14 downto 0) & '0') - dy);
@@ -981,10 +981,11 @@ end process;
 			if(i <= dx) then
 				-- write a pixel
 				if(OKToDraw_L = '0') then
-					Sig_AddressOut <= y(8 downto 0) & x(9 downto 1);
+					Sig_AddressOut <= std_logic_vector(y(8 downto 0)) 
+						& std_logic_vector(x(9 downto 1));
 					Sig_RW_Out <= '0';
 				
-					if(X1(0) = '0') then
+					if(x(0) = '0') then
 						Sig_UDS_Out_L 	<= '0';
 					else
 						Sig_LDS_Out_L 	<= '0';
@@ -1001,14 +1002,39 @@ end process;
 ------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine3) then
 ------------------------------------------------------------------------------
-			-- TODO while loop, check interchange value (within loop), update error
-			NextState <= IDLE; -- TODO choosing next state (while loop)
+			-- while loop
+			if(error >= 0) then
+				-- check interchange value
+				if(interchange = '1') then
+					x_Data <= x + s1;
+					x_Load_H <= '1';
+				else
+					y_Data <= y + s2;
+					y_Load_H <= '1';
+				end if;
+				
+				-- update error
+				error_Data <= signed(error - (dx(14 downto 0) & '0'));
+				error_Load_H <= '1';
+				
+				NextState <= DrawLine3;
+			else
+				NextState <= DrawLine4;
+			end if;
 
 ------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine4) then
 ------------------------------------------------------------------------------
-			-- TODO (after while loop) check interchange value, update error
-			NextState <= IDLE; -- TODO choosing next state (end of for loop)
+			-- check interchange value
+			--TODO
+			
+			-- update error
+			--TODO
+			
+			-- increment counter
+			--TODO
+			
+			NextState <= DrawLine2;
 
 		end if ;
 		
