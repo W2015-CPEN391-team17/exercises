@@ -181,7 +181,7 @@ void draw_top_part(int colour) {
 	for(i = 1; i <= 349; i++) {
 		WriteHLine(1, i, XRES, colour);
 	}
-	connect_points();
+	connect_points(WHITE);
 }
 
 int main() {
