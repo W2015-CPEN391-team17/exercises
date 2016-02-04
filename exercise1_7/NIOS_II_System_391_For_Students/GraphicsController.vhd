@@ -135,6 +135,8 @@ architecture bhvr of GraphicsController is
 	-- add any extra states you need here for example to draw lines etc.
 	constant DrawLine1				 	 			: Std_Logic_Vector(7 downto 0) := X"10";
 	constant DrawLine2				 	 			: Std_Logic_Vector(7 downto 0) := X"11";
+	constant DrawLine3				 	 			: Std_Logic_Vector(7 downto 0) := X"12";
+	constant DrawLine4				 	 			: Std_Logic_Vector(7 downto 0) := X"13";
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 -- Commands that can be written to command register by NIOS to get graphics controller to draw a shape
@@ -182,8 +184,8 @@ architecture bhvr of GraphicsController is
 	signal error_Data		: signed(15 downto 0);
 	signal error_Load_H	: std_logic;
 
-	signal i				: std_logic_vector(15 downto 0);
-	signal i_Data		: std_logic_vector(15 downto 0);
+	signal i				: unsigned(15 downto 0);
+	signal i_Data		: unsigned(15 downto 0);
 	signal i_Load_H	: std_logic;
 
 Begin
@@ -975,9 +977,39 @@ end process;
 ------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine2) then
 ------------------------------------------------------------------------------
-			-- TODO main loop
-			-- TODO probably need to split body of for loop into multiple states
-			NextState <= IDLE; -- TODO choosing next state
+			-- main loop
+			if(i <= dx) then
+				-- write a pixel
+				if(OKToDraw_L = '0') then
+					Sig_AddressOut <= y(8 downto 0) & x(9 downto 1);
+					Sig_RW_Out <= '0';
+				
+					if(X1(0) = '0') then
+						Sig_UDS_Out_L 	<= '0';
+					else
+						Sig_LDS_Out_L 	<= '0';
+					end if;
+				
+					NextState <= DrawLine3;
+				else
+					NextState <= DrawLine2;
+				end if ;
+			else
+				NextState <= IDLE;
+			end if;
+
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawLine3) then
+------------------------------------------------------------------------------
+			-- TODO while loop, check interchange value (within loop), update error
+			NextState <= IDLE; -- TODO choosing next state (while loop)
+
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawLine4) then
+------------------------------------------------------------------------------
+			-- TODO (after while loop) check interchange value, update error
+			NextState <= IDLE; -- TODO choosing next state (end of for loop)
+
 		end if ;
 		
 	end process;	
