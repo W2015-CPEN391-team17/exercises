@@ -76,6 +76,23 @@ void WriteVLine(int x1, int y1, int length, int Colour)
 	GraphicsCommandReg = DrawVLine;
 }
 
+/*******************************************************************************************
+* Write a Bresenham line (hardware-accelerated) from x1,y1 to x2,y2
+********************************************************************************************/
+void WriteLine(int x1, int y1, int x2, int y2, int Colour)
+{
+	WAIT_FOR_GRAPHICS;
+
+	//TODO error checking
+
+	GraphicsX1Reg = x1;
+	GraphicsY1Reg = y1;
+	GraphicsX2Reg = x2;
+	GraphicsY2Reg = y2;
+	GraphicsColourReg = Colour;
+	GraphicsCommandReg = DrawLine;
+}
+
 /**********************************************************************************
 * subroutine to program a hardware (graphics chip) palette number with an RGB value
 * e.g. ProgramPalette(RED, 0x00FF0000) ;
