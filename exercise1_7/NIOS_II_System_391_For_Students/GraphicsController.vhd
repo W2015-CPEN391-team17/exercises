@@ -182,6 +182,10 @@ architecture bhvr of GraphicsController is
 	signal error_Data		: signed(15 downto 0);
 	signal error_Load_H	: std_logic;
 
+	signal i				: std_logic_vector(15 downto 0);
+	signal i_Data		: std_logic_vector(15 downto 0);
+	signal i_Load_H	: std_logic;
+
 Begin
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -532,6 +536,15 @@ begin
 	end if;
 end process;
 
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(i_Load_H = '1') then
+			i <= i_Data;
+		end if;
+	end if;
+end process;
+
 ------------------------------------------------------------------------------------------------------------------------------
 -- Colour Latch Process (used for reading pixel)
 --
@@ -648,6 +661,9 @@ end process;
 
 		error_Load_H						<= '0';
 		error_Data							<= X"0000";
+		
+		i_Load_H								<= '0';
+		i_Data								<= X"0000";
 
 		-------------------------------------------------------------------------------------
 		-- IMPORTANT we have to define what the default NEXT state will be. In this case we the state machine
@@ -887,7 +903,7 @@ end process;
 			x_Data <= x1;
 			y_Data <= y1;
 			
-			x2Minusx1 := signed(unsigned(x2) - unsigned(x1)); -- TODO may fail for large values?
+			x2Minusx1 := signed(unsigned(x2) - unsigned(x1));
 			y2Minusy1 := signed(unsigned(y2) - unsigned(y1));
 
 			dx_Data <= unsigned(abs(x2Minusx1));
@@ -943,12 +959,16 @@ end process;
 				interchange <= '1';
 				interchange_Load_H <= '1';
 				
-				error_Data <= signed((dx(14 downto 0) & '0') - dy); -- TODO may fail for large values?
+				error_Data <= signed((dx(14 downto 0) & '0') - dy);
 				error_Load_H <= '1';
 			else
 				error_Data <= signed((dy(14 downto 0) & '0') - dx);
 				error_Load_H <= '1';
 			end if;
+			
+			-- initialize counter for the main loop
+			i_Data <= X"0001";
+			i_Load_H <= '1';
 			
 			NextState <= DrawLine2;
 
@@ -956,7 +976,6 @@ end process;
 		elsif(CurrentState = DrawLine2) then
 ------------------------------------------------------------------------------
 			-- TODO main loop
-			-- TODO need to initialize 'i' in prev state?
 			-- TODO probably need to split body of for loop into multiple states
 			NextState <= IDLE; -- TODO choosing next state
 		end if ;
