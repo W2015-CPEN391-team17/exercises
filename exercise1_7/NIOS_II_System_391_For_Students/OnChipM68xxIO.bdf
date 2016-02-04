@@ -1977,11 +1977,6 @@ applicable agreement for further details.
 	(pt 472 1200)
 )
 (connector
-	(text "Address[1]" (rect 522 1624 575 1636)(font "Arial" ))
-	(pt 1192 1640)
-	(pt 472 1640)
-)
-(connector
 	(pt 472 1200)
 	(pt 472 1640)
 	(bus)
@@ -2077,6 +2072,23 @@ applicable agreement for further details.
 	(pt 400 688)
 	(pt 504 688)
 )
+(connector
+	(pt 1200 2104)
+	(pt 600 2104)
+)
+(connector
+	(pt 600 2104)
+	(pt 600 1640)
+)
+(connector
+	(text "Address[1]" (rect 522 1624 575 1636)(font "Arial" ))
+	(pt 1192 1640)
+	(pt 600 1640)
+)
+(connector
+	(pt 600 1640)
+	(pt 472 1640)
+)
 (junction (pt 472 384))
 (junction (pt 472 736))
 (junction (pt 896 168))
@@ -2120,6 +2132,7 @@ applicable agreement for further details.
 (junction (pt 1168 2200))
 (junction (pt 1440 1592))
 (junction (pt 648 1936))
+(junction (pt 600 1640))
 (text "these inputs can be connected" (rect 1584 800 1759 814)(font "Arial" (font_size 8)))
 (text "It should be enabled when the CPU writes (or reads) to location hex 8400_0204. Data in bits 2, 1 and 0 of the data bus is used to set the baud rate" (rect 1032 360 1863 374)(font "Arial" (font_size 8)))
 (text "Interrupt request output from serial port(s)" (rect 1608 720 1847 734)(font "Arial" (font_size 8)))
