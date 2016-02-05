@@ -260,7 +260,7 @@ LOAD c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-
                 0x010001b8                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
                 0x01000020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
 
-.text           0x010001b8     0x80a4
+.text           0x010001b8     0x8094
                 0x010001b8                PROVIDE (stext, ABSOLUTE (.))
  *(.interp)
  *(.hash)
@@ -319,543 +319,543 @@ LOAD c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-
                 0x0100064c                abs
                 0x01000694                sign
                 0x010006ec                Line
- .text          0x010008e0      0xb0c obj/default/touchButtonMain.o
+ .text          0x010008e0      0xafc obj/default/touchButtonMain.o
                 0x010008e0                black_screen
                 0x0100093c                white_red_screen
                 0x010009d0                speed_comparison
                 0x01000c14                line_comparison
                 0x01001028                connect_points
                 0x010011b8                draw_bottom_part
-                0x010012d8                draw_top_part
-                0x01001340                main
- .text          0x010013ec      0x5ac obj/default/touchScreen.o
-                0x010013ec                Init_Touch
-                0x010014dc                ScreenTouched
-                0x01001544                WaitForTouch
-                0x01001574                GetPress
-                0x01001768                GetRelease
- .text          0x01001998      0x3c4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_mul_df.o)
-                0x01001998                __muldf3
- .text          0x01001d5c      0x258 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_div_df.o)
-                0x01001d5c                __divdf3
- .text          0x01001fb4       0xf8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_si_to_df.o)
-                0x01001fb4                __floatsidf
- .text          0x010020ac       0xd8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_df_to_si.o)
-                0x010020ac                __fixdfsi
- .text          0x01002184        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
- .text          0x01002184       0x98 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_muldi3.o)
-                0x01002184                __muldi3
- .text          0x0100221c       0x80 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clzsi2.o)
-                0x0100221c                __clzsi2
- .text          0x0100229c      0x314 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_pack_df.o)
-                0x0100229c                __pack_d
- .text          0x010025b0      0x138 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_unpack_df.o)
-                0x010025b0                __unpack_d
- .text          0x010026e8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
- .text          0x010026e8       0xb4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
-                0x010026e8                _puts_r
-                0x01002788                puts
- .text          0x0100279c       0x74 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-strlen.o)
-                0x0100279c                strlen
- .text          0x01002810      0x49c c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fvwrite.o)
-                0x01002810                __sfvwrite_r
- .text          0x01002cac        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
- .text          0x01002cac      0x740 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
-                0x01002cac                _malloc_r
- .text          0x010033ec       0xe4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memchr.o)
-                0x010033ec                memchr
- .text          0x010034d0       0xa0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcpy.o)
-                0x010034d0                memcpy
- .text          0x01003570       0xe0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memmove.o)
-                0x01003570                memmove
- .text          0x01003650      0x5f4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-reallocr.o)
-                0x01003650                _realloc_r
- .text          0x01003c44       0x70 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-sbrkr.o)
-                0x01003c44                _sbrk_r
- .text          0x01003cb4      0x13c c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-wsetup.o)
-                0x01003cb4                __swsetup_r
- .text          0x01003df0      0x230 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fflush.o)
-                0x01003df0                _fflush_r
-                0x01003fec                fflush
- .text          0x01004020      0x2c0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-findfp.o)
-                0x01004078                __sfp_lock_acquire
-                0x0100407c                __sfp_lock_release
-                0x01004080                __sinit_lock_acquire
-                0x01004084                __sinit_lock_release
-                0x01004088                __sinit
-                0x0100413c                __fp_unlock_all
-                0x01004154                __fp_lock_all
-                0x0100416c                _cleanup_r
-                0x01004178                _cleanup
-                0x01004188                __sfmoreglue
-                0x010041f0                __sfp
- .text          0x010042e0      0x440 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-freer.o)
-                0x010042e0                _malloc_trim_r
-                0x0100440c                _free_r
- .text          0x01004720      0x180 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fwalk.o)
-                0x01004720                _fwalk_reent
-                0x010047e8                _fwalk
- .text          0x010048a0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
- .text          0x010048a0      0x194 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-makebuf.o)
-                0x010048a0                __smakebuf_r
- .text          0x01004a34       0x98 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memset.o)
-                0x01004a34                memset
- .text          0x01004acc      0x14c c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-stdio.o)
-                0x01004acc                __sclose
-                0x01004ad4                __sseek
-                0x01004b3c                __swrite
-                0x01004bb8                __sread
- .text          0x01004c18       0x78 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-writer.o)
-                0x01004c18                _write_r
- .text          0x01004c90       0x70 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-closer.o)
-                0x01004c90                _close_r
- .text          0x01004d00      0x124 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fclose.o)
-                0x01004d00                _fclose_r
-                0x01004e10                fclose
- .text          0x01004e24       0x74 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fstatr.o)
-                0x01004e24                _fstat_r
- .text          0x01004e98       0x70 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-isattyr.o)
-                0x01004e98                _isatty_r
- .text          0x01004f08       0x78 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-lseekr.o)
-                0x01004f08                _lseek_r
- .text          0x01004f80       0x78 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-readr.o)
-                0x01004f80                _read_r
- .text          0x01004ff8      0x15c ../touchButtonEx_bsp/\libhal_bsp.a(alt_close.o)
-                0x01004ff8                close
- .text          0x01005154       0x2c ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
- .text          0x01005180        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
- .text          0x01005180      0x134 ../touchButtonEx_bsp/\libhal_bsp.a(alt_fstat.o)
-                0x01005180                fstat
- .text          0x010052b4      0x120 ../touchButtonEx_bsp/\libhal_bsp.a(alt_isatty.o)
-                0x010052b4                isatty
- .text          0x010053d4       0xec ../touchButtonEx_bsp/\libhal_bsp.a(alt_load.o)
-                0x010053d4                alt_load
- .text          0x010054c0      0x150 ../touchButtonEx_bsp/\libhal_bsp.a(alt_lseek.o)
-                0x010054c0                lseek
- .text          0x01005610       0x6c ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
-                0x01005610                alt_main
- .text          0x0100567c       0x40 ../touchButtonEx_bsp/\libhal_bsp.a(alt_malloc_lock.o)
-                0x0100567c                __malloc_lock
-                0x0100569c                __malloc_unlock
- .text          0x010056bc      0x180 ../touchButtonEx_bsp/\libhal_bsp.a(alt_read.o)
-                0x010056bc                read
- .text          0x0100583c       0x60 ../touchButtonEx_bsp/\libhal_bsp.a(alt_release_fd.o)
-                0x0100583c                alt_release_fd
- .text          0x0100589c       0xbc ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
-                0x0100589c                sbrk
- .text          0x01005958      0x180 ../touchButtonEx_bsp/\libhal_bsp.a(alt_write.o)
-                0x01005958                write
- .text          0x01005ad8       0xe8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x01005ad8                alt_irq_init
-                0x01005b0c                alt_sys_init
- .text          0x01005bc0      0x148 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
-                0x01005bc0                altera_avalon_jtag_uart_read_fd
-                0x01005c18                altera_avalon_jtag_uart_write_fd
-                0x01005c70                altera_avalon_jtag_uart_close_fd
-                0x01005cb8                altera_avalon_jtag_uart_ioctl_fd
- .text          0x01005d08      0x408 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
-                0x01005d08                altera_avalon_jtag_uart_init
-                0x0100609c                altera_avalon_jtag_uart_close
- .text          0x01006110       0xf4 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
-                0x01006110                altera_avalon_jtag_uart_ioctl
- .text          0x01006204      0x224 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
-                0x01006204                altera_avalon_jtag_uart_read
- .text          0x01006428      0x240 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
-                0x01006428                altera_avalon_jtag_uart_write
- .text          0x01006668       0xfc ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
-                0x010066dc                alt_avalon_timer_sc_init
- .text          0x01006764      0x530 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_character_lcd.o)
-                0x01006764                get_DDRAM_addr
-                0x010067e0                alt_up_character_lcd_send_cmd
-                0x01006814                alt_up_character_lcd_init
-                0x01006848                alt_up_character_lcd_open_dev
-                0x01006888                alt_up_character_lcd_write
-                0x01006900                alt_up_character_lcd_string
-                0x01006978                alt_up_character_lcd_write_fd
-                0x010069c4                alt_up_character_lcd_set_cursor_pos
-                0x01006a3c                alt_up_character_lcd_shift_cursor
-                0x01006aec                alt_up_character_lcd_shift_display
-                0x01006b9c                alt_up_character_lcd_erase_pos
-                0x01006c2c                alt_up_character_lcd_cursor_off
-                0x01006c60                alt_up_character_lcd_cursor_blink_on
- .text          0x01006c94      0x398 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
-                0x01006c94                alt_up_rs232_enable_read_interrupt
-                0x01006ce8                alt_up_rs232_disable_read_interrupt
-                0x01006d40                alt_up_rs232_get_used_space_in_read_FIFO
-                0x01006d7c                alt_up_rs232_get_available_space_in_write_FIFO
-                0x01006dbc                alt_up_rs232_check_parity
-                0x01006e0c                alt_up_rs232_write_data
-                0x01006e54                alt_up_rs232_read_data
-                0x01006ec8                alt_up_rs232_read_fd
-                0x01006f58                alt_up_rs232_write_fd
-                0x01006fec                alt_up_rs232_open_dev
- .text          0x0100702c      0x154 ../touchButtonEx_bsp/\libhal_bsp.a(alt_alarm_start.o)
-                0x0100702c                alt_alarm_start
- .text          0x01007180       0x44 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
-                0x01007180                alt_dcache_flush_all
- .text          0x010071c4      0x114 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
-                0x010071c4                alt_dev_llist_insert
- .text          0x010072d8       0x64 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_ctors.o)
-                0x010072d8                _do_ctors
- .text          0x0100733c       0x64 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_dtors.o)
-                0x0100733c                _do_dtors
- .text          0x010073a0       0x94 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_dev.o)
-                0x010073a0                alt_find_dev
- .text          0x01007434       0x30 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
-                0x01007434                alt_icache_flush_all
- .text          0x01007464      0x13c ../touchButtonEx_bsp/\libhal_bsp.a(alt_io_redirect.o)
-                0x01007528                alt_io_redirect
- .text          0x010075a0      0x1c0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_register.o)
-                0x010075a0                alt_irq_register
- .text          0x01007760        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .text          0x01007760      0x2c4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_open.o)
-                0x0100783c                open
- .text          0x01007a24      0x1a4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
-                0x01007a24                alt_alarm_stop
-                0x01007abc                alt_tick
- .text          0x01007bc8       0x20 ../touchButtonEx_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
-                0x01007bc8                altera_nios2_qsys_irq_init
- .text          0x01007be8      0x120 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_file.o)
-                0x01007be8                alt_find_file
- .text          0x01007d08       0xb8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_get_fd.o)
-                0x01007d08                alt_get_fd
- .text          0x01007dc0       0x90 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush.o)
-                0x01007dc0                alt_icache_flush
- .text          0x01007e50        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .text          0x01007e50        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .text          0x01007e50        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .text          0x01007e50       0x14 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
-                0x01007e50                atexit
- .text          0x01007e64       0x38 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-exit.o)
-                0x01007e64                exit
- .text          0x01007e9c       0x74 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcmp.o)
-                0x01007e9c                memcmp
- .text          0x01007f10      0x134 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__atexit.o)
-                0x01007f10                __register_exitproc
- .text          0x01008044      0x1b4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
-                0x01008048                __call_exitprocs
- .text          0x010081f8       0x60 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
-                0x01008238                _exit
+                0x010012d0                draw_top_part
+                0x01001338                main
+ .text          0x010013dc      0x5ac obj/default/touchScreen.o
+                0x010013dc                Init_Touch
+                0x010014cc                ScreenTouched
+                0x01001534                WaitForTouch
+                0x01001564                GetPress
+                0x01001758                GetRelease
+ .text          0x01001988      0x3c4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_mul_df.o)
+                0x01001988                __muldf3
+ .text          0x01001d4c      0x258 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_div_df.o)
+                0x01001d4c                __divdf3
+ .text          0x01001fa4       0xf8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_si_to_df.o)
+                0x01001fa4                __floatsidf
+ .text          0x0100209c       0xd8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_df_to_si.o)
+                0x0100209c                __fixdfsi
+ .text          0x01002174        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
+ .text          0x01002174       0x98 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_muldi3.o)
+                0x01002174                __muldi3
+ .text          0x0100220c       0x80 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clzsi2.o)
+                0x0100220c                __clzsi2
+ .text          0x0100228c      0x314 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_pack_df.o)
+                0x0100228c                __pack_d
+ .text          0x010025a0      0x138 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_unpack_df.o)
+                0x010025a0                __unpack_d
+ .text          0x010026d8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
+ .text          0x010026d8       0xb4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
+                0x010026d8                _puts_r
+                0x01002778                puts
+ .text          0x0100278c       0x74 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-strlen.o)
+                0x0100278c                strlen
+ .text          0x01002800      0x49c c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fvwrite.o)
+                0x01002800                __sfvwrite_r
+ .text          0x01002c9c        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
+ .text          0x01002c9c      0x740 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
+                0x01002c9c                _malloc_r
+ .text          0x010033dc       0xe4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memchr.o)
+                0x010033dc                memchr
+ .text          0x010034c0       0xa0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcpy.o)
+                0x010034c0                memcpy
+ .text          0x01003560       0xe0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memmove.o)
+                0x01003560                memmove
+ .text          0x01003640      0x5f4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-reallocr.o)
+                0x01003640                _realloc_r
+ .text          0x01003c34       0x70 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-sbrkr.o)
+                0x01003c34                _sbrk_r
+ .text          0x01003ca4      0x13c c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-wsetup.o)
+                0x01003ca4                __swsetup_r
+ .text          0x01003de0      0x230 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fflush.o)
+                0x01003de0                _fflush_r
+                0x01003fdc                fflush
+ .text          0x01004010      0x2c0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-findfp.o)
+                0x01004068                __sfp_lock_acquire
+                0x0100406c                __sfp_lock_release
+                0x01004070                __sinit_lock_acquire
+                0x01004074                __sinit_lock_release
+                0x01004078                __sinit
+                0x0100412c                __fp_unlock_all
+                0x01004144                __fp_lock_all
+                0x0100415c                _cleanup_r
+                0x01004168                _cleanup
+                0x01004178                __sfmoreglue
+                0x010041e0                __sfp
+ .text          0x010042d0      0x440 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-freer.o)
+                0x010042d0                _malloc_trim_r
+                0x010043fc                _free_r
+ .text          0x01004710      0x180 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fwalk.o)
+                0x01004710                _fwalk_reent
+                0x010047d8                _fwalk
+ .text          0x01004890        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
+ .text          0x01004890      0x194 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-makebuf.o)
+                0x01004890                __smakebuf_r
+ .text          0x01004a24       0x98 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memset.o)
+                0x01004a24                memset
+ .text          0x01004abc      0x14c c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-stdio.o)
+                0x01004abc                __sclose
+                0x01004ac4                __sseek
+                0x01004b2c                __swrite
+                0x01004ba8                __sread
+ .text          0x01004c08       0x78 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-writer.o)
+                0x01004c08                _write_r
+ .text          0x01004c80       0x70 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-closer.o)
+                0x01004c80                _close_r
+ .text          0x01004cf0      0x124 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fclose.o)
+                0x01004cf0                _fclose_r
+                0x01004e00                fclose
+ .text          0x01004e14       0x74 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fstatr.o)
+                0x01004e14                _fstat_r
+ .text          0x01004e88       0x70 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-isattyr.o)
+                0x01004e88                _isatty_r
+ .text          0x01004ef8       0x78 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-lseekr.o)
+                0x01004ef8                _lseek_r
+ .text          0x01004f70       0x78 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-readr.o)
+                0x01004f70                _read_r
+ .text          0x01004fe8      0x15c ../touchButtonEx_bsp/\libhal_bsp.a(alt_close.o)
+                0x01004fe8                close
+ .text          0x01005144       0x2c ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
+ .text          0x01005170        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
+ .text          0x01005170      0x134 ../touchButtonEx_bsp/\libhal_bsp.a(alt_fstat.o)
+                0x01005170                fstat
+ .text          0x010052a4      0x120 ../touchButtonEx_bsp/\libhal_bsp.a(alt_isatty.o)
+                0x010052a4                isatty
+ .text          0x010053c4       0xec ../touchButtonEx_bsp/\libhal_bsp.a(alt_load.o)
+                0x010053c4                alt_load
+ .text          0x010054b0      0x150 ../touchButtonEx_bsp/\libhal_bsp.a(alt_lseek.o)
+                0x010054b0                lseek
+ .text          0x01005600       0x6c ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
+                0x01005600                alt_main
+ .text          0x0100566c       0x40 ../touchButtonEx_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+                0x0100566c                __malloc_lock
+                0x0100568c                __malloc_unlock
+ .text          0x010056ac      0x180 ../touchButtonEx_bsp/\libhal_bsp.a(alt_read.o)
+                0x010056ac                read
+ .text          0x0100582c       0x60 ../touchButtonEx_bsp/\libhal_bsp.a(alt_release_fd.o)
+                0x0100582c                alt_release_fd
+ .text          0x0100588c       0xbc ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
+                0x0100588c                sbrk
+ .text          0x01005948      0x180 ../touchButtonEx_bsp/\libhal_bsp.a(alt_write.o)
+                0x01005948                write
+ .text          0x01005ac8       0xe8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x01005ac8                alt_irq_init
+                0x01005afc                alt_sys_init
+ .text          0x01005bb0      0x148 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                0x01005bb0                altera_avalon_jtag_uart_read_fd
+                0x01005c08                altera_avalon_jtag_uart_write_fd
+                0x01005c60                altera_avalon_jtag_uart_close_fd
+                0x01005ca8                altera_avalon_jtag_uart_ioctl_fd
+ .text          0x01005cf8      0x408 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+                0x01005cf8                altera_avalon_jtag_uart_init
+                0x0100608c                altera_avalon_jtag_uart_close
+ .text          0x01006100       0xf4 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+                0x01006100                altera_avalon_jtag_uart_ioctl
+ .text          0x010061f4      0x224 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                0x010061f4                altera_avalon_jtag_uart_read
+ .text          0x01006418      0x240 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x01006418                altera_avalon_jtag_uart_write
+ .text          0x01006658       0xfc ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+                0x010066cc                alt_avalon_timer_sc_init
+ .text          0x01006754      0x530 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_character_lcd.o)
+                0x01006754                get_DDRAM_addr
+                0x010067d0                alt_up_character_lcd_send_cmd
+                0x01006804                alt_up_character_lcd_init
+                0x01006838                alt_up_character_lcd_open_dev
+                0x01006878                alt_up_character_lcd_write
+                0x010068f0                alt_up_character_lcd_string
+                0x01006968                alt_up_character_lcd_write_fd
+                0x010069b4                alt_up_character_lcd_set_cursor_pos
+                0x01006a2c                alt_up_character_lcd_shift_cursor
+                0x01006adc                alt_up_character_lcd_shift_display
+                0x01006b8c                alt_up_character_lcd_erase_pos
+                0x01006c1c                alt_up_character_lcd_cursor_off
+                0x01006c50                alt_up_character_lcd_cursor_blink_on
+ .text          0x01006c84      0x398 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+                0x01006c84                alt_up_rs232_enable_read_interrupt
+                0x01006cd8                alt_up_rs232_disable_read_interrupt
+                0x01006d30                alt_up_rs232_get_used_space_in_read_FIFO
+                0x01006d6c                alt_up_rs232_get_available_space_in_write_FIFO
+                0x01006dac                alt_up_rs232_check_parity
+                0x01006dfc                alt_up_rs232_write_data
+                0x01006e44                alt_up_rs232_read_data
+                0x01006eb8                alt_up_rs232_read_fd
+                0x01006f48                alt_up_rs232_write_fd
+                0x01006fdc                alt_up_rs232_open_dev
+ .text          0x0100701c      0x154 ../touchButtonEx_bsp/\libhal_bsp.a(alt_alarm_start.o)
+                0x0100701c                alt_alarm_start
+ .text          0x01007170       0x44 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x01007170                alt_dcache_flush_all
+ .text          0x010071b4      0x114 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+                0x010071b4                alt_dev_llist_insert
+ .text          0x010072c8       0x64 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_ctors.o)
+                0x010072c8                _do_ctors
+ .text          0x0100732c       0x64 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_dtors.o)
+                0x0100732c                _do_dtors
+ .text          0x01007390       0x94 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_dev.o)
+                0x01007390                alt_find_dev
+ .text          0x01007424       0x30 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x01007424                alt_icache_flush_all
+ .text          0x01007454      0x13c ../touchButtonEx_bsp/\libhal_bsp.a(alt_io_redirect.o)
+                0x01007518                alt_io_redirect
+ .text          0x01007590      0x1c0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_register.o)
+                0x01007590                alt_irq_register
+ .text          0x01007750        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .text          0x01007750      0x2c4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_open.o)
+                0x0100782c                open
+ .text          0x01007a14      0x1a4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
+                0x01007a14                alt_alarm_stop
+                0x01007aac                alt_tick
+ .text          0x01007bb8       0x20 ../touchButtonEx_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+                0x01007bb8                altera_nios2_qsys_irq_init
+ .text          0x01007bd8      0x120 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_file.o)
+                0x01007bd8                alt_find_file
+ .text          0x01007cf8       0xb8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_get_fd.o)
+                0x01007cf8                alt_get_fd
+ .text          0x01007db0       0x90 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush.o)
+                0x01007db0                alt_icache_flush
+ .text          0x01007e40        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .text          0x01007e40        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .text          0x01007e40        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .text          0x01007e40       0x14 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
+                0x01007e40                atexit
+ .text          0x01007e54       0x38 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-exit.o)
+                0x01007e54                exit
+ .text          0x01007e8c       0x74 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcmp.o)
+                0x01007e8c                memcmp
+ .text          0x01007f00      0x134 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__atexit.o)
+                0x01007f00                __register_exitproc
+ .text          0x01008034      0x1b4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
+                0x01008038                __call_exitprocs
+ .text          0x010081e8       0x60 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
+                0x01008228                _exit
  *(.gnu.warning.*)
  *(.fini)
-                0x01008258                PROVIDE (__etext, ABSOLUTE (.))
-                0x01008258                PROVIDE (_etext, ABSOLUTE (.))
-                0x01008258                PROVIDE (etext, ABSOLUTE (.))
+                0x01008248                PROVIDE (__etext, ABSOLUTE (.))
+                0x01008248                PROVIDE (_etext, ABSOLUTE (.))
+                0x01008248                PROVIDE (etext, ABSOLUTE (.))
  *(.eh_frame_hdr)
-                0x01008258                . = ALIGN (0x4)
-                0x01008258                PROVIDE (__preinit_array_start, ABSOLUTE (.))
+                0x01008248                . = ALIGN (0x4)
+                0x01008248                PROVIDE (__preinit_array_start, ABSOLUTE (.))
  *(.preinit_array)
-                0x01008258                PROVIDE (__preinit_array_end, ABSOLUTE (.))
-                0x01008258                PROVIDE (__init_array_start, ABSOLUTE (.))
+                0x01008248                PROVIDE (__preinit_array_end, ABSOLUTE (.))
+                0x01008248                PROVIDE (__init_array_start, ABSOLUTE (.))
  *(.init_array)
-                0x01008258                PROVIDE (__init_array_end, ABSOLUTE (.))
-                0x01008258                PROVIDE (__fini_array_start, ABSOLUTE (.))
+                0x01008248                PROVIDE (__init_array_end, ABSOLUTE (.))
+                0x01008248                PROVIDE (__fini_array_start, ABSOLUTE (.))
  *(.fini_array)
-                0x01008258                PROVIDE (__fini_array_end, ABSOLUTE (.))
+                0x01008248                PROVIDE (__fini_array_end, ABSOLUTE (.))
  *(.eh_frame)
  *(.gcc_except_table)
  *(.dynamic)
-                0x01008258                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
+                0x01008248                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
  *(.ctors)
  *(SORT(.ctors.*))
- .ctors.65535   0x01008258        0x4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
-                0x0100825c                PROVIDE (__CTOR_END__, ABSOLUTE (.))
-                0x0100825c                PROVIDE (__DTOR_LIST__, ABSOLUTE (.))
+ .ctors.65535   0x01008248        0x4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
+                0x0100824c                PROVIDE (__CTOR_END__, ABSOLUTE (.))
+                0x0100824c                PROVIDE (__DTOR_LIST__, ABSOLUTE (.))
  *(.dtors)
  *(SORT(.dtors.*))
-                0x0100825c                PROVIDE (__DTOR_END__, ABSOLUTE (.))
+                0x0100824c                PROVIDE (__DTOR_END__, ABSOLUTE (.))
  *(.jcr)
-                0x0100825c                . = ALIGN (0x4)
+                0x0100824c                . = ALIGN (0x4)
 
-.rodata         0x0100825c      0x184
-                0x0100825c                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
-                0x0100825c                . = ALIGN (0x4)
+.rodata         0x0100824c      0x184
+                0x0100824c                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0100824c                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x0100825c        0xc obj/default/touchButtonMain.o
- .rodata        0x01008268       0x14 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
-                0x01008268                __thenan_df
- .rodata        0x0100827c      0x100 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
-                0x0100827c                __clz_tab
+ .rodata        0x0100824c        0xc obj/default/touchButtonMain.o
+ .rodata        0x01008258       0x14 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
+                0x01008258                __thenan_df
+ .rodata        0x0100826c      0x100 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
+                0x0100826c                __clz_tab
  .rodata.str1.4
-                0x0100837c        0x2 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
+                0x0100836c        0x2 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
                                   0x4 (size before relaxing)
- *fill*         0x0100837e        0x2 00
+ *fill*         0x0100836e        0x2 00
  .rodata.str1.4
-                0x01008380        0x4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
- .rodata        0x01008384        0xc ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
- .rodata        0x01008390       0x14 ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
- .rodata        0x010083a4       0x3c ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x01008370        0x4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
+ .rodata        0x01008374        0xc ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
+ .rodata        0x01008380       0x14 ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
+ .rodata        0x01008394       0x3c ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
  *(.rodata1)
-                0x010083e0                . = ALIGN (0x4)
-                0x010083e0                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
-                0x0100825c                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+                0x010083d0                . = ALIGN (0x4)
+                0x010083d0                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0100824c                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
 
-.rwdata         0x010083e0     0x1aa0 load address 0x01009e80
-                0x010083e0                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
-                0x010083e0                . = ALIGN (0x4)
+.rwdata         0x010083d0     0x1aa0 load address 0x01009e70
+                0x010083d0                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x010083d0                . = ALIGN (0x4)
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x010083e0        0x0 ../touchButtonEx_bsp//obj/HAL/src/crt0.o
- .data          0x010083e0        0x0 obj/default/graphics.o
- .data          0x010083e0        0x0 obj/default/touchButtonMain.o
- .data          0x010083e0        0x0 obj/default/touchScreen.o
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_mul_df.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_div_df.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_si_to_df.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_df_to_si.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_muldi3.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clzsi2.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_pack_df.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_unpack_df.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-strlen.o)
- .data          0x010083e0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fvwrite.o)
- .data          0x010083e0      0x400 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
- .data          0x010087e0      0x408 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
-                0x010087e0                __malloc_av_
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memchr.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcpy.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memmove.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-reallocr.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-sbrkr.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-wsetup.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fflush.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-findfp.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-freer.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fwalk.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-makebuf.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memset.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-stdio.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-writer.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-closer.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fclose.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fstatr.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-isattyr.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-lseekr.o)
- .data          0x01008be8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-readr.o)
- .data          0x01008be8        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_close.o)
- .data          0x01008be8      0x1a8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
-                0x01008be8                alt_dev_null
-                0x01008c10                alt_fd_list
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_fstat.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_isatty.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_load.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_lseek.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_malloc_lock.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_read.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_release_fd.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
- .data          0x01008d90        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_write.o)
- .data          0x01008d90     0x10b8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_character_lcd.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_alarm_start.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_ctors.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_dtors.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_dev.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_register.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_open.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_file.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_get_fd.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .data          0x01009e48        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
- .data          0x01009e48        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-exit.o)
- .data          0x01009e48        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcmp.o)
- .data          0x01009e48        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__atexit.o)
- .data          0x01009e48        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
- .data          0x01009e48        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
-                0x01011e48                _gp = ABSOLUTE ((. + 0x8000))
-                0x01011e48                PROVIDE (gp, _gp)
+ .data          0x010083d0        0x0 ../touchButtonEx_bsp//obj/HAL/src/crt0.o
+ .data          0x010083d0        0x0 obj/default/graphics.o
+ .data          0x010083d0        0x0 obj/default/touchButtonMain.o
+ .data          0x010083d0        0x0 obj/default/touchScreen.o
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_mul_df.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_div_df.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_si_to_df.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_df_to_si.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_muldi3.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clzsi2.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_pack_df.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_unpack_df.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-strlen.o)
+ .data          0x010083d0        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fvwrite.o)
+ .data          0x010083d0      0x400 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
+ .data          0x010087d0      0x408 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
+                0x010087d0                __malloc_av_
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memchr.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcpy.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memmove.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-reallocr.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-sbrkr.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-wsetup.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fflush.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-findfp.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-freer.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fwalk.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-makebuf.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memset.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-stdio.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-writer.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-closer.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fclose.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fstatr.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-isattyr.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-lseekr.o)
+ .data          0x01008bd8        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-readr.o)
+ .data          0x01008bd8        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_close.o)
+ .data          0x01008bd8      0x1a8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
+                0x01008bd8                alt_dev_null
+                0x01008c00                alt_fd_list
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_fstat.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_isatty.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_lseek.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_read.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .data          0x01008d80        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_write.o)
+ .data          0x01008d80     0x10b8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_character_lcd.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_open.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_file.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .data          0x01009e38        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
+ .data          0x01009e38        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-exit.o)
+ .data          0x01009e38        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcmp.o)
+ .data          0x01009e38        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__atexit.o)
+ .data          0x01009e38        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
+ .data          0x01009e38        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
+                0x01011e38                _gp = ABSOLUTE ((. + 0x8000))
+                0x01011e38                PROVIDE (gp, _gp)
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0x01009e48        0x8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
-                0x01009e48                _impure_ptr
-                0x01009e4c                _global_impure_ptr
- .sdata         0x01009e50        0x8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
-                0x01009e50                __malloc_trim_threshold
-                0x01009e54                __malloc_sbrk_base
- .sdata         0x01009e58       0x14 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
-                0x01009e58                alt_fs_list
-                0x01009e60                alt_dev_list
-                0x01009e68                alt_max_fd
- .sdata         0x01009e6c        0x4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
-                0x01009e6c                alt_errno
- .sdata         0x01009e70        0x4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
- .sdata         0x01009e74        0x4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
-                0x01009e74                alt_priority_mask
- .sdata         0x01009e78        0x8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
-                0x01009e78                alt_alarm_list
+ .sdata         0x01009e38        0x8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
+                0x01009e38                _impure_ptr
+                0x01009e3c                _global_impure_ptr
+ .sdata         0x01009e40        0x8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
+                0x01009e40                __malloc_trim_threshold
+                0x01009e44                __malloc_sbrk_base
+ .sdata         0x01009e48       0x14 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
+                0x01009e48                alt_fs_list
+                0x01009e50                alt_dev_list
+                0x01009e58                alt_max_fd
+ .sdata         0x01009e5c        0x4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
+                0x01009e5c                alt_errno
+ .sdata         0x01009e60        0x4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .sdata         0x01009e64        0x4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x01009e64                alt_priority_mask
+ .sdata         0x01009e68        0x8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
+                0x01009e68                alt_alarm_list
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x01009e80                . = ALIGN (0x4)
-                0x01009e80                _edata = ABSOLUTE (.)
-                0x01009e80                PROVIDE (edata, ABSOLUTE (.))
-                0x01009e80                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
-                0x01009e80                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+                0x01009e70                . = ALIGN (0x4)
+                0x01009e70                _edata = ABSOLUTE (.)
+                0x01009e70                PROVIDE (edata, ABSOLUTE (.))
+                0x01009e70                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x01009e70                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
 
-.bss            0x0100b920      0x2e0
-                0x0100b920                __bss_start = ABSOLUTE (.)
-                0x0100b920                PROVIDE (__sbss_start, ABSOLUTE (.))
-                0x0100b920                PROVIDE (___sbss_start, ABSOLUTE (.))
+.bss            0x0100b910      0x2e0
+                0x0100b910                __bss_start = ABSOLUTE (.)
+                0x0100b910                PROVIDE (__sbss_start, ABSOLUTE (.))
+                0x0100b910                PROVIDE (___sbss_start, ABSOLUTE (.))
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0x0100b920        0xc c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
-                0x0100b920                __malloc_top_pad
-                0x0100b924                __malloc_max_sbrked_mem
-                0x0100b928                __malloc_max_total_mem
- .sbss          0x0100b92c        0x4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
-                0x0100b92c                errno
- .sbss          0x0100b930        0xc ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
-                0x0100b930                alt_argc
-                0x0100b934                alt_argv
-                0x0100b938                alt_envp
- .sbss          0x0100b93c        0x4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
-                0x0100b93c                alt_irq_active
- .sbss          0x0100b940        0x8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
-                0x0100b940                _alt_tick_rate
-                0x0100b944                _alt_nticks
+ .sbss          0x0100b910        0xc c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
+                0x0100b910                __malloc_top_pad
+                0x0100b914                __malloc_max_sbrked_mem
+                0x0100b918                __malloc_max_total_mem
+ .sbss          0x0100b91c        0x4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
+                0x0100b91c                errno
+ .sbss          0x0100b920        0xc ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
+                0x0100b920                alt_argc
+                0x0100b924                alt_argv
+                0x0100b928                alt_envp
+ .sbss          0x0100b92c        0x4 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x0100b92c                alt_irq_active
+ .sbss          0x0100b930        0x8 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
+                0x0100b930                _alt_tick_rate
+                0x0100b934                _alt_nticks
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
-                0x0100b948                PROVIDE (__sbss_end, ABSOLUTE (.))
-                0x0100b948                PROVIDE (___sbss_end, ABSOLUTE (.))
+                0x0100b938                PROVIDE (__sbss_end, ABSOLUTE (.))
+                0x0100b938                PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x0100b948        0x0 ../touchButtonEx_bsp//obj/HAL/src/crt0.o
- .bss           0x0100b948        0x0 obj/default/graphics.o
- .bss           0x0100b948        0x0 obj/default/touchButtonMain.o
- .bss           0x0100b948        0x0 obj/default/touchScreen.o
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_mul_df.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_div_df.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_si_to_df.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_df_to_si.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_muldi3.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clzsi2.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_pack_df.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_unpack_df.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-strlen.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fvwrite.o)
- .bss           0x0100b948        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
- .bss           0x0100b948       0x28 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
-                0x0100b948                __malloc_current_mallinfo
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memchr.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcpy.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memmove.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-reallocr.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-sbrkr.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-wsetup.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fflush.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-findfp.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-freer.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fwalk.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-makebuf.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memset.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-stdio.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-writer.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-closer.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fclose.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fstatr.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-isattyr.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-lseekr.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-readr.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_close.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_fstat.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_isatty.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_load.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_lseek.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_malloc_lock.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_read.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_release_fd.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_write.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_character_lcd.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_alarm_start.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_ctors.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_dtors.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_dev.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_register.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_open.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_file.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_get_fd.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-exit.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcmp.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__atexit.o)
- .bss           0x0100b970        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
- .bss           0x0100b970        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
+ .bss           0x0100b938        0x0 ../touchButtonEx_bsp//obj/HAL/src/crt0.o
+ .bss           0x0100b938        0x0 obj/default/graphics.o
+ .bss           0x0100b938        0x0 obj/default/touchButtonMain.o
+ .bss           0x0100b938        0x0 obj/default/touchScreen.o
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_mul_df.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_div_df.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_si_to_df.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_df_to_si.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_muldi3.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clzsi2.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_pack_df.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_unpack_df.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-strlen.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fvwrite.o)
+ .bss           0x0100b938        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
+ .bss           0x0100b938       0x28 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
+                0x0100b938                __malloc_current_mallinfo
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memchr.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcpy.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memmove.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-reallocr.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-sbrkr.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-wsetup.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fflush.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-findfp.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-freer.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fwalk.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-makebuf.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memset.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-stdio.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-writer.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-closer.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fclose.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fstatr.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-isattyr.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-lseekr.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-readr.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_close.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_fstat.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_isatty.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_lseek.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_read.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_write.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_character_lcd.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_open.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_file.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-exit.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcmp.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__atexit.o)
+ .bss           0x0100b960        0x0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
+ .bss           0x0100b960        0x0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
  *(COMMON)
- COMMON         0x0100b970      0x100 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
-                0x0100b970                alt_irq
- COMMON         0x0100ba70      0x190 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
-                0x0100ba70                _atexit0
-                0x0100bc00                . = ALIGN (0x4)
-                0x0100bc00                __bss_end = ABSOLUTE (.)
+ COMMON         0x0100b960      0x100 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                0x0100b960                alt_irq
+ COMMON         0x0100ba60      0x190 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
+                0x0100ba60                _atexit0
+                0x0100bbf0                . = ALIGN (0x4)
+                0x0100bbf0                __bss_end = ABSOLUTE (.)
 
 .onchip_memory2_0
-                0x00000000        0x0 load address 0x0100bc00
+                0x00000000        0x0 load address 0x0100bbf0
                 0x00000000                PROVIDE (_alt_partition_onchip_memory2_0_start, ABSOLUTE (.))
  *(.onchip_memory2_0. onchip_memory2_0.*)
                 0x00000000                . = ALIGN (0x4)
                 0x00000000                PROVIDE (_alt_partition_onchip_memory2_0_end, ABSOLUTE (.))
-                0x0100bc00                PROVIDE (_alt_partition_onchip_memory2_0_load_addr, LOADADDR (.onchip_memory2_0))
+                0x0100bbf0                PROVIDE (_alt_partition_onchip_memory2_0_load_addr, LOADADDR (.onchip_memory2_0))
 
 .new_sdram_controller_0
-                0x0100bc00        0x0
-                0x0100bc00                PROVIDE (_alt_partition_new_sdram_controller_0_start, ABSOLUTE (.))
+                0x0100bbf0        0x0
+                0x0100bbf0                PROVIDE (_alt_partition_new_sdram_controller_0_start, ABSOLUTE (.))
  *(.new_sdram_controller_0. new_sdram_controller_0.*)
-                0x0100bc00                . = ALIGN (0x4)
-                0x0100bc00                PROVIDE (_alt_partition_new_sdram_controller_0_end, ABSOLUTE (.))
-                0x0100bc00                _end = ABSOLUTE (.)
-                0x0100bc00                end = ABSOLUTE (.)
-                0x0100bc00                __alt_stack_base = ABSOLUTE (.)
-                0x0100bc00                PROVIDE (_alt_partition_new_sdram_controller_0_load_addr, LOADADDR (.new_sdram_controller_0))
+                0x0100bbf0                . = ALIGN (0x4)
+                0x0100bbf0                PROVIDE (_alt_partition_new_sdram_controller_0_end, ABSOLUTE (.))
+                0x0100bbf0                _end = ABSOLUTE (.)
+                0x0100bbf0                end = ABSOLUTE (.)
+                0x0100bbf0                __alt_stack_base = ABSOLUTE (.)
+                0x0100bbf0                PROVIDE (_alt_partition_new_sdram_controller_0_load_addr, LOADADDR (.new_sdram_controller_0))
 
 .stab
  *(.stab)
@@ -1492,95 +1492,95 @@ LOAD c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-
  .debug_abbrev  0x00005d0b      0x1de c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
  .debug_abbrev  0x00005ee9       0x99 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
 
-.debug_line     0x00000000     0xeebb
+.debug_line     0x00000000     0xeeab
  *(.debug_line)
  .debug_line    0x00000000       0x72 ../touchButtonEx_bsp//obj/HAL/src/crt0.o
  .debug_line    0x00000072      0x4d9 obj/default/graphics.o
- .debug_line    0x0000054b      0x63f obj/default/touchButtonMain.o
- .debug_line    0x00000b8a      0x36d obj/default/touchScreen.o
- .debug_line    0x00000ef7      0x3e5 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_mul_df.o)
- .debug_line    0x000012dc      0x301 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_div_df.o)
- .debug_line    0x000015dd      0x175 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_si_to_df.o)
- .debug_line    0x00001752      0x149 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_df_to_si.o)
- .debug_line    0x0000189b       0x94 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
- .debug_line    0x0000192f      0x11f c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_muldi3.o)
- .debug_line    0x00001a4e      0x105 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clzsi2.o)
- .debug_line    0x00001b53      0x222 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_pack_df.o)
- .debug_line    0x00001d75      0x1e4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_unpack_df.o)
- .debug_line    0x00001f59       0xaa c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
- .debug_line    0x00002003      0x2f7 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
- .debug_line    0x000022fa      0x26d c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-strlen.o)
- .debug_line    0x00002567      0x641 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fvwrite.o)
- .debug_line    0x00002ba8      0x22d c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
- .debug_line    0x00002dd5      0x80a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
- .debug_line    0x000035df      0x303 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memchr.o)
- .debug_line    0x000038e2      0x1ac c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcpy.o)
- .debug_line    0x00003a8e      0x30a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memmove.o)
- .debug_line    0x00003d98      0x58a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-reallocr.o)
- .debug_line    0x00004322      0x299 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-sbrkr.o)
- .debug_line    0x000045bb      0x2f0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-wsetup.o)
- .debug_line    0x000048ab      0x40d c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fflush.o)
- .debug_line    0x00004cb8      0x601 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-findfp.o)
- .debug_line    0x000052b9      0x5eb c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-freer.o)
- .debug_line    0x000058a4      0x34a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fwalk.o)
- .debug_line    0x00005bee      0x1df c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
- .debug_line    0x00005dcd      0x3c3 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-makebuf.o)
- .debug_line    0x00006190      0x301 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memset.o)
- .debug_line    0x00006491      0x38c c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-stdio.o)
- .debug_line    0x0000681d      0x29a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-writer.o)
- .debug_line    0x00006ab7      0x29a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-closer.o)
- .debug_line    0x00006d51      0x2e8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fclose.o)
- .debug_line    0x00007039      0x264 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fstatr.o)
- .debug_line    0x0000729d      0x29b c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-isattyr.o)
- .debug_line    0x00007538      0x29a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-lseekr.o)
- .debug_line    0x000077d2      0x299 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-readr.o)
- .debug_line    0x00007a6b      0x2a1 ../touchButtonEx_bsp/\libhal_bsp.a(alt_close.o)
- .debug_line    0x00007d0c      0x25c ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_line    0x00007f68      0x1b2 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
- .debug_line    0x0000811a      0x2a9 ../touchButtonEx_bsp/\libhal_bsp.a(alt_fstat.o)
- .debug_line    0x000083c3      0x2aa ../touchButtonEx_bsp/\libhal_bsp.a(alt_isatty.o)
- .debug_line    0x0000866d      0x21f ../touchButtonEx_bsp/\libhal_bsp.a(alt_load.o)
- .debug_line    0x0000888c      0x2a9 ../touchButtonEx_bsp/\libhal_bsp.a(alt_lseek.o)
- .debug_line    0x00008b35      0x2e6 ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
- .debug_line    0x00008e1b      0x21b ../touchButtonEx_bsp/\libhal_bsp.a(alt_malloc_lock.o)
- .debug_line    0x00009036      0x2d0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_read.o)
- .debug_line    0x00009306       0xed ../touchButtonEx_bsp/\libhal_bsp.a(alt_release_fd.o)
- .debug_line    0x000093f3      0x282 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
- .debug_line    0x00009675      0x2d1 ../touchButtonEx_bsp/\libhal_bsp.a(alt_write.o)
- .debug_line    0x00009946      0x336 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_line    0x00009c7c      0x21b ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .debug_line    0x00009e97      0x4c7 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
- .debug_line    0x0000a35e      0x31f ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
- .debug_line    0x0000a67d      0x413 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_line    0x0000aa90      0x421 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_line    0x0000aeb1      0x2d2 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .debug_line    0x0000b183      0x48e ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_character_lcd.o)
- .debug_line    0x0000b611      0x3f1 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
- .debug_line    0x0000ba02      0x2fd ../touchButtonEx_bsp/\libhal_bsp.a(alt_alarm_start.o)
- .debug_line    0x0000bcff      0x1d5 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_line    0x0000bed4      0x262 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_line    0x0000c136       0x83 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_ctors.o)
- .debug_line    0x0000c1b9       0x83 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_dtors.o)
- .debug_line    0x0000c23c      0x273 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_dev.o)
- .debug_line    0x0000c4af      0x1c5 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_line    0x0000c674      0x2bc ../touchButtonEx_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .debug_line    0x0000c930      0x30b ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_register.o)
- .debug_line    0x0000cc3b       0x72 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .debug_line    0x0000ccad      0x307 ../touchButtonEx_bsp/\libhal_bsp.a(alt_open.o)
- .debug_line    0x0000cfb4      0x2fd ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
- .debug_line    0x0000d2b1      0x1ef ../touchButtonEx_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
- .debug_line    0x0000d4a0      0x284 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_file.o)
- .debug_line    0x0000d724      0x29f ../touchButtonEx_bsp/\libhal_bsp.a(alt_get_fd.o)
- .debug_line    0x0000d9c3      0x201 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .debug_line    0x0000dbc4       0x6b ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .debug_line    0x0000dc2f      0x269 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .debug_line    0x0000de98       0xab ../touchButtonEx_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .debug_line    0x0000df43      0x200 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
- .debug_line    0x0000e143      0x238 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-exit.o)
- .debug_line    0x0000e37b      0x29f c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcmp.o)
- .debug_line    0x0000e61a      0x313 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__atexit.o)
- .debug_line    0x0000e92d      0x367 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
- .debug_line    0x0000ec94      0x227 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_line    0x0000054b      0x62f obj/default/touchButtonMain.o
+ .debug_line    0x00000b7a      0x36d obj/default/touchScreen.o
+ .debug_line    0x00000ee7      0x3e5 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_mul_df.o)
+ .debug_line    0x000012cc      0x301 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_div_df.o)
+ .debug_line    0x000015cd      0x175 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_si_to_df.o)
+ .debug_line    0x00001742      0x149 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_df_to_si.o)
+ .debug_line    0x0000188b       0x94 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_thenan_df.o)
+ .debug_line    0x0000191f      0x11f c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_muldi3.o)
+ .debug_line    0x00001a3e      0x105 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clzsi2.o)
+ .debug_line    0x00001b43      0x222 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_pack_df.o)
+ .debug_line    0x00001d65      0x1e4 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_unpack_df.o)
+ .debug_line    0x00001f49       0xaa c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2\libgcc.a(_clz.o)
+ .debug_line    0x00001ff3      0x2f7 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-puts.o)
+ .debug_line    0x000022ea      0x26d c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-strlen.o)
+ .debug_line    0x00002557      0x641 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fvwrite.o)
+ .debug_line    0x00002b98      0x22d c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-impure.o)
+ .debug_line    0x00002dc5      0x80a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-mallocr.o)
+ .debug_line    0x000035cf      0x303 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memchr.o)
+ .debug_line    0x000038d2      0x1ac c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcpy.o)
+ .debug_line    0x00003a7e      0x30a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memmove.o)
+ .debug_line    0x00003d88      0x58a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-reallocr.o)
+ .debug_line    0x00004312      0x299 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-sbrkr.o)
+ .debug_line    0x000045ab      0x2f0 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-wsetup.o)
+ .debug_line    0x0000489b      0x40d c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fflush.o)
+ .debug_line    0x00004ca8      0x601 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-findfp.o)
+ .debug_line    0x000052a9      0x5eb c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-freer.o)
+ .debug_line    0x00005894      0x34a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fwalk.o)
+ .debug_line    0x00005bde      0x1df c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-int_errno.o)
+ .debug_line    0x00005dbd      0x3c3 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-makebuf.o)
+ .debug_line    0x00006180      0x301 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memset.o)
+ .debug_line    0x00006481      0x38c c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-stdio.o)
+ .debug_line    0x0000680d      0x29a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-writer.o)
+ .debug_line    0x00006aa7      0x29a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-closer.o)
+ .debug_line    0x00006d41      0x2e8 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fclose.o)
+ .debug_line    0x00007029      0x264 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-fstatr.o)
+ .debug_line    0x0000728d      0x29b c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-isattyr.o)
+ .debug_line    0x00007528      0x29a c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-lseekr.o)
+ .debug_line    0x000077c2      0x299 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-readr.o)
+ .debug_line    0x00007a5b      0x2a1 ../touchButtonEx_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_line    0x00007cfc      0x25c ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_line    0x00007f58      0x1b2 ../touchButtonEx_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_line    0x0000810a      0x2a9 ../touchButtonEx_bsp/\libhal_bsp.a(alt_fstat.o)
+ .debug_line    0x000083b3      0x2aa ../touchButtonEx_bsp/\libhal_bsp.a(alt_isatty.o)
+ .debug_line    0x0000865d      0x21f ../touchButtonEx_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_line    0x0000887c      0x2a9 ../touchButtonEx_bsp/\libhal_bsp.a(alt_lseek.o)
+ .debug_line    0x00008b25      0x2e6 ../touchButtonEx_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_line    0x00008e0b      0x21b ../touchButtonEx_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .debug_line    0x00009026      0x2d0 ../touchButtonEx_bsp/\libhal_bsp.a(alt_read.o)
+ .debug_line    0x000092f6       0xed ../touchButtonEx_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_line    0x000093e3      0x282 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .debug_line    0x00009665      0x2d1 ../touchButtonEx_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_line    0x00009936      0x336 ../touchButtonEx_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x00009c6c      0x21b ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_line    0x00009e87      0x4c7 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_line    0x0000a34e      0x31f ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_line    0x0000a66d      0x413 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_line    0x0000aa80      0x421 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x0000aea1      0x2d2 ../touchButtonEx_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .debug_line    0x0000b173      0x48e ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_character_lcd.o)
+ .debug_line    0x0000b601      0x3f1 ../touchButtonEx_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .debug_line    0x0000b9f2      0x2fd ../touchButtonEx_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .debug_line    0x0000bcef      0x1d5 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x0000bec4      0x262 ../touchButtonEx_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_line    0x0000c126       0x83 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_line    0x0000c1a9       0x83 ../touchButtonEx_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_line    0x0000c22c      0x273 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_line    0x0000c49f      0x1c5 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x0000c664      0x2bc ../touchButtonEx_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_line    0x0000c920      0x30b ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .debug_line    0x0000cc2b       0x72 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_line    0x0000cc9d      0x307 ../touchButtonEx_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_line    0x0000cfa4      0x2fd ../touchButtonEx_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_line    0x0000d2a1      0x1ef ../touchButtonEx_bsp/\libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_line    0x0000d490      0x284 ../touchButtonEx_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_line    0x0000d714      0x29f ../touchButtonEx_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_line    0x0000d9b3      0x201 ../touchButtonEx_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .debug_line    0x0000dbb4       0x6b ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_line    0x0000dc1f      0x269 ../touchButtonEx_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_line    0x0000de88       0xab ../touchButtonEx_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_line    0x0000df33      0x200 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-atexit.o)
+ .debug_line    0x0000e133      0x238 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-exit.o)
+ .debug_line    0x0000e36b      0x29f c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-memcmp.o)
+ .debug_line    0x0000e60a      0x313 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__atexit.o)
+ .debug_line    0x0000e91d      0x367 c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_line    0x0000ec84      0x227 ../touchButtonEx_bsp/\libhal_bsp.a(alt_exit.o)
 
 .debug_frame    0x00000000     0x1634
  *(.debug_frame)
@@ -1888,8 +1888,8 @@ LOAD c:/altera/13.0sp1good/nios2eds/bin/gnu/h-i686-mingw32/bin/../lib/gcc/nios2-
                 0x00000000       0x30 ../touchButtonEx_bsp//obj/HAL/src/crt0.o
                 0x01800000                __alt_data_end = 0x1800000
                 0x01800000                PROVIDE (__alt_stack_pointer, __alt_data_end)
-                0x0100bc00                PROVIDE (__alt_stack_limit, __alt_stack_base)
-                0x0100bc00                PROVIDE (__alt_heap_start, end)
+                0x0100bbf0                PROVIDE (__alt_stack_limit, __alt_stack_base)
+                0x0100bbf0                PROVIDE (__alt_heap_start, end)
                 0x01800000                PROVIDE (__alt_heap_limit, 0x1800000)
 OUTPUT(touchButtonEx.elf elf32-littlenios2)
 

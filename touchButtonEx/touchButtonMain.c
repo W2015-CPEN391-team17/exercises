@@ -9,8 +9,8 @@ void black_screen() {
 	// write black lines over the entire screen area
 	//first fill the entire screen with black
 	int i;
-	for(i = 1; i < YRES; i++) {
-		WriteHLine(1, i, XRES - 1, BLACK);
+	for(i = 1; i <= YRES; i++) {
+		WriteHLine(1, i, XRES, BLACK);
 	}
 }
 
@@ -161,36 +161,36 @@ void connect_points(int colour) {
 }
 
 void draw_bottom_part() {
-	WriteLine(1, 349, XRES - 1, 349, WHITE);
+	WriteHLine(1, 349, XRES, WHITE);
 	int i;
 	for(i = 350; i < YRES; i++) {
 		WriteHLine(1, i, XRES/4, BLACK);
 	}
 	for(i = 350; i < YRES; i++) {
-		WriteHLine(XRES/4, i, 2*XRES/4, RED);
+		WriteHLine(XRES/4, i, XRES/4, RED);
 	}
 	for(i = 350; i < YRES; i++) {
-		WriteHLine(2*XRES/4, i, 3*XRES/4, BLUE);
+		WriteHLine(2*XRES/4, i, XRES/4, BLUE);
 	}
 	for(i = 350; i < YRES; i++) {
-		WriteHLine(3*XRES/4, i, XRES/4 - 1, LIME);
+		WriteHLine(3*XRES/4, i, XRES/4, LIME);
 	}
 }
 
 void draw_top_part(int colour) {
 	int i;
 	for(i = 1; i <= 348; i++) {
-		WriteHLine(0, i, (XRES - 1), colour);
+		WriteHLine(1, i, (XRES), colour);
 	}
 	connect_points(WHITE);
 }
 
 int main() {
 
-	Init_Touch();
+	//Init_Touch();
 
 
-  black_screen();
+  //black_screen();
 
   draw_bottom_part();
   printf("Demo start\n");
