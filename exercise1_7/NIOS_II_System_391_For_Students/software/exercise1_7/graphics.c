@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "graphics.h"
+#include "OutGraphicsCharFont2.h"
 
 /*******************************************************************************************
 * Writes a single pixel to the x,y coords specified using the specified colour
@@ -190,4 +191,72 @@ void Line(int x1, int y1, int x2, int y2, int Colour)
             error += (dy << 1) ;    // times 2
         }
     }
+}
+
+void DrawRectangle(int x1, int y1, int x2, int y2, int color)
+{
+	WriteHLine(x1, y1, x2-x1, color);
+	WriteVLine(x1, y1, y2-y1, color);
+	WriteHLine(x1, y1+(y2-y1), x2-x1, color);
+	// Passing in (y2-y1)+1 for y2 in order to add bottom-rightmost pixel
+	WriteVLine(x1+(x2-x1), y1, (y2-y1)+1, color);
+}
+
+void DrawFilledRectangle(int x1, int y1, int x2, int y2, int color)
+{
+	int i;
+	for (i = y1; i < y2; i++) {
+		WriteHLine(x1, i, x2-x1, color);
+	}
+}
+
+/*
+ * Draw a circle
+ */
+void DrawCircle(int x0, int y0, int radius, int color)
+{
+	int x = radius;
+	int y = 0;
+	int decisionOver2 = 1 - x;   // Decision criterion divided by 2 evaluated at x=r, y=0
+
+	while( y <= x ) {
+		WriteAPixel( x + x0,  y + y0, color); // Octant 1
+		WriteAPixel( y + x0,  x + y0, color); // Octant 2
+		WriteAPixel(-x + x0,  y + y0, color); // Octant 4
+		WriteAPixel(-y + x0,  x + y0, color); // Octant 3
+		WriteAPixel(-x + x0, -y + y0, color); // Octant 5
+		WriteAPixel(-y + x0, -x + y0, color); // Octant 6
+		WriteAPixel( x + x0, -y + y0, color); // Octant 7
+		WriteAPixel( y + x0, -x + y0, color); // Octant 8
+		y++;
+		if (decisionOver2 <= 0) {
+		  decisionOver2 += 2 * y + 1;   // Change in decision criterion for y -> y+1
+		}
+		else {
+		  x--;
+		  decisionOver2 += 2 * (y - x) + 1;   // Change for y -> y+1, x -> x-1
+		}
+	}
+}
+
+const int text_char_x_size = 12;
+
+void DrawText(int x, int y, int font_color, int background_color, char *text, int erase)
+{
+	//if (text != NULL) {  // I don't know where NULL is defined; perhaps fix this later
+		int i;
+		for (i = 0; text[i] != '\0'; i++) {
+			  OutGraphicsCharFont2a(x+(text_char_x_size * i), y, font_color, background_color, (int) text[i], erase);
+		}
+	//}
+}
+
+const int text_padding_x = 6;
+const int text_padding_y = 6;
+
+void DrawButton(int x1, int y1, int x2, int y2, int outline_color, int font_color, int fill_color, char *text)
+{
+	DrawFilledRectangle(x1, y1, x2, y2, fill_color);
+	DrawRectangle(x1, y1, x2, y2, outline_color);
+	DrawText(x1+text_padding_x, y1+text_padding_y, font_color, fill_color, text, 1);
 }

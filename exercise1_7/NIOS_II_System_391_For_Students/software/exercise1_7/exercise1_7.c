@@ -89,6 +89,11 @@ int main()
   WriteVLine(508,200,100,6);
   WriteVLine(509,200,100,6);
 
+  DrawRectangle(12, 12, 36, 36, 4);
+  DrawFilledRectangle(48, 48, 72, 72, 5);
+  DrawCircle(80, 80, 10, 6);
+  DrawButton(120, 120, 230, 145, 2, 1, 9, "CLICK ME");
+
   printf("Exercise 1.7 end\n");
 
   return 0;

@@ -72,4 +72,36 @@ int abs(int a);
 int sign(int a);
 void Line(int x1, int y1, int x2, int y2, int Colour);
 
+/* Shape drawing functions */
+/*
+ * Draw a non-filled rectangle at a top-left point at (x1, y1) to a
+ * bottom-right point at (x2, y2).
+ * Preconditions: x1 <= x2 and y1 <= y2
+ */
+void DrawRectangle(int x1, int y1, int x2, int y2, int color);
+/*
+ * Draw a filled rectangle at a top-left point (x1, y1) to a
+ * bottom-right point at (x2, y2).
+ * Preconditions: x1 <= x2 and y1 <= y2
+ */
+void DrawFilledRectangle(int x1, int y1, int x2, int y2, int color);
+
+void DrawCircle(int x0, int y0, int radius, int color);
+
+/*
+ * Draw text string on a single line.
+ * Preconditions: text != NULL
+ * Note: Writing a space character with erase set to true will set all pixels
+ * in the character to the background colour
+ */
+void DrawText(int x, int y, int font_color, int background_color, char *text, int erase);
+
+/*
+ * Draw at a top-left point at (x1, y1) to a bottom-right point at (x2, y2).
+ * It is up to the user to ensure that the button dimensions are larger than
+ * the text dimensions.
+ * Preconditions: x1 <= x2, y1 <= y2 and text != NULL
+ */
+void DrawButton(int x1, int y1, int x2, int y2, int outline_color, int font_color,
+				int fill_color, char *text);
 #endif /* EXERCISE1_7_H_ */
