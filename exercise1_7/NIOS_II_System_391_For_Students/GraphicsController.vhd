@@ -133,6 +133,10 @@ architecture bhvr of GraphicsController is
 	constant PalletteReProgram						: Std_Logic_Vector(7 downto 0) := X"0A";		-- State for programming a pallette
 
 	-- add any extra states you need here for example to draw lines etc.
+	constant DrawLine1				 	 			: Std_Logic_Vector(7 downto 0) := X"10";
+	constant DrawLine2				 	 			: Std_Logic_Vector(7 downto 0) := X"11";
+	constant DrawLine3				 	 			: Std_Logic_Vector(7 downto 0) := X"12";
+	constant DrawLine4				 	 			: Std_Logic_Vector(7 downto 0) := X"13";
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 -- Commands that can be written to command register by NIOS to get graphics controller to draw a shape
@@ -143,6 +147,46 @@ architecture bhvr of GraphicsController is
 	constant	PutPixel									: Std_Logic_Vector(15 downto 0) := X"000a";	-- command to Graphics chip from NIOS to draw a pixel
 	constant	GetPixel									: Std_Logic_Vector(15 downto 0) := X"000b";	-- command to Graphics chip from NIOS to read a pixel
 	constant ProgramPallette						: Std_Logic_Vector(15 downto 0) := X"0010";	-- command to Graphics chip from NIOS is program one of the pallettes with a new RGB value
+
+------------------------------------------------------------------------------
+-- Bresenham line algorithm signals
+------------------------------------------------------------------------------
+
+	signal x				: signed(15 downto 0);	-- 'x'
+	signal x_Data		: signed(15 downto 0);	-- carries data to be stored in 'x'
+	signal x_Load_H	: std_logic;				-- whether to update 'x'
+	
+	signal y				: signed(15 downto 0);
+	signal y_Data		: signed(15 downto 0);
+	signal y_Load_H	: std_logic;
+
+	signal dx			: signed(15 downto 0);
+	signal dx_Data		: signed(15 downto 0);
+	signal dx_Load_H	: std_logic;
+	
+	signal dy			: signed(15 downto 0);
+	signal dy_Data		: signed(15 downto 0);
+	signal dy_Load_H	: std_logic;
+	
+	signal s1			: signed(15 downto 0);
+	signal s1_Data		: signed(15 downto 0);
+	signal s1_Load_H	: std_logic;
+	
+	signal s2			: signed(15 downto 0);
+	signal s2_Data		: signed(15 downto 0);
+	signal s2_Load_H	: std_logic;
+
+	signal interchange			: std_logic;
+	signal interchange_Data		: std_logic;
+	signal interchange_Load_H	: std_logic;
+	
+	signal error			: signed(15 downto 0);
+	signal error_Data		: signed(15 downto 0);
+	signal error_Load_H	: std_logic;
+
+	signal i				: signed(15 downto 0);
+	signal i_Data		: signed(15 downto 0);
+	signal i_Load_H	: std_logic;
 
 Begin
 
@@ -418,6 +462,91 @@ Begin
 		end if; 
 	end process;	
 
+------------------------------------------------------------------------------
+-- Bresenham line algorithm register processes
+------------------------------------------------------------------------------
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(x_Load_H = '1') then
+			x <= x_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(y_Load_H = '1') then
+			y <= y_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(dx_Load_H = '1') then
+			dx <= dx_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(dy_Load_H = '1') then
+			dy <= dy_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(s1_Load_H = '1') then
+			s1 <= s1_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(s2_Load_H = '1') then
+			s2 <= s2_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(interchange_Load_H = '1') then
+			interchange <= interchange_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(error_Load_H = '1') then
+			error <= error_Data;
+		end if;
+	end if;
+end process;
+
+process(Clk)
+begin
+	if(rising_edge(Clk)) then
+		if(i_Load_H = '1') then
+			i <= i_Data;
+		end if;
+	end if;
+end process;
+
 ------------------------------------------------------------------------------------------------------------------------------
 -- Colour Latch Process (used for reading pixel)
 --
@@ -478,15 +607,15 @@ Begin
 ----------------------------------------------------------------------------------------------------------------------	
 	
 	process(CurrentState, CommandWritten_H, Command, X1, X2, Y1, Y2, Colour, OKToDraw_L, VSync_L,
-				BackGroundColour, AS_L, Sram_DataIn, CLK, Colour_Latch)
+				BackGroundColour, AS_L, Sram_DataIn, CLK, Colour_Latch, x, y, dx, dy, s1, s2, interchange, error, i)
+		variable x2Minusx1 : signed(15 downto 0);
+		variable y2Minusy1 : signed(15 downto 0);
 	begin
 	
 	----------------------------------------------------------------------------------------------------------------------------------
 	-- IMPORTANT
-	-- start with default values for EVERY signal (so we do not infer storage for signals inside this process_
+	-- start with default values for EVERY signal (so we do not infer storage for signals inside this process)
 	-- and override as necessary.
-	-- 
-	-- If you ad any new signals to the logic, you MUST supply a default value - it's VHDL remember
 	-----------------------------------------------------------------------------------------------------------------------------------
 		Sig_AddressOut 					<= B"00_0000_0000_0000_0000";			-- got to supply something so it might as well be address 0
 		Sig_DataOut 						<= Colour(7 downto 0) & Colour(7 downto 0);		-- default is to output the value of the colour registers to the Sram data bus
@@ -495,22 +624,49 @@ Begin
 		Sig_RW_Out 							<= '1';	-- assume reading
 		Sig_CE_L								<= '0';	-- assume activated
 		Sig_OE_L								<= '0';	-- assume reading (won't affect memory chip if writing since it will ignore it)
-		
+
 		ClearBusy_H 						<= '0';	-- default is do NOT Clear busy
 		SetBusy_H							<= '0';	-- default is do NOT Set busy
 		ClearCommandWritten_H			<= '0';	-- default is no command has been written by nios
 		Sig_Busy_H							<= '1';	-- default is device is busy
-	
+
 		Colour_Latch_Load_H				<= '0';					-- default is NOT to load colour latch
 		Colour_Latch_Data					<= X"0000";				-- default data to colour latch is 0
-			
+
 		Sig_ColourPalletteAddr			<= X"00";				-- default address to the colour pallette
 		Sig_ColourPalletteData			<= X"00000000" ;		-- default 00RRGGBB value to the colour pallette
 		Sig_ColourPallette_WE_H			<= '0'; 					-- default is NO write to the colour pallette
-		
+
 		X1_Increment_H						<= '0'; -- assume not incrementing
 		Y1_Increment_H						<= '0'; -- assume not incrementing
+
+		x_Load_H								<= '0';
+		x_Data								<= X"0000";
+
+		y_Load_H								<= '0';
+		y_Data								<= X"0000";
+
+		dx_Load_H							<= '0';
+		dx_Data								<= X"0000";
+
+		dy_Load_H							<= '0';
+		dy_Data								<= X"0000";
+
+		s1_Load_H							<= '0';
+		s1_Data								<= X"0000";
+
+		s2_Load_H							<= '0';
+		s2_Data								<= X"0000";
+
+		interchange_Load_H				<= '0';
+		interchange_Data					<= '0';
+
+		error_Load_H						<= '0';
+		error_Data							<= X"0000";
 		
+		i_Load_H								<= '0';
+		i_Data								<= X"0000";
+
 		-------------------------------------------------------------------------------------
 		-- IMPORTANT we have to define what the default NEXT state will be. In this case we the state machine
 		-- will return to the IDLE state unless we override this with a different one
@@ -687,9 +843,9 @@ Begin
 			Sig_RW_Out <= '1' ;
 			NextState <= IDLE;
 			
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 		elsif(CurrentState = DrawHline) then
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 			if(OKToDraw_L = '0') then
 				
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
@@ -715,9 +871,9 @@ Begin
 				NextState <= DrawHline;
 			end if;
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 		elsif(CurrentState = DrawVline) then
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 			if(OKToDraw_L = '0') then
 
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
@@ -743,12 +899,152 @@ Begin
 				NextState <= DrawVline;
 			end if;
 			
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 		elsif(CurrentState = DrawLine) then
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
-			-- TODO in your project
-			NextState <= IDLE;
+------------------------------------------------------------------------------
+			x_Data <= signed(x1);
+			y_Data <= signed(y1);
 			
+			x2Minusx1 := signed(unsigned(x2) - unsigned(x1));
+			y2Minusy1 := signed(unsigned(y2) - unsigned(y1));
+
+			dx_Data <= abs(x2Minusx1);
+			dy_Data <= abs(y2Minusy1);
+			
+			-- calculate s1 = sign(x2 - x1)
+			if(x2Minusx1 < 0) then
+				s1_Data <= X"FFFF"; -- s1 = -1 (in 2's complement)
+			elsif(x2Minusx1 = 0) then
+				s1_Data <= X"0000"; -- s1 = 0
+			else
+				s1_Data <= X"0001"; -- s1 = 1
+			end if;
+			
+			--calculate s2 = sign(y2-y1)
+			if(y2Minusy1 < 0) then
+				s2_Data <= X"FFFF"; -- s1 = -1
+			elsif(y2Minusy1 = 0) then
+				s2_Data <= X"0000"; -- s1 = 0
+			else
+				s2_Data <= X"0001"; -- s1 = 1
+			end if;
+			
+			interchange_Data <= '0';
+			
+			x_Load_H <= '1';
+			y_Load_H <= '1';
+			dx_Load_H <= '1';
+			dy_Load_H <= '1';
+			s1_Load_H <= '1';
+			s2_Load_H <= '1';
+			interchange_Load_H <= '1';
+			
+			if ((x1 = x2) and (y1 = y2)) then
+				NextState <= IDLE; -- do not draw line of length 0
+			else
+				NextState <= DrawLine1;
+			end if;
+
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawLine1) then
+------------------------------------------------------------------------------
+			-- swap dx and dy depending on slope of line
+			-- initialize error term to compensate for non-zero intercept
+			-- (error term also depends on slope)
+			if(dy > dx) then
+				dx_Data <= dy;
+				dx_Load_H <= '1';
+				
+				dy_Data <= dx;
+				dy_Load_H <= '1';
+				
+				interchange_Data <= '1';
+				interchange_Load_H <= '1';
+				
+				error_Data <= signed((dx(14 downto 0) & '0') - dy);
+				error_Load_H <= '1';
+			else
+				error_Data <= signed((dy(14 downto 0) & '0') - dx);
+				error_Load_H <= '1';
+			end if;
+			
+			-- initialize counter for the main loop
+			i_Data <= X"0001";
+			i_Load_H <= '1';
+			
+			NextState <= DrawLine2;
+
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawLine2) then
+------------------------------------------------------------------------------
+			-- main loop
+			if(i <= dx) then
+				-- write a pixel
+				if(OKToDraw_L = '0') then
+					Sig_AddressOut <= std_logic_vector(y(8 downto 0)) 
+						& std_logic_vector(x(9 downto 1));
+					Sig_RW_Out <= '0';
+				
+					if(x(0) = '0') then
+						Sig_UDS_Out_L 	<= '0';
+					else
+						Sig_LDS_Out_L 	<= '0';
+					end if;
+				
+					NextState <= DrawLine3;
+				else
+					NextState <= DrawLine2;
+				end if ;
+			else
+				NextState <= IDLE;
+			end if;
+
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawLine3) then
+------------------------------------------------------------------------------
+			-- while loop
+			if(error >= 0) then
+				-- check interchange value
+				if(interchange = '1') then
+					x_Data <= x + s1;
+					x_Load_H <= '1';
+				else
+					y_Data <= y + s2;
+					y_Load_H <= '1';
+				end if;
+				
+				-- update error
+				error_Data <= signed(error - (dx(14 downto 0) & '0'));
+				error_Load_H <= '1';
+				
+				NextState <= DrawLine3;
+			else
+				NextState <= DrawLine4;
+			end if;
+
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawLine4) then
+------------------------------------------------------------------------------
+			-- check interchange value
+			if(interchange = '1') then
+				y_Data <= y + s2;
+				y_Load_H <= '1';
+			else
+				x_Data <= x + s1;
+				x_Load_H <= '1';
+			end if;
+			
+			-- update error
+			error_Data <= error + (dy(14 downto 0) & '0');
+			error_Load_H <= '1';
+			
+			-- increment counter
+			i_Data <= i + 1;
+			i_Load_H <= '1';
+			
+			NextState <= DrawLine2;
+
 		end if ;
+		
 	end process;	
 end;
