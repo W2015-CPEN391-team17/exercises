@@ -14,6 +14,8 @@
 #define XRES 800
 #define YRES 480
 
+#define ASSERT_POINTS_ARE_VALID TRUE
+
 // graphics registers all address begin with '8' so as to by pass data cache on NIOS
 
 #define GraphicsCommandReg   		(*(volatile unsigned short int *)(0x84000000))
