@@ -1067,6 +1067,8 @@ end process;
 ------------------------------------------------------------------------------
 			--check if corner points are valid
 			if((X2 >= X1) and (X2 >= X1)) then
+				x_Data <= signed(X1);
+				x_Load_H <= '1';
 				NextState <= DrawRectangle1;
 			else
 				NextState <= IDLE;
@@ -1111,14 +1113,14 @@ end process;
 				Sig_RW_Out <= '0';
 				NextState <= DrawRectangle1;
 			end if;
-				
+
 ------------------------------------------------------------------------------
 		elsif(CurrentState = DrawRectangle2) then
 ------------------------------------------------------------------------------
 			-- restore original value of x
 			x_Data <= signed(X1);
 			x_Load_H <= '1';
-			
+
 			-- increment Y1 and move to horizontal line drawing step until done
 			if(Y1 >= Y2) then
 				NextState <= IDLE;
@@ -1126,8 +1128,8 @@ end process;
 				Y1_Increment_H <= '1';
 				NextState <= DrawRectangle1;
 			end if;
-			
+
 		end if;
-		
-	end process;	
+
+	end process;
 end;

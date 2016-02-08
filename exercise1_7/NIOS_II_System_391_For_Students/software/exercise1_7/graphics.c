@@ -196,7 +196,7 @@ void ProgramPalette(int PaletteNumber, int RGB)
  * bottom-right point at (x2, y2).
  * Preconditions: x1 <= x2 and y1 <= y2
  */
-void DrawRectangle(int x1, int y1, int x2, int y2, int color)
+void Rectangle(int x1, int y1, int x2, int y2, int color)
 {
 	if (ASSERT_POINTS_ARE_VALID && x1 > x2) {
 		printf("ERROR: DrawRectangle failed because x1 > x2 (x1 is %d, x2 is %d)\n", x1, x2);
@@ -222,12 +222,47 @@ void DrawRectangle(int x1, int y1, int x2, int y2, int color)
 	WriteVLine(x2, y1, y2-y1, color);
 }
 
+/*******************************************************************************************
+* Write a Bresenham line (hardware-accelerated) from x1,y1 to x2,y2
+* Will print an error and return without writing anything if the start/end points are off
+* of the screen
+********************************************************************************************/
+void WriteFilledRectangle(int x1, int y1, int x2, int y2, int Colour)
+{
+	if (ASSERT_POINTS_ARE_VALID && x1 > x2) {
+		printf("ERROR: WriteFilledRectangle failed because x1 > x2 (x1 is %d, x2 is %d)\n", x1, x2);
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && x1 > x2) {
+		printf("ERROR: WriteFilledRectangle failed because y1 > y2 (y1 is %d, y2 is %d)\n", y1, y2);
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x1, y1)) {
+		printf("ERROR: WriteFilledRectangle failed for top-left corner (%d,%d)\n", x1, y1);
+		return;
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x2, y2)) {
+		printf("ERROR: WriteFilledRectangle failed for bottom-right corner (%d,%d)\n", x2, y2);
+		return;
+	}
+
+	WAIT_FOR_GRAPHICS;
+
+	GraphicsX1Reg = x1;
+	GraphicsY1Reg = y1;
+	GraphicsX2Reg = x2;
+	GraphicsY2Reg = y2;
+	GraphicsColourReg = Colour;
+	GraphicsCommandReg = DrawRectangle;
+}
+
 /*
  * Draw a filled rectangle at a top-left point (x1, y1) to a
  * bottom-right point at (x2, y2).
  * Preconditions: x1 <= x2 and y1 <= y2
  */
-void DrawFilledRectangle(int x1, int y1, int x2, int y2, int color)
+void FilledRectangle(int x1, int y1, int x2, int y2, int color)
 {
 	if (ASSERT_POINTS_ARE_VALID && x1 > x2) {
 		printf("ERROR: DrawFilledRectangle failed because x1 > x2 (x1 is %d, x2 is %d)\n", x1, x2);
@@ -257,7 +292,7 @@ void DrawFilledRectangle(int x1, int y1, int x2, int y2, int color)
  * Draw a circle
  * Prints an error message and returns without drawing anything if any points would be off screen
  */
-void DrawCircle(int x0, int y0, int radius, int color)
+void Circle(int x0, int y0, int radius, int color)
 {
 	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x0, y0)) {
 		printf("ERROR: DrawCircle failed for center point (%d,%d)\n", x0, y0);
@@ -315,7 +350,7 @@ void DrawCircle(int x0, int y0, int radius, int color)
  * in the character to the background colour
  */
 
-void DrawText(int x, int y, int font_color, int background_color, char *text, int erase)
+void Text(int x, int y, int font_color, int background_color, char *text, int erase)
 {
 	const int text_char_x_size = 12;
 	if (text != NULL) {  // I don't know where NULL is defined; perhaps fix this later
@@ -332,13 +367,13 @@ void DrawText(int x, int y, int font_color, int background_color, char *text, in
  * the text dimensions.
  * Preconditions: x1 <= x2, y1 <= y2 and text != NULL
  */
-void DrawButton(int x1, int y1, int x2, int y2, int outline_color, int font_color, int fill_color, char *text)
+void Button(int x1, int y1, int x2, int y2, int outline_color, int font_color, int fill_color, char *text)
 {
 	const int text_padding_x = 6;
 	const int text_padding_y = 6;
-	DrawFilledRectangle(x1, y1, x2, y2, fill_color);
-	DrawRectangle(x1, y1, x2, y2, outline_color);
-	DrawText(x1+text_padding_x, y1+text_padding_y, font_color, fill_color, text, 1);
+	FilledRectangle(x1, y1, x2, y2, fill_color);
+	Rectangle(x1, y1, x2, y2, outline_color);
+	Text(x1+text_padding_x, y1+text_padding_y, font_color, fill_color, text, 1);
 }
 
 /*********************************************************************************************

@@ -70,16 +70,16 @@ void draw_top_part(int colour) {
 int main() {
   printf("Exercise 1.7\n");
   clear_screen(BLACK);
-  DrawRectangle(0, 0, 100, 100, WHITE);
-  DrawRectangle(200, 0, XRES-2, 300, WHITE);
-  DrawButton(600, 200, 670, 225, LIME, BLUE, RED, "HELLO");
-  DrawCircle(700, 350, 20, MAGENTA);
+  Rectangle(0, 0, 100, 100, WHITE);
+  Rectangle(200, 0, XRES-2, 300, WHITE);
+  Button(600, 200, 670, 225, LIME, BLUE, RED, "HELLO");
+  Circle(700, 350, 20, MAGENTA);
 
   int colour = 1;
   int i = 0;
   int j = 200;
   int k = 0;
-  /*
+
   for(i=0;i < 1000; i++) {
 	  i = (i + k + 1) % 500;
 	  j = (i + j + 1) % 500;
@@ -89,7 +89,7 @@ int main() {
 	  //DrawFilledRectangle(0, 200, 100, 300, colour); //TODO ask about this
 	  colour = (colour + 1 + i/2) % 8;
   }
-  */
+
 
   write_test_screen();
 
