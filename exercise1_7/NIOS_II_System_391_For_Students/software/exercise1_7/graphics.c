@@ -229,6 +229,24 @@ void DrawRectangle(int x1, int y1, int x2, int y2, int color)
  */
 void DrawFilledRectangle(int x1, int y1, int x2, int y2, int color)
 {
+	if (ASSERT_POINTS_ARE_VALID && x1 > x2) {
+		printf("ERROR: DrawFilledRectangle failed because x1 > x2 (x1 is %d, x2 is %d)\n", x1, x2);
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && x1 > x2) {
+		printf("ERROR: DrawFilledRectangle failed because y1 > y2 (y1 is %d, y2 is %d)\n", y1, y2);
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x1, y1)) {
+		printf("ERROR: DrawFilledRectangle failed for top-left corner (%d,%d)\n", x1, y1);
+		return;
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x2, y2)) {
+		printf("ERROR: DrawFilledRectangle failed for bottom-right corner (%d,%d)\n", x2, y2);
+		return;
+	}
+
 	int i;
 	for (i = y1; i < y2; i++) {
 		WriteHLine(x1, i, x2-x1, color);

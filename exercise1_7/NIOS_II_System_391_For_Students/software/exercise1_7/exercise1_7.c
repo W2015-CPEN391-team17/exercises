@@ -71,7 +71,6 @@ int main() {
   printf("Exercise 1.7\n");
   clear_screen(BLACK);
   DrawRectangle(0, 0, 100, 100, WHITE);
-  DrawRectangle(0, 200, 100, 300, WHITE);
   DrawRectangle(200, 0, XRES-2, 300, WHITE);
   DrawButton(600, 200, 670, 225, LIME, BLUE, RED, "HELLO");
   DrawCircle(700, 350, 20, MAGENTA);
@@ -80,13 +79,17 @@ int main() {
   int i = 0;
   int j = 200;
   int k = 0;
-  while(TRUE) {
+  for(i=0;i < 1000; i++) {
 	  i = (i + k + 1) % 500;
 	  j = (i + j + 1) % 500;
 	  WriteLine(501, 1, i%XRES, j%YRES, colour);
 	  k = (k + j + i) % 50;
 	  colour = (colour + i + j + k) % 8;
+	  //DrawFilledRectangle(0, 200, 100, 300, colour); //TODO ask about this
+	  colour = (colour + 1 + i/2) % 8;
   }
+
+  //line_test_screen();
 
   return 0;
 }
