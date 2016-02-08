@@ -79,19 +79,17 @@ int main() {
   int i = 0;
   int j = 200;
   int k = 0;
-
-  for(i=0;i < 1000; i++) {
-	  i = (i + k + 1) % 500;
-	  j = (i + j + 1) % 500;
-	  WriteLine(501, 1, i%XRES, j%YRES, colour);
-	  k = (k + j + i) % 50;
-	  colour = (colour + i + j + k) % 8;
-	  //DrawFilledRectangle(0, 200, 100, 300, colour); //TODO ask about this
-	  colour = (colour + 1 + i/2) % 8;
+  int n = 23;
+  while(TRUE) {
+	  j = (n + j + 1) % 500;
+	  n = (n + k*j) % 350;
+	  WriteLine(501, 1, n%XRES, j%YRES, colour);
+	  k = (k + j + n) % 50;
+	  colour = (colour + n + j + k) % 8;
+	  //WriteFilledRectangle(0, 200, 100, 300, colour); //TODO ask about this
   }
 
-
-  write_test_screen();
+  //write_test_screen();
 
   return 0;
 }

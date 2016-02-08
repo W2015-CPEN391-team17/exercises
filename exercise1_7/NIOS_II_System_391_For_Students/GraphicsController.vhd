@@ -884,8 +884,6 @@ end process;
 				end if;
 			else
 				Sig_RW_Out <= '0';
-				X1_Increment_1_H <= '0';
-				X1_Increment_2_H <= '0';
 				NextState <= DrawHline;
 			end if;
 
@@ -904,7 +902,6 @@ end process;
 
 				if(Y1 >= Y2) then
 					Sig_RW_Out <= '1'; -- do not draw a line with only one pixel
-				   Y1_Increment_H <= '0';
 					NextState <= IDLE;
 				else
 				   Sig_RW_Out <= '0';
@@ -913,7 +910,6 @@ end process;
 				end if;
 			else
 				Sig_RW_Out <= '0';
-				Y1_Increment_H <= '0';
 				NextState <= DrawVline;
 			end if;
 			
@@ -1078,7 +1074,6 @@ end process;
 		elsif(CurrentState = DrawRectangle1) then
 ------------------------------------------------------------------------------
 			if(OKToDraw_L = '0') then
-				
 				Sig_AddressOut <= Y1(8 downto 0) & std_logic_vector(x(9 downto 1));
 
 				-- choose which pixels to write and how much to increment x
@@ -1087,20 +1082,20 @@ end process;
 					-- write the left-side pixel
 					Sig_UDS_Out_L <= '0';
 					-- may also be able to draw the right-side pixel
-					if(signed(x) + 1 /= signed(X2)) then
+					if(signed(x + 1) /= signed(X2)) then
 						Sig_LDS_Out_L <= '0';
 					end if;
-					-- increment x by 2
+					-- increment x by 2 so next state may start at an even x
 					x_Data <= x + 2;
 					x_Load_H <= '1';
 				else
 					--only draw right-side pixel if x is at an odd pixel
 					Sig_LDS_Out_L <= '0';
-					--increment X by only 1 so next state may start at an even x
+					--increment x by only 1 so next state may start at an even x
 					x_Data <= x + 1;
 					x_Load_H <= '1';
 				end if;
-				
+
 				-- decide whether to write and choose the next state
 				if(x >= signed(X2)) then
 					Sig_RW_Out <= '1';
@@ -1120,12 +1115,13 @@ end process;
 			-- restore original value of x
 			x_Data <= signed(X1);
 			x_Load_H <= '1';
+			
+			Y1_Increment_H <= '1';
 
-			-- increment Y1 and move to horizontal line drawing step until done
+			-- move on to horizontal line drawing step unless we are done
 			if(Y1 >= Y2) then
 				NextState <= IDLE;
 			else
-				Y1_Increment_H <= '1';
 				NextState <= DrawRectangle1;
 			end if;
 

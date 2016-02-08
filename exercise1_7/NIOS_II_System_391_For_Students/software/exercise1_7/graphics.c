@@ -33,10 +33,7 @@ int check_if_point_is_on_screen(int x, int y) {
 * Write the entire screen in the given colour
 ************************************************************************************/
 void clear_screen(int colour) {
-	int i;
-	for(i = 0; i <= YRES-1; i++) {
-		WriteHLine(0, i, XRES-1, colour);
-	}
+	WriteFilledRectangle(0, 0, XRES-1, YRES-1, colour);
 }
 
 /*******************************************************************************************
@@ -283,7 +280,7 @@ void FilledRectangle(int x1, int y1, int x2, int y2, int color)
 	}
 
 	int i;
-	for (i = y1; i < y2; i++) {
+	for (i = y1; i <= y2; i++) {
 		WriteHLine(x1, i, x2-x1, color);
 	}
 }
@@ -570,4 +567,24 @@ void write_test_screen() {
 	Line(249,349,449,449,BLACK);
 	WriteLine(250,350,450,450,MAGENTA);
 	WriteLine(249,349,449,449,MAGENTA);
+
+	// compare rectangles
+	// should see WHITE rectangles above
+	// and a LIME rectangles below
+
+	// even to even
+	WriteFilledRectangle(400, 250, 500, 300, LIME);
+	FilledRectangle(400, 250, 500, 300, WHITE);
+
+	// even to odd
+	WriteFilledRectangle(600, 250, 701, 300, LIME);
+	FilledRectangle(600, 250, 701, 300, WHITE);
+
+	// odd to even
+	FilledRectangle(401, 350, 500, 400, WHITE);
+	WriteFilledRectangle(401, 350, 500, 400, LIME);
+
+	// odd to odd
+	FilledRectangle(601, 350, 701, 400, WHITE);
+	WriteFilledRectangle(601, 350, 701, 400, LIME);
 }
