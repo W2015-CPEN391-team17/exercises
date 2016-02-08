@@ -67,4 +67,11 @@ void VLine(int x1, int y1, int length, int Colour);
 void Line(int x1, int y1, int x2, int y2, int Colour);
 void line_test_screen();
 
+void DrawRectangle(int x1, int y1, int x2, int y2, int color);
+void DrawFilledRectangle(int x1, int y1, int x2, int y2, int color);
+void DrawCircle(int x0, int y0, int radius, int color);
+void DrawText(int x, int y, int font_color, int background_color, char *text, int erase);
+void DrawButton(int x1, int y1, int x2, int y2, int outline_color, int font_color,
+				int fill_color, char *text);
+
 #endif /* EXERCISE1_7_H_ */

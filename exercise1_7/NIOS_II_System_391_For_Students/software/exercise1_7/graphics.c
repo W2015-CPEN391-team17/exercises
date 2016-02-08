@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include "graphics.h"
+#include "OutGraphicsCharFont2.h"
 
 /*******************************************************************************************
  * Return TRUE if (x,y) is between (0,0) and (XRES-1,YRES-1)
@@ -155,12 +156,12 @@ void WriteVLine(int x1, int y1, int length, int Colour)
 void WriteLine(int x1, int y1, int x2, int y2, int Colour)
 {
 	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x1, y1)) {
-		printf("WriteLine failed for starting point (%d,%d)\n", x1, y1);
+		printf("ERROR: WriteLine failed for starting point (%d,%d)\n", x1, y1);
 		return;
 	}
 
 	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x2, y2)) {
-		printf("WriteLine failed for ending point (%d,%d)\n", x2, y2);
+		printf("ERROR: WriteLine failed for ending point (%d,%d)\n", x2, y2);
 		return;
 	}
 
@@ -189,6 +190,138 @@ void ProgramPalette(int PaletteNumber, int RGB)
     GraphicsCommandReg = ProgramPaletteColour; // issue command
 }
 
+/* Shape drawing functions */
+/*
+ * Draw a non-filled rectangle at a top-left point at (x1, y1) to a
+ * bottom-right point at (x2, y2).
+ * Preconditions: x1 <= x2 and y1 <= y2
+ */
+void DrawRectangle(int x1, int y1, int x2, int y2, int color)
+{
+	if (ASSERT_POINTS_ARE_VALID && x1 > x2) {
+		printf("ERROR: DrawRectangle failed because x1 > x2 (x1 is %d, x2 is %d)\n", x1, x2);
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && x1 > x2) {
+		printf("ERROR: DrawRectangle failed because y1 > y2 (y1 is %d, y2 is %d)\n", y1, y2);
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x1, y1)) {
+		printf("ERROR: DrawRectangle failed for top-left corner (%d,%d)\n", x1, y1);
+		return;
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x2, y2)) {
+		printf("ERROR: DrawRectangle failed for bottom-right corner (%d,%d)\n", x2, y2);
+		return;
+	}
+
+	WriteHLine(x1, y1, x2-x1, color);
+	WriteVLine(x1, y1, y2-y1, color);
+	WriteHLine(x1, y2, x2-x1+1, color); // the plus one ensures the bottom-right corner is drawn
+	WriteVLine(x2, y1, y2-y1, color);
+}
+
+/*
+ * Draw a filled rectangle at a top-left point (x1, y1) to a
+ * bottom-right point at (x2, y2).
+ * Preconditions: x1 <= x2 and y1 <= y2
+ */
+void DrawFilledRectangle(int x1, int y1, int x2, int y2, int color)
+{
+	int i;
+	for (i = y1; i < y2; i++) {
+		WriteHLine(x1, i, x2-x1, color);
+	}
+}
+
+/*
+ * Draw a circle
+ * Prints an error message and returns without drawing anything if any points would be off screen
+ */
+void DrawCircle(int x0, int y0, int radius, int color)
+{
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x0, y0)) {
+		printf("ERROR: DrawCircle failed for center point (%d,%d)\n", x0, y0);
+		return;
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x0+radius, y0)) {
+		printf("ERROR: DrawCircle failed in positive x direction (%d,%d)\n", x0+radius, y0);
+		return;
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x0, y0+radius)) {
+		printf("ERROR: DrawCircle failed in positive y direction (%d,%d)\n", x0, y0+radius);
+		return;
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x0-radius, y0)) {
+		printf("ERROR: DrawCircle failed in negative x direction (%d,%d)\n", x0-radius, y0);
+		return;
+	}
+
+	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x0, y0-radius)) {
+		printf("ERROR: DrawCircle failed in negative y direction (%d,%d)\n", x0, y0-radius);
+		return;
+	}
+
+	int x = radius;
+	int y = 0;
+	int decisionOver2 = 1 - x;   // Decision criterion divided by 2 evaluated at x=r, y=0
+
+	while( y <= x ) {
+		WriteAPixel( x + x0,  y + y0, color); // Octant 1
+		WriteAPixel( y + x0,  x + y0, color); // Octant 2
+		WriteAPixel(-x + x0,  y + y0, color); // Octant 4
+		WriteAPixel(-y + x0,  x + y0, color); // Octant 3
+		WriteAPixel(-x + x0, -y + y0, color); // Octant 5
+		WriteAPixel(-y + x0, -x + y0, color); // Octant 6
+		WriteAPixel( x + x0, -y + y0, color); // Octant 7
+		WriteAPixel( y + x0, -x + y0, color); // Octant 8
+		y++;
+		if (decisionOver2 <= 0) {
+		  decisionOver2 += 2 * y + 1;   // Change in decision criterion for y -> y+1
+		}
+		else {
+		  x--;
+		  decisionOver2 += 2 * (y - x) + 1;   // Change for y -> y+1, x -> x-1
+		}
+	}
+}
+
+/*
+ * Draw text string on a single line.
+ * Preconditions: text != NULL
+ * Note: Writing a space character with erase set to true will set all pixels
+ * in the character to the background colour
+ */
+
+void DrawText(int x, int y, int font_color, int background_color, char *text, int erase)
+{
+	const int text_char_x_size = 12;
+	if (text != NULL) {  // I don't know where NULL is defined; perhaps fix this later
+		int i;
+		for (i = 0; text[i] != '\0'; i++) {
+			  OutGraphicsCharFont2a(x+(text_char_x_size * i), y, font_color, background_color, (int) text[i], erase);
+		}
+	}
+}
+
+/*
+ * Draw at a top-left point at (x1, y1) to a bottom-right point at (x2, y2).
+ * It is up to the user to ensure that the button dimensions are larger than
+ * the text dimensions.
+ * Preconditions: x1 <= x2, y1 <= y2 and text != NULL
+ */
+void DrawButton(int x1, int y1, int x2, int y2, int outline_color, int font_color, int fill_color, char *text)
+{
+	const int text_padding_x = 6;
+	const int text_padding_y = 6;
+	DrawFilledRectangle(x1, y1, x2, y2, fill_color);
+	DrawRectangle(x1, y1, x2, y2, outline_color);
+	DrawText(x1+text_padding_x, y1+text_padding_y, font_color, fill_color, text, 1);
+}
 
 /*********************************************************************************************
 * Draw a horizontal line (1 pixel at a time) starting at the x,y coords specified

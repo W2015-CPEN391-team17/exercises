@@ -146,6 +146,8 @@ C_SRCS += exercise1_7.c
 C_SRCS += fill.c
 C_SRCS += fonts.c
 C_SRCS += graphics.c
+C_SRCS += OutGraphicsCharFont1.c
+C_SRCS += OutGraphicsCharFont2.c
 CXX_SRCS :=
 ASM_SRCS :=
 
