@@ -132,12 +132,13 @@ architecture bhvr of GraphicsController is
 	constant ReadPixel2							 	: Std_Logic_Vector(7 downto 0) := X"08";		-- State for reading a pixel
 	constant ReadPixel3							 	: Std_Logic_Vector(7 downto 0) := X"09";		-- State for reading a pixel
 	constant PalletteReProgram						: Std_Logic_Vector(7 downto 0) := X"0A";		-- State for programming a pallette
-
-	-- add any extra states you need here for example to draw lines etc.
 	constant DrawLine1				 	 			: Std_Logic_Vector(7 downto 0) := X"10";
 	constant DrawLine2				 	 			: Std_Logic_Vector(7 downto 0) := X"11";
 	constant DrawLine3				 	 			: Std_Logic_Vector(7 downto 0) := X"12";
 	constant DrawLine4				 	 			: Std_Logic_Vector(7 downto 0) := X"13";
+	constant DrawRectangle							: Std_Logic_Vector(7 downto 0) := X"14";
+	constant DrawRectangle1							: Std_Logic_Vector(7 downto 0) := X"15";
+	constant DrawRectangle2							: Std_Logic_Vector(7 downto 0) := X"16";
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 -- Commands that can be written to command register by NIOS to get graphics controller to draw a shape
@@ -148,9 +149,10 @@ architecture bhvr of GraphicsController is
 	constant	PutPixel									: Std_Logic_Vector(15 downto 0) := X"000a";	-- command to Graphics chip from NIOS to draw a pixel
 	constant	GetPixel									: Std_Logic_Vector(15 downto 0) := X"000b";	-- command to Graphics chip from NIOS to read a pixel
 	constant ProgramPallette						: Std_Logic_Vector(15 downto 0) := X"0010";	-- command to Graphics chip from NIOS is program one of the pallettes with a new RGB value
+	constant Rectangle								: Std_Logic_Vector(15 downto 0) := X"0011";	-- command to Graphics chip from NIOS to draw a rectangle
 
 ------------------------------------------------------------------------------
--- Bresenham line algorithm signals
+-- Bresenham line and rectangle signals
 ------------------------------------------------------------------------------
 
 	signal x				: signed(15 downto 0);	-- 'x'
@@ -467,7 +469,7 @@ Begin
 	end process;	
 
 ------------------------------------------------------------------------------
--- Bresenham line algorithm register processes
+-- Bresenham line and rectangle register processes
 ------------------------------------------------------------------------------
 
 process(Clk)
@@ -712,11 +714,9 @@ end process;
 			elsif(Command = Vline) then
 				NextState <= DrawVline;
 			elsif(Command = ALine) then
-				NextState <= DrawLine;	
-				
-			-- add other code to process any new commands here e.g. draw a circle if you decide to implement that
-			-- or draw a rectangle etc
-			
+				NextState <= DrawLine;
+			elsif(Command = Rectangle) then
+				NextState <= DrawRectangle;
 			end if;
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -860,7 +860,7 @@ end process;
 					-- write the left-side pixel
 					Sig_UDS_Out_L <= '0';
 					-- may also be able to draw the right-side pixel
-					if(unsigned(X1) + 1 /= unsigned(X2)) then
+					if(signed(X1) + 1 /= signed(X2)) then
 						Sig_LDS_Out_L <= '0';
 					end if;
 					-- increment X1 by 2
@@ -1062,7 +1062,72 @@ end process;
 			
 			NextState <= DrawLine2;
 
-		end if ;
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawRectangle) then
+------------------------------------------------------------------------------
+			--check if corner points are valid
+			if((X2 >= X1) and (X2 >= X1)) then
+				NextState <= DrawRectangle1;
+			else
+				NextState <= IDLE;
+			end if;
+
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawRectangle1) then
+------------------------------------------------------------------------------
+			if(OKToDraw_L = '0') then
+				
+				Sig_AddressOut <= Y1(8 downto 0) & std_logic_vector(x(9 downto 1));
+
+				-- choose which pixels to write and how much to increment x
+				-- can draw two pixels per cycle when x is even
+				if(x(0) = '0') then
+					-- write the left-side pixel
+					Sig_UDS_Out_L <= '0';
+					-- may also be able to draw the right-side pixel
+					if(signed(x) + 1 /= signed(X2)) then
+						Sig_LDS_Out_L <= '0';
+					end if;
+					-- increment x by 2
+					x_Data <= x + 2;
+					x_Load_H <= '1';
+				else
+					--only draw right-side pixel if x is at an odd pixel
+					Sig_LDS_Out_L <= '0';
+					--increment X by only 1 so next state may start at an even x
+					x_Data <= x + 1;
+					x_Load_H <= '1';
+				end if;
+				
+				-- decide whether to write and choose the next state
+				if(x >= signed(X2)) then
+					Sig_RW_Out <= '1';
+					NextState <= DrawRectangle2;
+				else
+				   Sig_RW_Out <= '0';
+					NextState <= DrawRectangle1;
+				end if;
+			else
+				Sig_RW_Out <= '0';
+				NextState <= DrawRectangle1;
+			end if;
+				
+------------------------------------------------------------------------------
+		elsif(CurrentState = DrawRectangle2) then
+------------------------------------------------------------------------------
+			-- restore original value of x
+			x_Data <= signed(X1);
+			x_Load_H <= '1';
+			
+			-- increment Y1 and move to horizontal line drawing step until done
+			if(Y1 >= Y2) then
+				NextState <= IDLE;
+			else
+				Y1_Increment_H <= '1';
+				NextState <= DrawRectangle1;
+			end if;
+			
+		end if;
 		
 	end process;	
 end;

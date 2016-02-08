@@ -447,12 +447,11 @@ void Line(int x1, int y1, int x2, int y2, int Colour)
 * Compare software and hardware lines to check for off-by-one-errors
 * Use for testing only
 *******************************************************************************/
-void line_test_screen() {
+void write_test_screen() {
 	// write RED lines (software) over the entire screen area
 	int i;
 	for(i = 0; i <= YRES-1; i++) {
 		HLine(0, i, XRES-1, RED);
-		printf("i is %d\n", i);
 	}
 
 	//each pair of lines (for horizontal/vertical) should have the same length
