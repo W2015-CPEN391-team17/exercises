@@ -29,13 +29,13 @@ void connect_points(int colour) {
 	points[4].x = 0;
 	points[4].y = 300;
 
-	points[5].x = 313;
+	points[5].x = 613;
 	points[5].y = 0;
 
 	int i;
 	struct point point_a;
 	struct point point_b;
-	for(i = 1; i < 2; i++) {
+	for(i = 1; i < number_of_points; i++) {
 		point_a = points[i-1];
 		point_b = points[i];
 		WriteLine(point_a.x, point_a.y, point_b.x, point_b.y, colour);
@@ -55,7 +55,7 @@ void draw_bottom_part() {
 		WriteHLine(2*XRES/4, i, XRES/4, BLUE);
 	}
 	for(i = 350; i <= YRES-1; i++) {
-		WriteHLine(3*XRES/4, i, 33, LIME);
+		WriteHLine(3*XRES/4, i, XRES/4-1, LIME);
 	}
 }
 
@@ -69,15 +69,13 @@ void draw_top_part(int colour) {
 
 int main() {
   printf("Demo start\n");
-  clear_screen(BLACK);
-  line_test_screen();
-  //clear_screen(BLUE);
-  //printf("**********after black screen**********\n");
-  //draw_bottom_part();
-  //printf("**********after bottom part**********\n");
-  //printf("there is no top part right now\n");
-  //draw_top_part(BLACK);
-  //printf("**********after top part**********\n");
+  clear_screen(MAGENTA);
+  //line_test_screen();
+  printf("**********after black screen**********\n");
+  draw_bottom_part();
+  printf("**********after bottom part**********\n");
+  draw_top_part(BLACK);
+  printf("**********after top part**********\n");
 
   return 0;
 }

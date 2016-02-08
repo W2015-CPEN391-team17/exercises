@@ -1,8 +1,5 @@
 /*
  * graphics.h
- *
- *  Created on: Jan 26, 2016
- *      Author: nick
  */
 
 #ifndef EXERCISE1_7_H_
@@ -30,15 +27,11 @@
 /************************************************************************************************
 ** This macro pauses until the graphics chip status register indicates that it is idle
 ***********************************************************************************************/
-
 #define WAIT_FOR_GRAPHICS		while((GraphicsStatusReg & 0x0001) != 0x0001);
-
-//Here are some software routines to drive some simple graphics functions
 
 // #defined constants representing values we write to the graphics 'command' register to get
 // it to draw something. You will add more values as you add hardware to the graphics chip
 // Note DrawHLine, DrawVLine and DrawLine at the moment do nothing - you will modify these
-
 #define DrawHLine				1
 #define DrawVLine				2
 #define DrawLine				3
@@ -52,7 +45,6 @@
 // the header files "colours.h" contains constants for all 256 colours
 // while the course file ColourPaletteData.c contains the 24 bit RGB data
 // that is pre-programmed into the palette
-
 #define	BLACK			0
 #define	WHITE			1
 #define	RED				2
@@ -69,11 +61,10 @@ void WriteLine(int x1, int y1, int x2, int y2, int Colour);
 int ReadAPixel(int x, int y);
 void ProgramPalette(int PaletteNumber, int RGB);
 
-// draw lines one pixel at a time, use only for testing
+// use these only for testing
 void HLine(int x1, int y1, int length, int Colour);
 void VLine(int x1, int y1, int length, int Colour);
-int abs(int a);
-int sign(int a);
 void Line(int x1, int y1, int x2, int y2, int Colour);
+void line_test_screen();
 
 #endif /* EXERCISE1_7_H_ */

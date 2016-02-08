@@ -1,9 +1,6 @@
 /*
  * graphics.c
  * Functions for the Graphics Controller
- *
- *  Created on: Jan 31, 2016
- *      Author: nick
  */
 
 #include <stdio.h>
@@ -11,19 +8,20 @@
 
 /*******************************************************************************************
  * Return TRUE if (x,y) is between (0,0) and (XRES-1,YRES-1)
+ * and print an error message and return FALSE otherwise
  ******************************************************************************************/
 int check_if_point_is_on_screen(int x, int y) {
 	if (x < 0) {
-		printf("Point not on screen: x value less than 0\n");
+		printf("ERROR: Point not on screen: x value less than 0\n");
 		return FALSE;
 	} else if (x > XRES-1) {
-		printf("Point not on screen: x value greater than XRES-1\n");
+		printf("ERROR: Point not on screen: x value greater than XRES-1\n");
 		return FALSE;
 	} else if (y < 0) {
-		printf("Point not on screen: y value less than 0\n");
+		printf("ERROR: Point not on screen: y value less than 0\n");
 		return FALSE;
 	} else if (y > YRES-1) {
-		printf("Point not on screen: y value greater than YRES-1\n");
+		printf("ERROR: Point not on screen: y value greater than YRES-1\n");
 		return FALSE;
 	} else {
 		return TRUE;
@@ -34,11 +32,9 @@ int check_if_point_is_on_screen(int x, int y) {
 * Write the entire screen in the given colour
 ************************************************************************************/
 void clear_screen(int colour) {
-	// write lines of given colour over the entire screen area
 	int i;
 	for(i = 0; i <= YRES-1; i++) {
 		WriteHLine(0, i, XRES-1, colour);
-		printf("i is %d\n", i);
 	}
 }
 
@@ -57,8 +53,8 @@ void WriteAPixel(int x, int y, int Colour)
 
 	GraphicsX1Reg = x;				// write coords to x1, y1
 	GraphicsY1Reg = y;
-	GraphicsColourReg = Colour;			// set pixel colour
-	GraphicsCommandReg = PutAPixel;			// give graphics "write pixel" command
+	GraphicsColourReg = Colour;		// set pixel colour
+	GraphicsCommandReg = PutAPixel;	// give graphics "write pixel" command
 }
 
 /*********************************************************************************************
@@ -86,23 +82,25 @@ int ReadAPixel(int x, int y)
 /*******************************************************************************************
 * Write a horizontal line (hardware-accelerated) starting at the x,y coords specified
 * of the given length to the right
+* Will print an error and return without writing anything if the start/end points are off
+* of the screen or if length is negative
 ********************************************************************************************/
 void WriteHLine(int x1, int y1, int length, int Colour)
 {
 	int x2 = x1 + length;
 
 	if (ASSERT_POINTS_ARE_VALID && length < 0) {
-		printf("WriteHLine failed for length < 0 (length is %d)\n", length);
+		printf("ERROR: WriteHLine failed because length < 0 (length is %d)\n", length);
 		return;
 	}
 
 	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x1, y1)) {
-		printf("WriteHLine failed for starting point (%d,%d)\n", x1, y1);
+		printf("ERROR: WriteHLine failed for starting point (%d,%d)\n", x1, y1);
 		return;
 	}
 
 	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x2, y1)) {
-		printf("WriteHLine failed for ending point (%d,%d)\n", x2, y1);
+		printf("ERROR: WriteHLine failed for ending point (%d,%d)\n", x2, y1);
 		return;
 	}
 
@@ -118,23 +116,25 @@ void WriteHLine(int x1, int y1, int length, int Colour)
 /*******************************************************************************************
 * Write a vertical line (hardware-accelerated) starting at the x,y coords specified
 * of the given length downwards.
+* Will print an error and return without writing anything if the start/end points are off
+* of the screen or if length is negative
 ********************************************************************************************/
 void WriteVLine(int x1, int y1, int length, int Colour)
 {
 	int y2 = y1 + length;
 
 	if (ASSERT_POINTS_ARE_VALID && length < 0) {
-		printf("WriteVLine failed for length < 0 (length is %d)\n", length);
+		printf("ERROR: WriteVLine failed because length < 0 (length is %d)\n", length);
 		return;
 	}
 
 	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x1, y1)) {
-		printf("WriteVLine failed for starting point (%d,%d)\n", x1, y1);
+		printf("ERROR: WriteVLine failed for starting point (%d,%d)\n", x1, y1);
 		return;
 	}
 
 	if (ASSERT_POINTS_ARE_VALID && !check_if_point_is_on_screen(x1, y2)) {
-		printf("WriteVLine failed for ending point (%d,%d)\n", x1, y2);
+		printf("ERROR: WriteVLine failed for ending point (%d,%d)\n", x1, y2);
 		return;
 	}
 
@@ -149,6 +149,8 @@ void WriteVLine(int x1, int y1, int length, int Colour)
 
 /*******************************************************************************************
 * Write a Bresenham line (hardware-accelerated) from x1,y1 to x2,y2
+* Will print an error and return without writing anything if the start/end points are off
+* of the screen
 ********************************************************************************************/
 void WriteLine(int x1, int y1, int x2, int y2, int Colour)
 {
@@ -180,6 +182,7 @@ void WriteLine(int x1, int y1, int x2, int y2, int Colour)
 void ProgramPalette(int PaletteNumber, int RGB)
 {
     WAIT_FOR_GRAPHICS;
+
     GraphicsColourReg = PaletteNumber;
     GraphicsX1Reg = RGB >> 16   ;        // program red value in ls.8 bit of X1 reg
     GraphicsY1Reg = RGB ;                // program green and blue into ls 16 bit of Y1 reg
@@ -189,30 +192,31 @@ void ProgramPalette(int PaletteNumber, int RGB)
 
 /*********************************************************************************************
 * Draw a horizontal line (1 pixel at a time) starting at the x,y coords specified
+* Use for testing only
 *********************************************************************************************/
 
 void HLine(int x1, int y1, int length, int Colour)
 {
 	int i;
-
 	for(i = x1; i < x1+length; i++ )
 		WriteAPixel(i, y1, Colour);
 }
 
 /*********************************************************************************************
 * Draw a vertical line (1 pixel at a time) starting at the x,y coords specified
+* Use for testing only
 *********************************************************************************************/
 
 void VLine(int x1, int y1, int length, int Colour)
 {
 	int i;
-
 	for(i = y1; i < y1+length; i++ )
 		WriteAPixel(x1, i, Colour);
 }
 
 /*******************************************************************************
 * Implementation of Bresenhams line drawing algorithm (1 pixel at a time)
+* Use for testing only
 *******************************************************************************/
 
 int abs(int a)
@@ -290,6 +294,7 @@ void Line(int x1, int y1, int x2, int y2, int Colour)
 
 /*******************************************************************************
 * Compare software and hardware lines to check for off-by-one-errors
+* Use for testing only
 *******************************************************************************/
 void line_test_screen() {
 	// write RED lines (software) over the entire screen area
@@ -380,6 +385,4 @@ void line_test_screen() {
 	Line(249,349,449,449,BLACK);
 	WriteLine(250,350,450,450,MAGENTA);
 	WriteLine(249,349,449,449,MAGENTA);
-
-	// TODO could draw bresenham lines in more directions
 }
