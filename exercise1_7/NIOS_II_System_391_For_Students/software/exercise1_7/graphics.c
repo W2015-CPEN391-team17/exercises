@@ -30,6 +30,18 @@ int check_if_point_is_on_screen(int x, int y) {
 	}
 }
 
+/**********************************************************************************
+* Write the entire screen in the given colour
+************************************************************************************/
+void clear_screen(int colour) {
+	// write lines of given colour over the entire screen area
+	int i;
+	for(i = 0; i <= YRES-1; i++) {
+		WriteHLine(0, i, XRES-1, colour);
+		printf("i is %d\n", i);
+	}
+}
+
 /*******************************************************************************************
 * Writes a single pixel to the x,y coords specified using the specified colour
 * Note colour is a byte and represents a palette number (0-255) not a 24 bit RGB value
@@ -174,14 +186,13 @@ void ProgramPalette(int PaletteNumber, int RGB)
     GraphicsCommandReg = ProgramPaletteColour; // issue command
 }
 
+
 /*********************************************************************************************
-* TODO deprecated, for testing only
 * Draw a horizontal line (1 pixel at a time) starting at the x,y coords specified
 *********************************************************************************************/
 
 void HLine(int x1, int y1, int length, int Colour)
 {
-	printf("HLine (one pixel at a time) for testing only\n");
 	int i;
 
 	for(i = x1; i < x1+length; i++ )
@@ -189,13 +200,11 @@ void HLine(int x1, int y1, int length, int Colour)
 }
 
 /*********************************************************************************************
-* TODO deprecated, for testing only
 * Draw a vertical line (1 pixel at a time) starting at the x,y coords specified
 *********************************************************************************************/
 
 void VLine(int x1, int y1, int length, int Colour)
 {
-	printf("VLine (one pixel at a time) for testing only\n");
 	int i;
 
 	for(i = y1; i < y1+length; i++ )
@@ -203,7 +212,6 @@ void VLine(int x1, int y1, int length, int Colour)
 }
 
 /*******************************************************************************
-* TODO deprecated, for testing only
 * Implementation of Bresenhams line drawing algorithm (1 pixel at a time)
 *******************************************************************************/
 
@@ -225,10 +233,8 @@ int sign(int a)
         return 1 ;
 }
 
-
 void Line(int x1, int y1, int x2, int y2, int Colour)
 {
-	printf("Line (one pixel at a time) for testing only\n");
     int x = x1;
     int y = y1;
     int dx = abs(x2 - x1);
@@ -280,4 +286,100 @@ void Line(int x1, int y1, int x2, int y2, int Colour)
             error += (dy << 1) ;    // times 2
         }
     }
+}
+
+/*******************************************************************************
+* Compare software and hardware lines to check for off-by-one-errors
+*******************************************************************************/
+void line_test_screen() {
+	// write RED lines (software) over the entire screen area
+	int i;
+	for(i = 0; i <= YRES-1; i++) {
+		HLine(0, i, XRES-1, RED);
+		printf("i is %d\n", i);
+	}
+
+	//each pair of lines (for horizontal/vertical) should have the same length
+
+	//for horizontal lines,
+	//test lines should start at both even and odd indexes
+	//and have even and odd lengths
+	//because they may be drawn incorrectly when drawing two pixels per cycle
+
+	// even start pixel, even length
+	HLine(100,100,100,LIME);
+	HLine(100,101,100,LIME);
+	HLine(100,102,100,LIME);
+	HLine(100,103,100,LIME);
+	HLine(100,104,100,LIME);
+	WriteHLine(100,105,100,BLUE);
+	WriteHLine(100,106,100,BLUE);
+	WriteHLine(100,107,100,BLUE);
+	WriteHLine(100,108,100,BLUE);
+	WriteHLine(100,109,100,BLUE);
+
+	// odd start pixel, even length
+	HLine(101,120,100,LIME);
+	HLine(101,121,100,LIME);
+	HLine(101,122,100,LIME);
+	HLine(101,123,100,LIME);
+	HLine(101,124,100,LIME);
+	WriteHLine(101,125,100,BLUE);
+	WriteHLine(101,126,100,BLUE);
+	WriteHLine(101,127,100,BLUE);
+	WriteHLine(101,128,100,BLUE);
+	WriteHLine(101,129,100,BLUE);
+
+	// even start pixel, odd length
+	HLine(100,140,101,LIME);
+	HLine(100,141,101,LIME);
+	HLine(100,142,101,LIME);
+	HLine(100,143,101,LIME);
+	HLine(100,144,101,LIME);
+	WriteHLine(100,145,101,BLUE);
+	WriteHLine(100,146,101,BLUE);
+	WriteHLine(100,147,101,BLUE);
+	WriteHLine(100,148,101,BLUE);
+	WriteHLine(100,149,101,BLUE);
+
+	// odd start pixel, odd length
+	HLine(101,160,101,LIME);
+	HLine(101,161,101,LIME);
+	HLine(101,162,101,LIME);
+	HLine(101,163,101,LIME);
+	HLine(101,164,101,LIME);
+	WriteHLine(101,165,101,BLUE);
+	WriteHLine(101,166,101,BLUE);
+	WriteHLine(101,167,101,BLUE);
+	WriteHLine(101,168,101,BLUE);
+	WriteHLine(101,169,101,BLUE);
+
+	// test vertical lines
+	VLine(200,200,100,LIME);
+	VLine(201,200,100,LIME);
+	VLine(202,200,100,LIME);
+	VLine(203,200,100,LIME);
+	VLine(204,200,100,LIME);
+	WriteVLine(205,200,100,BLUE);
+	WriteVLine(206,200,100,BLUE);
+	WriteVLine(207,200,100,BLUE);
+	WriteVLine(208,200,100,BLUE);
+	WriteVLine(209,200,100,BLUE);
+
+	// compare bresenham lines
+	// should see a black line on top
+	// and a purple line a few pixels below it
+	// otherwise the hardware-accelerated line doesn't perfectly match
+
+	WriteLine(240,340,440,440,MAGENTA);
+	WriteLine(239,339,439,439,MAGENTA);
+	Line(240,340,440,440,BLACK);
+	Line(239,339,439,439,BLACK);
+
+	Line(250,350,450,450,BLACK);
+	Line(249,349,449,449,BLACK);
+	WriteLine(250,350,450,450,MAGENTA);
+	WriteLine(249,349,449,449,MAGENTA);
+
+	// TODO could draw bresenham lines in more directions
 }

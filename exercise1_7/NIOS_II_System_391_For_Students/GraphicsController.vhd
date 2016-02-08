@@ -69,7 +69,8 @@ architecture bhvr of GraphicsController is
    			X2_Select_H,
 				Y1_Select_H, 
 				Y2_Select_H,
-				X1_Increment_H,
+				X1_Increment_1_H,
+				X1_Increment_2_H,
 				Y1_Increment_H,
 				Command_Select_H,
 				Colour_Select_H,
@@ -307,7 +308,7 @@ Begin
 -- X1 Process
 -- This process stores the 16 value from NIOS into the X1 register
 --
--- Can also increment x1 (by 2, for drawing horizontally more quickly) when a signal from state machine says so
+-- Can also increment x1 (by 1 or 2, for drawing horizontally more quickly) when a signal from state machine says so
 -- eg when drawing a horizontal line for example, where you increment x1 until it equals x2
 ------------------------------------------------------------------------------------------------------------------------------
 	process(Clk, Reset_L)
@@ -322,8 +323,11 @@ Begin
 				if(LDS_L = '0') then
 					X1(7 downto 0) <= DataInFromCPU(7 downto 0);
 				end if ;
-			elsif(X1_Increment_H = '1') then
-				X1 <= std_logic_vector(unsigned(X1) + 2);
+			-- only one of the increment signals should be high but X1_Increment_2_H has priority
+			elsif(X1_Increment_2_H = '1') then
+				X1 <= std_logic_vector(signed(X1) + 2);
+			elsif(X1_Increment_1_H = '1') then
+				X1 <= std_logic_vector(signed(X1) + 1);
 			end if;
 		end if;
 	end process;
@@ -332,7 +336,7 @@ Begin
 -- Y1 Process
 -- This process stores the 16 value from NIOS into the Y1 register
 --
--- Can also increment y1 when a signal from state machine says so
+-- Can also increment y1 (by 1) when a signal from state machine says so
 -- eg when drawing a horizontal line for example, where you increment y1 until it equals y2
 ------------------------------------------------------------------------------------------------------------------------------
 	process(Clk, Reset_L)
@@ -348,7 +352,7 @@ Begin
 					Y1(7 downto 0) <= DataInFromCPU(7 downto 0);
 				end if;
 			elsif(Y1_Increment_H = '1') then
-				Y1 <= std_logic_vector(unsigned(Y1) + 1);
+				Y1 <= std_logic_vector(signed(Y1) + 1);
 			end if;
 		end if;
 	end process;
@@ -606,8 +610,7 @@ end process;
 -- next state and output logic
 ----------------------------------------------------------------------------------------------------------------------	
 	
-	process(CurrentState, CommandWritten_H, Command, X1, X2, Y1, Y2, Colour, OKToDraw_L, VSync_L,
-				BackGroundColour, AS_L, Sram_DataIn, CLK, Colour_Latch, x, y, dx, dy, s1, s2, interchange, error, i)
+	process(all)
 		variable x2Minusx1 : signed(15 downto 0);
 		variable y2Minusy1 : signed(15 downto 0);
 	begin
@@ -637,8 +640,9 @@ end process;
 		Sig_ColourPalletteData			<= X"00000000" ;		-- default 00RRGGBB value to the colour pallette
 		Sig_ColourPallette_WE_H			<= '0'; 					-- default is NO write to the colour pallette
 
-		X1_Increment_H						<= '0'; -- assume not incrementing
-		Y1_Increment_H						<= '0'; -- assume not incrementing
+		X1_Increment_1_H					<= '0';
+		X1_Increment_2_H					<= '0';
+		Y1_Increment_H						<= '0';
 
 		x_Load_H								<= '0';
 		x_Data								<= X"0000";
@@ -850,24 +854,38 @@ end process;
 				
 				Sig_AddressOut <= Y1(8 downto 0) & X1(9 downto 1);
 
-				-- can draw two pixels per cycle
-				Sig_UDS_Out_L <= '0'; -- left pixel in upper byte
-				if(unsigned(X1) + 1 /= unsigned(X2)) then
-				    Sig_LDS_Out_L <= '0'; -- right pixel in lower byte
+				-- choose which pixels to write and how much to increment X1
+				-- can draw two pixels per cycle when X1 is even
+				if(X1(0) = '0') then
+					-- write the left-side pixel
+					Sig_UDS_Out_L <= '0';
+					-- may also be able to draw the right-side pixel
+					if(unsigned(X1) + 1 /= unsigned(X2)) then
+						Sig_LDS_Out_L <= '0';
+					end if;
+					-- increment X1 by 2
+					X1_Increment_1_H <= '0';
+					X1_Increment_2_H <= '1';
+				else
+					--only draw right-side pixel if X1 is at an odd pixel
+					Sig_LDS_Out_L <= '0';
+					--increment X by only 1 so next state may start at an even X1
+					X1_Increment_1_H <= '1';
+					X1_Increment_2_H <= '0';
 				end if;
 				
-				if(X1 = X2) then
+				-- decide whether to write and choose the next state
+				if(X1 >= X2) then
 					Sig_RW_Out <= '1'; -- do not draw a line with only one pixel
-				   X1_Increment_H <= '0';
 					NextState <= IDLE;
 				else
 				   Sig_RW_Out <= '0';
-					X1_Increment_H <= '1';
 					NextState <= DrawHline;
 				end if;
 			else
 				Sig_RW_Out <= '0';
-				X1_Increment_H <= '0';
+				X1_Increment_1_H <= '0';
+				X1_Increment_2_H <= '0';
 				NextState <= DrawHline;
 			end if;
 
@@ -884,7 +902,7 @@ end process;
 					Sig_LDS_Out_L 	<= '0';
 				end if;
 
-				if(Y1 = Y2) then
+				if(Y1 >= Y2) then
 					Sig_RW_Out <= '1'; -- do not draw a line with only one pixel
 				   Y1_Increment_H <= '0';
 					NextState <= IDLE;
@@ -905,8 +923,8 @@ end process;
 			x_Data <= signed(x1);
 			y_Data <= signed(y1);
 			
-			x2Minusx1 := signed(unsigned(x2) - unsigned(x1));
-			y2Minusy1 := signed(unsigned(y2) - unsigned(y1));
+			x2Minusx1 := signed(x2) - signed(x1);
+			y2Minusy1 := signed(y2) - signed(y1);
 
 			dx_Data <= abs(x2Minusx1);
 			dy_Data <= abs(y2Minusy1);
