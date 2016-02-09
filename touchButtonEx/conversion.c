@@ -8,6 +8,9 @@
 #include "touchscreen.h" //for definition of Point
 #include "conversion.h"
 #include "graphics.h" //for XRES/YRES
+
+#include <math.h>
+
 //#include <limits.h> //Couldn't get this include to work, idk why. Have used the min/max def'n's from it in conversion.h
 
 /*Mutates points. Assumes player has ran across the field during some point in the game, in both x and y direction.
@@ -17,6 +20,8 @@
  *Basically, this function is just for testing atm, need a new one once we know where our field is, but concept will be similar.
  *
  */
+
+//@deprecated
 void convertGPSPointsToPoints( Point points[] ){
 	int minx = points[0].x;
 	int miny = points[0].y;
@@ -55,4 +60,45 @@ void convertGPSPointsToPoints( Point points[] ){
 
 		i++;
 	}
+}
+
+/*
+ * Converts GPSpoints to Points (for graphics). Does NOT take care of points outside of range. Only works for topRight in quadrant 4
+ * relative to topLeft. Needs to be tested.
+ */
+void convertGPSReal( GPSPoint topLeft, GPSPoint topRight, GPSPoint points[], GPSPoint bottomRight, int nPoints ){
+	double theta = -atan((topRight.y - topLeft.y)/(topRight.x - topLeft.x));
+
+	int i;
+	for(i = 0; i < nPoints; i++){
+		double oldY = points[i].y - topLeft.y;
+		points[i].y = topLeft.y + oldY*cos(theta) + (points[i].x - topLeft.x)*sin(theta);
+		points[i].x = topLeft.x + (points[i].x - topLeft.x)*cos(theta) - oldY*sin(theta);
+	}
+
+	double oldY = bottomRight.y - topLeft.y;
+	bottomRight.y = topLeft.y + oldY*cos(theta) + (bottomRight.x - topLeft.x)*sin(theta);
+	bottomRight.x = topLeft.x + (bottomRight.x - topLeft.x)*cos(theta) - oldY*sin(theta);
+
+	oldY = topRight.y - topLeft.y;
+	topRight.y = topLeft.y + oldY*cos(theta) + (topRight.x - topLeft.x)*sin(theta);
+	topRight.x = topLeft.x + (topRight.x - topLeft.x)*cos(theta) - oldY*sin(theta);
+
+	double mX = XRES / (double) (topRight.x - topLeft.x);
+	double mY = YRES / (double) (topRight.y - bottomRight.y);
+
+	int k;
+	for( k = 0; k < nPoints; k++){
+		points[k].x = mX * (points[k].x - topLeft.x);
+		points[k].y = mY * (points[k].y - bottomRight.y);
+	}
+
+	topRight.x = mX * (topRight.x - topLeft.x);//should eval to XRES
+	topRight.y = mY * (topRight.y - bottomRight.y);//should eval to YRES
+
+	topLeft.x = mX * (topLeft.x - topLeft.x);//should eval to 0
+	topLeft.y = mY * (topLeft.y - bottomRight.y);//should eval to YRES
+
+	bottomRight.x = mX * (bottomRight.x - topLeft.x);//should eval to XRES
+	bottomRight.y = mY * (bottomRight.y - bottomRight.y);//should eval to 0
 }
